@@ -1,0 +1,165 @@
+/* @use postcss-preset-env {
+  stage: 0;
+} */
+
+/* ---------- GENERAL ---------- */
+/* * {
+  box-sizing: inherit;
+} */
+/* 
+html {
+  box-sizing: border-box;
+} */
+
+/* body {
+    background-image: url(https://i.pinimg.com/originals/66/ad/69/66ad69725aa037d059d292a3c5a522ab.jpg);
+    background-repeat: no-repeat;
+  }
+   */
+  body {
+    margin-top: 2px;
+    background-color: #eeeef4;
+    font-family: "Varela Round", sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    min-block-size: 100vh;
+    padding: 0;
+    /* padding: 5vmin; */
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  input {
+    background-image: none;
+    border: none;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s;
+  }
+  
+  svg {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+  }
+  
+  /* ---------- ALIGN ---------- */
+  .align {
+    display: grid;
+    place-items: center;
+  }
+  
+  /* ---------- BUTTON ---------- */
+  
+  .button {
+    background-color: #33cc77;
+    color: #fff;
+    /* padding: 0.25em 1.5em; */
+  }
+  
+  .button:focus,
+  .button:hover {
+    background-color: #28ad63;
+  }
+  
+  /* ---------- ICONS ---------- */
+  .icons {
+    display: none;
+  }
+  
+  .icon {
+    fill: currentcolor;
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+  }
+  
+  /* ---------- LOGIN ---------- */
+  .login {
+    width: 400px;
+  }
+  
+  .login__header {
+    justify-content: start;
+    text-align: start;
+    background-color: #40799a;
+    border-top-left-radius: 1.25em;
+    border-top-right-radius: 1.25em;
+    color: #fff;
+    padding: 1.25em 1.625em;
+  }
+  
+  .login__header :first-child {
+    margin-top: 0;
+  }
+  
+  .login__header :last-child {
+    margin-bottom: 0;
+  }
+  
+  .login h2 .icon {
+    margin-right: 14px;
+  }
+  
+  .login__form {
+    /* REVISAR EL MARGIN TOP DE AQUÍ */
+    margin-top: -250px;
+    border-radius: 10px;
+    background-color: #fff;
+    /* border-bottom-left-radius: 1.25em;
+    border-bottom-right-radius: 1.25em; */
+    color: #777;
+    display: grid;
+    gap: 0.875em;
+    padding: 35px;
+    /* padding: 1.25em 1.625em; */
+  }
+  
+  .login input {
+    border-radius: 0.1875em;
+  }
+  
+  .login input[type="email"],
+  .login input[type="password"] {
+    background-color: #eee;
+    color: #777;
+    padding: 0.25em 0.625em;
+    padding-top: 15px;
+    width: 100%;
+  }
+  
+  .login input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .contenedor {
+    margin-top: auto;
+  }
+  
+  .elboton {
+    padding: 5px;
+    width: 100px;
+    margin: auto;
+    border-style: none;
+    border-radius: 20px;
+    color: white;
+    background-color: #773418;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* .usersig {
+    margin-top: 1px;
+    border-radius: 10px;
+    height: 50px;
+    padding-top: 15px;
+    font-size: 20px;
+    text-align: center;
+    background-color: #ff5a43;
+    color: white;
+  } */
+  
