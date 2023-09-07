@@ -55,24 +55,17 @@ const Register = () => {
 
   return (
     <>
-      {/* Aqui empieza */}
       <div className="contenedor mt-2">
         <body class="align mt-2">
           <div class="login mt-0">
-            {/* <h1 className="usersig"> User Sign Up </h1> */}
-            {/* <header class="login__header">
-              <h2 className="arriba">
-                <svg class="icon mt-0"></svg>
-                Sign In
-              </h2>
-            </header> */}
             <form action="#" class="login__form" method="POST">
               <div>
                 <label for="email">
-                  <i class="fas fa-user"></i>
+                  <i class="fas fa-user perfil"></i>
                   <br />
                 </label>
                 <input
+              
                   type="email"
                   name="email"
                   placeholder="user"
@@ -84,7 +77,7 @@ const Register = () => {
 
               <div>
                 <label for="password">
-                  <i class="fas fa-lock"></i>
+                  <i class="fas fa-lock contraseña"></i>
                 </label>
                 <input
                   type="password"

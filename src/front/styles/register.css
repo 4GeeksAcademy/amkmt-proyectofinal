@@ -1,24 +1,8 @@
-/* @use postcss-preset-env {
-  stage: 0;
-} */
 
-/* ---------- GENERAL ---------- */
-/* * {
-  box-sizing: inherit;
-} */
-/* 
-html {
-  box-sizing: border-box;
-} */
-
-/* body {
-    background-image: url(https://i.pinimg.com/originals/66/ad/69/66ad69725aa037d059d292a3c5a522ab.jpg);
-    background-repeat: no-repeat;
-  }
-   */
   body {
+  
     margin-top: 2px;
-    background-color: #eeeef4;
+    background-color: white;
     font-family: "Varela Round", sans-serif;
     line-height: 1.5;
     margin: 0;
@@ -85,7 +69,7 @@ html {
   .login__header {
     justify-content: start;
     text-align: start;
-    background-color: #40799a;
+    /* background-color: #409a46; */
     border-top-left-radius: 1.25em;
     border-top-right-radius: 1.25em;
     color: #fff;
@@ -106,9 +90,10 @@ html {
   
   .login__form {
     /* REVISAR EL MARGIN TOP DE AQUÍ */
+
     margin-top: -250px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color:#cd8e4a;
     /* border-bottom-left-radius: 1.25em;
     border-bottom-right-radius: 1.25em; */
     color: #777;
@@ -124,7 +109,7 @@ html {
   
   .login input[type="email"],
   .login input[type="password"] {
-    background-color: #eee;
+    background-color: #E7E1E7;
     color: #777;
     padding: 0.25em 0.625em;
     padding-top: 15px;
@@ -137,22 +122,24 @@ html {
   }
   
   .contenedor {
+    background-color: #33cc77;
     margin-top: auto;
+
   }
   
   .elboton {
     padding: 5px;
-    width: 100px;
+    width: 150px;
     margin: auto;
     border-style: none;
     border-radius: 20px;
     color: white;
-    background-color: #773418;
+    background-color: #c18234;
     display: flex;
     justify-content: center;
   }
   
-  /* .usersig {
+  .usersig {
     margin-top: 1px;
     border-radius: 10px;
     height: 50px;
@@ -161,5 +148,8 @@ html {
     text-align: center;
     background-color: #ff5a43;
     color: white;
-  } */
+  }
   
+  .contraseña, .perfil{
+    color: #E7E1E7;
+  }
