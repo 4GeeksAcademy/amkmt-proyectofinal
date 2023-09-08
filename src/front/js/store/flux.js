@@ -46,7 +46,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			login: async (email, password) => {
+				try {
+					let data = await axios.post('https://opulent-xylophone-7g7vgpgjrjpfxpj4-3001.app.github.dev/login/',{
+						"email":email,
+						"password":password
+					})
+					console.log(data);
+					//esto es lo que guarda en el localStorage
+					localStorage.setItem("token", data.data.access_token);
+				
+					return true;
+				} catch (error) {
+					console.log("errorrrrr:" + error)
+					if (error.response.status === 404) {
+						alert(error.response.data.msg)
+					}
+					return false;
+				}
+
+
+			},
+			logout: ()=> {localStorage.removeItem("token")}
 		}
 	};
 };
