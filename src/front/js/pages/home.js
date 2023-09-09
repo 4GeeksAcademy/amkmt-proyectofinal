@@ -1,26 +1,56 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import React from "react";
 
-export const Home = () => {
-	const { store, actions } = useContext(Context);
+import "../../styles/index.css";
 
+
+import Jumbotron from "../component/jumbotron.jsx"
+
+import Card from "../component/card.jsx"
+
+
+//create your first component
+const Home = () => {
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
+		<>
+		<div className="container py-3">
+			<Jumbotron/>
+			<div className="row ms-2 my-3 d-inline-flex justify-content-center">
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
 			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
+			<div className="col-lg-3 col-sm-12 mx-3">
+			<Card/>
+			</div>
 		</div>
+		</div>
+		
+		<div>
+
+		</div>
+		</>
+		
 	);
 };
+
+export default Home;
