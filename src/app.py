@@ -13,14 +13,7 @@ from api.admin import setup_admin
 from api.commands import setup_commands
 
 from flask_bcrypt import Bcrypt
-
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
-
-
-#from models import Person
 
 ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
