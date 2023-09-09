@@ -1,0 +1,115 @@
+body {
+background-image: url(https://img.freepik.com/premium-vector/hand-drawn-bakery-white-background-seamless-pattern-retro-style_505564-1509.jpg?w=2000);
+backdrop-filter: blur(1px);
+margin: 0;
+padding: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+.form-content{
+    margin-top: 100px;
+    width: 300%;
+    max-width: 500px;
+    max-height: 520px;
+    background-color: #422f39db;
+    padding: 55px 40px 70px;
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 15px #422f39db;
+}
+
+.form-content h1{
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #FFFFFF;
+    position: relative;
+}
+
+.form-content h1::after{
+    content:'';
+    width: 50px;
+    height: 4px;
+    border-radius: 3px;
+    background-color: #C99734;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.input-field{
+    background-color: #E8F0FE;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    transition: max-height 05s;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+input{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 10px 10px;
+    color: #FFFFFF;
+}
+
+input::placeholder{
+    color: #7b5915b9 ;
+}
+
+.input-field i{
+    margin-left: 15px;
+    color:#C99734 ;
+}
+form p{
+
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 13px;
+}
+
+form p a {
+    color: #C99734;
+    margin-left: 5px;
+}
+
+.btn-field{
+    width: 100%;
+    /* display: flex; */
+    justify-content: space-between;
+}
+
+.btn-field button{
+    /* flex-basis:48%; */
+    margin-top: 2%;
+    padding-bottom: 2px;
+    margin-inline-start: 15px;
+    margin-inline-end: 15px;
+    font-size: 16px;
+    background-color: #C99734;
+    color: white;
+    height: 40px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.input-group{
+    justify-content: center;
+    height: 250px;
+}
+
+.btn-field button.disable{
+    background-color: #EAEAEA;
+    color: #2C2F35;
+    width: 130px;
+}
