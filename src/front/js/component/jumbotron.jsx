@@ -6,8 +6,8 @@ const Jumbotron = () => {
             <h1>Se siente como estar en casa,
                 Sabe a Paraiso
             </h1>
-            <p>Combinación de sabores que recuerden la calidez de tu hogar</p>
-            <button type="button" class="btn btn-outline-primary">Reservaciones</button>
+            <h5>Combinación de sabores que recuerden la calidez de tu hogar</h5>
+            <button type="button" class="btn btn-outline-danger">Reservaciones</button>
             </div>
     )
 }
