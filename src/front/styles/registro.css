@@ -8,10 +8,13 @@ align-items: center;
 justify-content: center;
 }
 
-
+.contenedor{
+   display: block;
+   justify-content: center;
+}
 .form-content{
     margin-top: 100px;
-    margin-left: 425px;
+    margin-left: 400px;
     width: 300%;
     max-width: 500px;
     max-height: 520px;

@@ -55,7 +55,7 @@ const Register = () => {
     };
     return (
         <>
-            <div className="container">
+            <div className="container contenedor">
                 <div className="form-content">
                     <h1 id="title">Registro</h1>
                     <form>
