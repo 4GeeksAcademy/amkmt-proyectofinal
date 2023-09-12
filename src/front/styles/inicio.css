@@ -1,0 +1,51 @@
+.cuerpodecard {
+    /* Activar */
+    background-color: rgba(252, 251, 251, 0.896);
+      border-radius: 20px;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      padding-top: 5px;
+      text-align: center;
+    }
+    .inicio {
+      background-color: rgba(252, 251, 251, 0.896);
+      background-image: none;
+    }
+    .titulodeinicio {
+      padding-top: 50px;
+      margin-top: 100px;
+      text-align: center;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    .subtitulodeinicio {
+      text-align: center;
+      font-size: 35px;
+      font-family: 'Dancing Script', cursive;
+    }
+    .cards {
+    background-color: rgba(252, 251, 251, 0.896);
+      border-style: none;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    .imagenesdeinicio {
+      display: block;
+      margin: 0 auto;
+      width: 225px;
+      height: 200px;
+      border-radius: 450px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+.nombresdecomidas{
+font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+font-size: 25px;
+
+}
+
+.botondemenucompleto{
+   color:#C99734 ;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; 
+    font-size: 30px;
+}
+
