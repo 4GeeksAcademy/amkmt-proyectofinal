@@ -37,14 +37,14 @@ const MenuPage = (id, name) => {
             <h1 className="titulodeinicio">Nuestros especiales</h1>
             <br />
             <br />
-            <h5 className="subtitulodeinicio">
+            <p className="subtitulodeinicio">
                 Dicen que el amor por la comida es el amor más sincero, y por una buena
                 razón, nos aseguran experiencias donde el placer es protagonista:
                 sabores, texturas, aromas, son un mix irresistible que expresan
                 sentimientos. <br />
                 Dale un vistazo a nuestros deliciosos platillos especiales y anímate a
                 probarlos.
-            </h5>
+            </p>
             <Row>
                 {menuItems.map((item) => (
                     <Col key={item.id} md={4}>

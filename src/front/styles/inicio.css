@@ -15,12 +15,15 @@
       padding-top: 50px;
       margin-top: 100px;
       text-align: center;
-      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      font-size: 75px;
+      font-family: 'Dancing Script', cursive;
+      /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
     }
     .subtitulodeinicio {
       text-align: center;
-      font-size: 35px;
-      font-family: 'Dancing Script', cursive;
+      font-size: 25px;
+      /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+      /* font-family: 'Dancing Script', cursive; */
     }
     .cards {
     background-color: rgba(252, 251, 251, 0.896);
