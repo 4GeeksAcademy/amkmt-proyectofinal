@@ -1,7 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint,  current_app  
+from flask import Flask, request, jsonify, url_for, Blueprint,  current_app
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 
@@ -24,27 +24,54 @@ def handle_hello():
 def signup():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    address= request.json.get("address", None)
-    name= request.json.get("name", None)
-    username= request.json.get("username", None)
-    age=request.json.get("age", None)
-    city=request.json.get("city", None)
-    phone=request.json.get("phone", None)
+    address = request.json.get("address", None)
+    name = request.json.get("name", None)
+    username = request.json.get("username", None)
+    age = request.json.get("age", None)
+    city = request.json.get("city", None)
+    phone = request.json.get("phone", None)
     existing_email = User.query.filter_by(email=email).first()
     if existing_email:
         return jsonify({"msg": "email already exists"}), 400
-    new_user = User(username=username, password=password, address=address, name=name, age=age, city=city, phone=phone, email=email, is_active=True)
+    new_user = User(username=username, password=password, address=address,
+                    name=name, age=age, city=city, phone=phone, email=email, is_active=True)
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"user_id": new_user.id}), 200
 
+
+@api.route("/login", methods=["POST"])
+def login():
+    if request.method == "POST":
+        body = request.json
+        email = body.get("email", None)
+        password = body.get("password", None)
+
+        if email is "test" or password is "test":
+            return jsonify("You need an email and a password"), 400
+        else:
+            user = User.query.filter_by(email=email).one_or_none()
+            if user is None:
+                return jsonify({"message": "Bad credentials"}), 400
+            else:
+                if check_password(user.password, password, user.salt):
+                    token = create_access_token(identity=user.id)
+                    return jsonify({"token": token}), 200
+                else:
+                    return jsonify({"message": "Bad credentials"}), 400
+    
+    access_token = create_access_token(identity =email)
+    return jsonify(access_token= access_token)
+
+
+
 # @api.route('/signup', methods=["POST"])
 # def signup ():
 #     request_body = request.get_json()
-#     email= 
-#     address= 
-#     name= 
-#     username= 
+#     email=
+#     address=
+#     name=
+#     username=
 #     age=
 #     city=
 #     phone=
@@ -59,7 +86,7 @@ def signup():
 #         raise APIException("El email es necesario", status_code=400)
 #     if password is None or password=="":
 #         raise APIException("El password es necesario", status_code=400)
-    
+
 #     user = User.query.filter_by(email=email).first()
 
 #     #se verifica si el usuario ya existe en BD
@@ -74,7 +101,7 @@ def signup():
 #     new_register = User(email=email,
 #                         password=password,
 #                         is_active= is_active)
-#     try: 
+#     try:
 #         db.session.add(new_register)
 #         db.session.commit()
 #         return jsonify({"message":"Usuario registrado"}), 201

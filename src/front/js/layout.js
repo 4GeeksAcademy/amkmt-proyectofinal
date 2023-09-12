@@ -12,7 +12,7 @@ import Register from "./pages/registro.jsx";
 import MenuPage from "./pages/menupage.jsx";
 
 
-import { Navbar } from "./component/navbar";
+import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
 
 
@@ -31,7 +31,7 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar />
+                    <Navbar2 />
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
