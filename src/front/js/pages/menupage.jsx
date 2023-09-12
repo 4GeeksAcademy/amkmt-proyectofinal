@@ -18,7 +18,7 @@ const MenuPage = (id, name) => {
             id: 2,
             name: "S A N D W I C H E S",
             description:
-                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci commodi dolore molestias laborum aspernatur esse dolores magni placeat consectetur in cumque",
+                "Loremses ipsum dolor sit amet consectetur, adipisicing elit. Adipisci commodi dolore molestias laborum aspernatur esse dolores magni placeat consectetur in cumque",
             image:
                 "https://img.freepik.com/foto-gratis/sandwiches-papas-fritas_144627-37679.jpg"
         },
