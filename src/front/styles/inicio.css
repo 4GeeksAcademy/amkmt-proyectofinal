@@ -1,13 +1,15 @@
 .cuerpodecard {
-    /* Activar */
+    margin-top: 0;
     background-color: rgba(252, 251, 251, 0.896);
       border-radius: 20px;
       font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-      padding-top: 5px;
+      padding-top: 3px;
       text-align: center;
     }
     .inicio {
+      /* Revisar el margin top */
+      margin-top:-100px;
       background-color: rgba(252, 251, 251, 0.896);
       background-image: none;
     }
@@ -15,15 +17,20 @@
       padding-top: 50px;
       margin-top: 100px;
       text-align: center;
-      font-size: 75px;
-      font-family: 'Dancing Script', cursive;
-      /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+      font-size: 45px;
+      /* font-family: 'Dancing Script', cursive; */
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     }
     .subtitulodeinicio {
       text-align: center;
-      font-size: 25px;
+      font-size: 30px;
       /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
-      /* font-family: 'Dancing Script', cursive; */
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .descripciondecomidas{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 15px;
     }
     .cards {
     background-color: rgba(252, 251, 251, 0.896);

@@ -9,8 +9,7 @@ const MenuPage = (id, name) => {
         {
             id: 1,
             name: "B O W L S",
-            description:
-                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci commodi dolore molestias laborum aspernatur esse dolores magni placeat consectetur in cumque",
+            description: "Nuestros bowls han llegado para quedarse, una deliciosa explosión de sabor que debes probar, no te lo decimos nosotros, lo dicen los expertos",
             image:
                 "https://media.vogue.mx/photos/5c0711e06d624e83f2a1bb77/master/w_1600%2Cc_limit/los_mejores_restaurantes_para_comer_saludable_en_bogota_colombia_1768.jpg"
         },
@@ -18,7 +17,7 @@ const MenuPage = (id, name) => {
             id: 2,
             name: "S A N D W I C H E S",
             description:
-                "Loremses ipsum dolor sit amet consectetur, adipisicing elit. Adipisci commodi dolore molestias laborum aspernatur esse dolores magni placeat consectetur in cumque",
+                "Por algo somos los favoritos de la casa, descúbrenos ahora y entérate porqué somos tan populares por aquí, prometemos que no te vas a arrepentir",
             image:
                 "https://img.freepik.com/foto-gratis/sandwiches-papas-fritas_144627-37679.jpg"
         },
@@ -26,7 +25,7 @@ const MenuPage = (id, name) => {
             id: 3,
             name: "S M O O T H I E S",
             description:
-                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci commodi dolore molestias laborum aspernatur esse dolores magni placeat consectetur in cumque",
+                "Conocidos como nuestras delicias de fin de semana, después de que los pruebes cambiarás tu concepto de un buen smoothie!! Garatizado",
             image:
                 "https://th.bing.com/th/id/OIP.FomJCD-30P4a9DhyqeaSiwHaK5?pid=ImgDet&rs=1"
         },
@@ -53,7 +52,7 @@ const MenuPage = (id, name) => {
                                 <img className="imagenesdeinicio" src={item.image} alt="" />
                                 {/* {<img src="rigo-baby.jpg" alt="" />} */}
                                 <Card.Title className="nombresdecomidas">{item.name}</Card.Title>
-                                <Card.Text>{item.description}</Card.Text>
+                                <Card.Text className="descripciondecomidas">{item.description}</Card.Text>
                                 <Button className="botondemenucompleto" variant="justify-content-center">
                                     MÁS
 
