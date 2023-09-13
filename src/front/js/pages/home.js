@@ -19,24 +19,24 @@ const Home = () => {
 					<div className="carousel-item active" data-bs-interval="10000">
 						<img src="https://fondosmil.com/fondo/73620.jpg" className="d-block w-100" alt="..." />
 						<div className="carousel-caption d-none d-md-block">
-							<h5>Revisa nuestro menú</h5>
-							<p>Bienvenidos a La Casita Feliz</p>
+							<h3>Bienvenidos a La Casita Feliz</h3>
+							<p>Mirá nuestro Menú</p>
 							<Link className="nav-link text-dark" to="/menu">Menú</Link>
 						</div>
 					</div>
 					<div className="carousel-item" data-bs-interval="2000">
 						<img src="https://fondosmil.com/fondo/73680.jpg" className="d-block w-100" alt="..." />
 						<div className="carousel-caption d-none d-md-block">
-							<h5>Revisa nuestro menú</h5>
-							<p>Bienvenidos a La Casita Feliz</p>
+							<h3>Bienvenidos a La Casita Feliz</h3>
+							<p>Mirá nuestro Menú</p>
 							<Link className="nav-link text-dark" to="/menu">Menú</Link>
 						</div>
 					</div>
 					<div className="carousel-item">
 						<img src="https://fondosmil.com/fondo/73680.jpg" className="d-block w-100" alt="..." />
 						<div className="carousel-caption d-none d-md-block">
-							<h5>Revisa nuestro menú</h5>
-							<p>Bienvenidos a La Casita Feliz</p>
+							<h3>Bienvenidos a La Casita Feliz</h3>
+							<p>Mirá nuestro Menú</p>
 							<Link className="nav-link text-dark" to="/menu">Menú</Link>
 						</div>
 					</div>
