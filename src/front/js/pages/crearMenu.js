@@ -10,6 +10,7 @@ const CrearMenu = () => {
     const [price, setPrice] = useState("");
     const { store, actions } = useContext(Context);
 const agregarMenu= (event)=> {event.preventDefault();
+    actions: actions.crearMenu(name, description , image, price)
     setName ("");
     setDescription ("");
     setImage ("");

@@ -53,7 +53,7 @@ def getProducts():
 @api.route("/products", methods=["POST"])
 def addProducts():
     body=json.loads(request.data)
-    queryNewproducts=Products.query.filter_by(name=body["name"].first())
+    queryNewproducts=Products.query.filter_by(name=body["name"]).first()
     if queryNewproducts is None:
         new_products=Products(name=body["name"], 
         image=body["image"],
