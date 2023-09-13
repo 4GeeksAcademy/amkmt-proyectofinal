@@ -20,20 +20,23 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
 @api.route("/signup", methods=["POST"])
 def signup():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    address= request.json.get("address", None)
-    name= request.json.get("name", None)
-    username= request.json.get("username", None)
-    age=request.json.get("age", None)
-    city=request.json.get("city", None)
-    phone=request.json.get("phone", None)
+    address = request.json.get("address", None)
+    name = request.json.get("name", None)
+    username = request.json.get("username", None)
+    age = request.json.get("age", None)
+    city = request.json.get("city", None)
+    phone = request.json.get("phone", None)
     existing_email = User.query.filter_by(email=email).first()
     if existing_email:
         return jsonify({"msg": "email already exists"}), 400
-    new_user = User(username=username, password=password, address=address, name=name, age=age, city=city, phone=phone, email=email, is_active=True)
+    new_user = User(username=username, password=password, address=address,
+                    name=name, age=age, city=city, phone=phone, email=email, is_active=True)
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"user_id": new_user.id}), 200
@@ -68,6 +71,55 @@ def addProducts():
         }
     return jsonify(response_body), 400
 
+
+@api.route("/login", methods=["POST"])
+def login():
+    if request.method == "POST":
+        body = request.json
+        email = body.get("email", None)
+        password = body.get("password", None)
+
+        if email is "test" or password is "test":
+            return jsonify("You need an email and a password"), 400
+        else:
+            user = User.query.filter_by(email=email).one_or_none()
+            if user is None:
+                return jsonify({"message": "Bad credentials"}), 400
+            else:
+                if check_password(user.password, password, user.salt):
+                    token = create_access_token(identity=user.id)
+                    return jsonify({"token": token}), 200
+                else:
+                    return jsonify({"message": "Bad credentials"}), 400
+    
+    access_token = create_access_token(identity =email)
+    return jsonify(access_token= access_token)
+
+
+
+# @api.route('/signup', methods=["POST"])
+# def signup ():
+#     request_body = request.get_json()
+#     email=
+#     address=
+#     name=
+#     username=
+#     age=
+#     city=
+#     phone=
+#     body = request.get_json()
+#     email = body["email"]
+#     password = body["passworef user_register():d"]
+#     is_active = True
+
+#     if body is None:
+#         raise APIException("Body está vacío", status_code=400)
+#     if email is None or email=="":
+#         raise APIException("El email es necesario", status_code=400)
+#     if password is None or password=="":
+#         raise APIException("El password es necesario", status_code=400)
+
+#     user = User.query.filter_by(email=email).first()
 
 
 
