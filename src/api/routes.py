@@ -11,6 +11,8 @@ from flask_jwt_extended import jwt_required
 
 api = Blueprint('api', __name__)
 
+def check_password(hash_password, password, salt):
+    return check_password_hash(hash_password, f"{password}{salt}")
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -65,48 +67,3 @@ def login():
     access_token = create_access_token(identity =email)
     return jsonify(access_token= access_token)
 
-
-
-# @api.route('/signup', methods=["POST"])
-# def signup ():
-#     request_body = request.get_json()
-#     email=
-#     address=
-#     name=
-#     username=
-#     age=
-#     city=
-#     phone=
-#     body = request.get_json()
-#     email = body["email"]
-#     password = body["passworef user_register():d"]
-#     is_active = True
-
-#     if body is None:
-#         raise APIException("Body está vacío", status_code=400)
-#     if email is None or email=="":
-#         raise APIException("El email es necesario", status_code=400)
-#     if password is None or password=="":
-#         raise APIException("El password es necesario", status_code=400)
-
-#     user = User.query.filter_by(email=email).first()
-
-#     #se verifica si el usuario ya existe en BD
-#     if user:
-#         raise APIException("El usario ya existe", status_code=400)
-
-#     #debería encriptar el password
-#     print("password sin encriptar:", password)
-#     password = current_app.bcrypt.generate_password_hash(password, 10).decode("utf-8")
-#     print("password con encriptación:", password)
-
-#     new_register = User(email=email,
-#                         password=password,
-#                         is_active= is_active)
-#     try:
-#         db.session.add(new_register)
-#         db.session.commit()
-#         return jsonify({"message":"Usuario registrado"}), 201
-#     except Exception as error:
-#         print(str(error))
-#         return jsonify({"message":"error al almacenar en BD"}), 500
