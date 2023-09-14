@@ -13,8 +13,10 @@ justify-content: center;
    justify-content: center;
 }
 .form-content{
-    margin-top: 100px;
-    margin-left: 400px;
+    /* Estos margin me ayudaron a separar el footer y a centrar el diseño */
+    margin-top:10%;
+    margin-bottom: 30%;
+    margin-left: 30%;
     width: 300%;
     max-width: 500px;
     max-height: 520px;
@@ -22,7 +24,7 @@ justify-content: center;
     padding: 55px 40px 70px;
     text-align: center;
     border-radius: 25px;
-    box-shadow: 15px #422f39db;
+    /* box-shadow: 15px #422f39db; */
 }
 
 .form-content h1{
@@ -55,7 +57,7 @@ justify-content: center;
     border-radius: 25px;
 }
 
-input{
+.losinput{
     width: 100%;
     background: transparent;
     border: 0;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar2 = () => {
     return (
-        <nav className=" container navbar navbar-dark navbar-expand-lg bg-dark">
+        <nav className=" container-fluid navbar navbar-dark navbar-expand-lg bg-dark">
             <div className="container">
                 <a className="navbar-brand text-warning" href="#">La casita feliz</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@ const Navbar2 = () => {
                             <a className="nav-link text-warning" href="#">Locales</a>
                         </li>
                         <li className="nav-item">
-                                <a className="nav-link text-warning" href="#">Ingresar</a>
+                            <a className="nav-link text-warning" href="#">Ingresar</a>
                         </li>
                     </ul>
                 </div>
