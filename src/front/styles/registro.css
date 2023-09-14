@@ -15,15 +15,15 @@ justify-content: center;
 .form-content{
     /* Estos margin me ayudaron a separar el footer y a centrar el diseño */
     margin-top:10%;
-    margin-bottom: 30%;
+    margin-bottom: 45%;
     margin-left: 30%;
     width: 300%;
-    max-width: 500px;
+    max-width: 600px;
     max-height: 520px;
-    background-color: #422f39db;
+    background-color: #422f39a0;
     padding: 55px 40px 70px;
     text-align: center;
-    border-radius: 25px;
+    border-radius: 10px;
     /* box-shadow: 15px #422f39db; */
 }
 
@@ -47,14 +47,14 @@ justify-content: center;
 }
 
 .input-field{
-    background-color: #E8F0FE;
+    background-color: rgba(252, 251, 251, 0.807);
     margin: 15px 0;
     border-radius: 3px;
     display: flex;
     align-items: center;
     transition: max-height 05s;
     overflow: hidden;
-    border-radius: 25px;
+    border-radius: 15px;
 }
 
 .losinput{
@@ -117,5 +117,17 @@ form p a {
 .btn-field button.disable{
     background-color: #EAEAEA;
     color: #2C2F35;
-    width: 130px;
+    width: 150px;
+}
+
+#title{
+    font-size: 33px;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+#signUp, #signIn{
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+  
 }

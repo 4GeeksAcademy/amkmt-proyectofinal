@@ -4,8 +4,6 @@ import "../../styles/reservation.css";
 
 const Reservation = () => {
 
-
-
     return (
         <div class="containnn">
             <h2 className="reservademesa">Reserva de Mesa</h2>
@@ -19,7 +17,7 @@ const Reservation = () => {
                 <label for="fecha">Fecha de Reserva:</label>
                 <input type="date" id="fecha" name="fecha" required />
 
-                <label for="comensales">Número de Comensales:</label>
+                <label for="comensales">Cantidad:</label>
                 <select id="comensales" name="comensales" required>
                     <option value="0"></option>
                     <option value="1">1 persona</option>

@@ -12,7 +12,6 @@ import Register from "./pages/registro.jsx";
 import MenuPage from "./pages/menupage.jsx";
 import Reservation from "./pages/reservation.jsx";
 
-
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
 import Menu from "./pages/menu";
@@ -43,6 +42,7 @@ const Layout = () => {
                         <Route element={<MenuPage />} path="/menupage" />
                         <Route element={<Reservation />} path="/reservation" />
                         <Route element={<Menu />} path="/menu" />
+
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

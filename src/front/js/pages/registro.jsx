@@ -91,7 +91,7 @@ const Register = () => {
                         </div>
                         <div className="btn-field">
 
-                            <button className="col-4" id="signUp" type="button" onClick={register}>Sign Up!</button>
+                            <button className="col-4" id="signUp" type="button" onClick={register}>Sign Up</button>
 
                             <Link to="/login">
                                 <button className="col-4" id="signIn" type="button" class="disable">Login</button>
