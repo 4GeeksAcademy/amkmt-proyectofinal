@@ -17,6 +17,8 @@ class User(db.Model):
     age= db.Column(db.String(150), nullable=False)
     city= db.Column(db.String(150), nullable=False)
     phone= db.Column(db.String(150), nullable=False)
+    salt= db.Column(db.String(180), nullable=False)
+
     # created_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), nullable=False)
     # updated_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), onupdate=db.func.now(), nullable=False)
 
