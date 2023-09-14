@@ -1,8 +1,8 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint,  current_app
-from api.models import db, User
+from flask import Flask, request, jsonify, url_for, Blueprint,  current_app  
+from api.models import db, User, Products
 from api.utils import generate_sitemap, APIException
 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -52,6 +52,36 @@ def signup():
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"user_id": new_user.id}), 200
+
+## Muestra todos los productos
+@api.route("/products", methods=["GET"])
+def getProducts():
+    products = Products.query.all()
+    results = list(map(lambda x: x.serialize(), products ))
+    print (results)
+    return jsonify(results), 200
+
+## Crea un producto
+@api.route("/products", methods=["POST"])
+def addProducts():
+    body=json.loads(request.data)
+    queryNewproducts=Products.query.filter_by(name=body["name"].first())
+    if queryNewproducts is None:
+        new_products=Products(name=body["name"], 
+        image=body["image"],
+        description=body["description"],
+        price=body["price"]
+        )
+        db.session.add(new_products)
+        db.session.commit()
+        response_body={
+            "msg":"new product added"
+        }
+        return jsonify(new_products.serialize()), 200
+    response_body={
+            "msg":"product already created"
+        }
+    return jsonify(response_body), 400
 
 
 @api.route("/login", methods=["POST"])
