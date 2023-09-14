@@ -18,6 +18,8 @@ class User(db.Model):
     city= db.Column(db.String(150), nullable=False)
     phone= db.Column(db.String(150), nullable=False)
     salt= db.Column(db.String(180), nullable=False)
+    
+    reserva = db.relationship("Reservas", backref="reserva_user", lazy=True)
 
     # created_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), nullable=False)
     # updated_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), onupdate=db.func.now(), nullable=False)
@@ -35,6 +37,7 @@ class User(db.Model):
             "age": self.age,
             "city": self.city,
             "phone": self.phone,
+            "reservas": [reservas.serialize() for reservas in self.reserva]
             # do not serialize the password, its a security breach
         }
     
@@ -55,4 +58,21 @@ class Products(db.Model):
             "image": self.image,
             "price": self.price,
             "description": self.description,
+        }
+    
+class Reservas(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    reservacion_date = db.Column(db.DateTime, nullable=False)
+    user_id= db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) 
+    
+    user = db.relationship("User", backref="user_reserva", lazy=True)
+    
+    def __repr__(self):
+        return f'<Reservas {self.id}>' 
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"), # Formatea la fecha como una cadena
+            "user_id": self.user_id
         }
