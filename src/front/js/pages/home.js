@@ -17,7 +17,7 @@ const Home = () => {
 				</div>
 				<div className="carousel-inner">
 					<div className="carousel-item active" data-bs-interval="10000">
-						<img src="https://fondosmil.com/fondo/73620.jpg" className="d-block w-100" alt="..." />
+						<img src="//images01.nicepagecdn.com/c461c07a441a5d220e8feb1a/3bd344704401542985639c54/vbvbvb-min.jpg" className="d-block w-100" alt="..." />
 						<div className="carousel-caption d-none d-md-block">
 							<h3>Bienvenidos a La Casita Feliz</h3>
 							<p>Mirá nuestro Menú</p>

@@ -107,6 +107,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			},
+			// login: async (Nombre,email, password,Direccion,Telefono) => {
+			// 	try {
+			// 		let data = await axios.post('https://verbose-train-4xw9xvv4769cj9xp-3000.app.github.dev/register/', {
+			// 			"email": email,
+			// 			"password": password
+			// 		})
+			// 		console.log(data);
+			// 		//esto es lo que guarda en el localStorage
+			// 		localStorage.setItem("token", data.data.access_token);
+
+			// 		return true;
+			// 	} catch (error) {
+			// 		console.log("errorrrrr:" + error)
+			// 		if (error.response.status === 404) {
+			// 			alert(error.response.data.msg)
+			// 		}
+			// 		return false;
+			// 	}
+
+
+			// },
 			logout: () => { localStorage.removeItem("token") }
 		}
 	};
