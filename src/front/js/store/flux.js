@@ -107,7 +107,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			},
-			logout: () => { localStorage.removeItem("token") }
+			logout: () => { localStorage.removeItem("token") },
+			agregarMenu: async (name, description, image, price) => {
+				try {
+				  const response = await fetch(process.env.BACKEND_URL + "/api/products", {
+					method: 'POST',
+					headers: {
+					  'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+					  name,
+					  description,
+					  image,
+					  price,
+					}),
+				  });
+			  
+				  if (!response.ok) {
+					// Manejo de errores si la solicitud no fue exitosa
+					throw new Error('No se pudo agregar el elemento al menú');
+				  }
+				  // Manejo de éxito, si es necesario
+				  // Puedes actualizar el estado aquí si es necesario
+				  return true; // Opcional: devuelve un valor para indicar que la solicitud fue exitosa
+				} catch (error) {
+				  console.error('Error al agregar el elemento al menú:', error);
+				  return false; // Opcional: devuelve un valor para indicar que la solicitud falló
+				}
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
 		}
 	};
 };
