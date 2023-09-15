@@ -10,6 +10,7 @@ const Register = () => {
     const { store, actions } = useContext(Context);
 
     const register = async () => {
+        console.log("me ejecuto")
         //Sección de verificación
         if (password == "" || email == "") {
             Swal.fire({
@@ -22,14 +23,15 @@ const Register = () => {
             return;
         }
 
+
         //Sección para enviar la data al backend
         let obj = {
             email: email,
             password: password,
         };
 
-        let response = await actions.fetchPromise("/api/signup", "POST", obj);
-
+        // let response = await actions.fetchPromise("/api/signup", "POST", obj);
+        let response = await actions.register(email, password)
         if (response.ok) {
             let responseJson = await response.json();
             console.log(responseJson);
@@ -91,7 +93,7 @@ const Register = () => {
                         </div>
                         <div className="btn-field">
 
-                            <button className="col-4" id="signUp" type="button" onClick={register}>Sign Up</button>
+                            <button className="col-4" id="signUp" type="button" onClick={() => register()}>Sign Up</button>
 
                             <Link to="/login">
                                 <button className="col-4" id="signIn" type="button" class="disable">Login</button>
