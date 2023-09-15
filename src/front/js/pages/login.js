@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import "../../styles/prueba.css";
 
 export const Login = () => {
 	const { store, actions } = useContext(Context);
@@ -30,7 +30,7 @@ async function handleSubmit(event) {
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
     <input onChange={handleEmail} type="email" className="form-control" id="exampleInputEmail1" placeholder= "email"aria-describedby="emailHelp"/>
     
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    <div id="emailHelp" className="form-text">We'll never   share your email with anyone else.</div>
   </div>
   <div className="mb-3">
     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
