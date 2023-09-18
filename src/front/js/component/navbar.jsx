@@ -18,7 +18,7 @@ const Navbar2 = () => {
                             <Link className="nav-link text-warning" to="/menu">Menú</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link text-warning" to="/locales">Locales</Link>
+                            <Link className="nav-link text-warning" to="/reservation">Reservar</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link text-warning" to="/login">Ingresar</Link>

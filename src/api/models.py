@@ -12,7 +12,6 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(255), unique=False, nullable=False)
-<<<<<<< HEAD
     address = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(150), nullable=False)
     username = db.Column(db.String(150), nullable=False)
@@ -20,17 +19,8 @@ class User(db.Model):
     city = db.Column(db.String(150), nullable=False)
     phone = db.Column(db.String(150), nullable=False)
     salt = db.Column(db.String(180), nullable=False)
-=======
-    address= db.Column(db.String(255),nullable=False) 
-    name= db.Column(db.String(150), nullable=False)
-    username= db.Column(db.String(150), nullable=False)
-    age= db.Column(db.String(150), nullable=False)
-    city= db.Column(db.String(150), nullable=False)
-    phone= db.Column(db.String(150), nullable=False)
-    salt= db.Column(db.String(180), nullable=False)
-    
+
     reserva = db.relationship("Reservas", backref="reserva_user", lazy=True)
->>>>>>> 004b0c2501391fa2f489b331c844b97fe9b8462a
 
     # created_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), nullable=False)
     # updated_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), onupdate=db.func.now(), nullable=False)
@@ -71,23 +61,22 @@ class Products(db.Model):
             "price": self.price,
             "description": self.description,
         }
-<<<<<<< HEAD
-=======
-    
+
+
 class Reservas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reservacion_date = db.Column(db.DateTime, nullable=False)
-    user_id= db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) 
-    
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
     user = db.relationship("User", backref="user_reserva", lazy=True)
-    
+
     def __repr__(self):
-        return f'<Reservas {self.id}>' 
+        return f'<Reservas {self.id}>'
 
     def serialize(self):
         return {
             "id": self.id,
-            "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"), # Formatea la fecha como una cadena
+            # Formatea la fecha como una cadena
+            "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"),
             "user_id": self.user_id
         }
->>>>>>> 004b0c2501391fa2f489b331c844b97fe9b8462a
