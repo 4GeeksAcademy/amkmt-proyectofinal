@@ -20,7 +20,7 @@ justify-content: center;
     width: 300%;
     max-width: 600px;
     max-height: 520px;
-    background-color: #e35927a0;
+    background-color: #ce1b27e3;
     padding: 55px 40px 70px;
     text-align: center;
     border-radius: 10px;
@@ -58,13 +58,15 @@ justify-content: center;
 }
 
 .losinput{
+    font-family: 'Oswald', sans-serif;
+
     width: 100%;
     background: transparent;
     border: 0;
     outline: none;
     padding: 10px 10px;
     color: #C99734;
-    color: black;
+    color: rgba(0, 0, 0, 0.81);
 }
 
 input::placeholder{
@@ -72,11 +74,11 @@ input::placeholder{
 }
 
 .input-field i{
+    
     margin-left: 15px;
     color:#C99734 ;
 }
 form p{
-
     color: #FFFFFF;
     text-align: center;
     font-size: 13px;
@@ -94,6 +96,7 @@ form p a {
 }
 
 .btn-field button{
+    
     /* flex-basis:48%; */
     margin-top: 2%;
     padding-bottom: 2px;
