@@ -4,6 +4,12 @@ import "../../styles/reservation.css";
 
 const Reservation = () => {
 
+    const [mesare, setMesare] = useState("");
+    const [nombre, SetName] = useState("");
+    const [email, SetEmail] = useContext("");
+    const [fechareserva, SetFechareserva] = useState("");
+    const [cantidad, SetCantidad] = useState("");
+
     return (
         <div class="containnn">
             <h2 className="reservademesa">Reserva de Mesa</h2>
