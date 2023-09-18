@@ -30,7 +30,7 @@ justify-content: center;
 .form-content h1{
     font-size: 30px;
     margin-bottom: 30px;
-    color: #FFFFFF;
+    color:#FFFFFF;
     position: relative;
 }
 
@@ -63,7 +63,8 @@ justify-content: center;
     border: 0;
     outline: none;
     padding: 10px 10px;
-    color: #C99734
+    color: #C99734;
+    color: black;
 }
 
 input::placeholder{

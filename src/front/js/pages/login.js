@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import "../../styles/prueba.css";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
@@ -18,32 +18,34 @@ export const Login = () => {
     //let logged = await actions.login(email, password);
   }
   return (
-
-    <div className="container mt-5">
-      <div className="card ">
-        <div className="card-header">
-          Login
-        </div>
-        <div className="card-body">
+    <>
+      <div className="container">
+        <div className="form-content">
+          <h1 id="title">Login</h1>
           <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-              <input onChange={handleEmail} type="email" className="form-control" id="exampleInputEmail1" placeholder="email" aria-describedby="emailHelp" />
+            <div className="    ">
+              <div className="input-field" id="nameInput">
+                <i class="fa-regular fa-envelope"></i>
+                <input onChange={handleEmail} type="email" placeholder="Email"></input>
 
-              <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div className="input-field">
+                <i class="fa-solid fa-lock"></i>
+                <input onChange={handlePAssword} type="texto" placeholder="Password"
+
+                />
+              </div>
+
             </div>
-            <div className="mb-3">
-              <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-              <input onChange={handlePAssword}
-                type="password" className="form-control" id="exampleInputPassword1" />
+            <div className="btn-field">
+              <button className="col-4" id="signIn" type="button"
+
+              >Send</button>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
           </form>
         </div>
-        <div className="card-footer text-muted">
-
-        </div>
       </div>
-    </div>
+
+    </>
   );
 };

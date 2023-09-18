@@ -9,8 +9,6 @@ import { Login } from "./pages/login.js";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import Register from "./pages/registro.jsx";
-import MenuPage from "./pages/menupage.jsx";
-import Reservation from "./pages/reservation.jsx";
 
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -39,8 +37,6 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<Register />} path="/register" />
-                        <Route element={<MenuPage />} path="/menupage" />
-                        <Route element={<Reservation />} path="/reservation" />
                         <Route element={<Menu />} path="/menu" />
 
                         <Route element={<h1>Not found!</h1>} />
