@@ -67,6 +67,7 @@ class Reservas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reservacion_date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    reservacion_hour = db.Column(db.DateTime, nullable=False) 
 
     user = db.relationship("User", backref="user_reserva", lazy=True)
 

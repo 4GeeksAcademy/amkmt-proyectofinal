@@ -109,17 +109,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			},
-			register: async (email, password) => {
+			register: async (email, password, username, age, city, phone) => {
 				try {
 					let data = await axios.post(process.env.BACKEND_URL + "/signup", {
 						"email": email,
 						"password": password,
 						"address": "Costa Rica",
 						"name": "User",
-						"username": "User",
-						"age": "1",
-						"city": "Caracas",
-						"phone": "25331050"
+						"username": username,
+						"age": age,
+						"city": city,
+						"phone": phone
 					})
 					console.log(data);
 					//esto es lo que guarda en el localStorage
