@@ -1,0 +1,39 @@
+
+.formulariocaja{
+    width: 150%;
+    margin-top: 5%;
+    background-color: rgba(199, 199, 91, 0.342);
+    margin-bottom: 45%;
+    border-radius: 5%;
+
+ 
+}
+
+label{
+    font-family: 'Dancing Script', cursive;
+    /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
+
+    font-size: 22px;
+}
+.titulodeform{
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+
+   padding-top: 4%;
+    color: rgb(194, 156, 30);
+}
+.inputforms{
+   background-color: rgba(252, 251, 251, 0.807);
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    transition: max-height 05s;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+#botondepagar{
+    margin-top: 2px;
+    color: rgb(159, 125, 15);
+    background-color: transparent;
+}
