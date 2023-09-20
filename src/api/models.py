@@ -1,16 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
-# from datatime import datatime 
-# from enun import Enum
-# app = Flask(__name__)
 db = SQLAlchemy()
-# class UserGender(Enum):
-#     MALE= "male"
-#     FEMALE= "female"
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(255), unique=False, nullable=False)
+    profile_image_url = db.Column(db.String(255), unique=False, nullable=True)
     address= db.Column(db.String(255),nullable=False) 
     name= db.Column(db.String(150), nullable=False)
     username= db.Column(db.String(150), nullable=False)
@@ -21,8 +17,7 @@ class User(db.Model):
     
     reserva = db.relationship("Reservas", backref="reserva_user", lazy=True)
 
-    # created_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), nullable=False)
-    # updated_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), onupdate=db.func.now(), nullable=False)
+    
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -34,6 +29,7 @@ class User(db.Model):
             "address": self.address,
             "name": self.name,
             "username": self.username,
+            "profile_image_url":self.profile_image_url,
             "age": self.age,
             "city": self.city,
             "phone": self.phone,
@@ -44,7 +40,7 @@ class User(db.Model):
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    image= db.Column(db.String(255),nullable=False) 
+    product_image_url= db.Column(db.String(255),nullable=False) 
     price= db.Column(db.String(150), nullable=False)
     description= db.Column(db.String(400), nullable=False)
     
@@ -60,6 +56,7 @@ class Products(db.Model):
             "description": self.description,
         }
     
+
 class Reservas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reservacion_date = db.Column(db.DateTime, nullable=False)
@@ -76,3 +73,4 @@ class Reservas(db.Model):
             "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"), # Formatea la fecha como una cadena
             "user_id": self.user_id
         }
+
