@@ -10,7 +10,7 @@
     /* margin: 0 auto; */
     margin-top:6%;
     margin-bottom: 30%;
-    margin-left: 32%;
+    margin-left: 34%;
     padding: 20px;
     background-color: rgba(252, 251, 251, 0.807);
     border-radius: 15px;
@@ -83,16 +83,36 @@ select{
 }
 
 button[type="submit"] {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
     background-color: #73606a;
+    /* width: 120px; */
     color: #fff;
-    display: block;
+    display: inline-block;
     margin: 0 auto;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    
 }
 
 button[type="submit"]:hover {
     background-color: #b179b87e;
 }
+.pagar{
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    /* width: 120px; */
+    color: #fff;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #012069b8;
+}
+/* h6{
+    color: #0c3582be;
+} */
