@@ -65,10 +65,14 @@ def addProducts():
     response_image=uploader.upload(data.get("image"))
     data.update({
         "image":response_image.get("url")
-
     })
-    product= Products(data) 
-    db.session.add(data)
+    product= Products(
+        name=data.get("name"),
+        price=data.get("price"),
+        description=data.get("description"),
+        product_image_url=data.get("image")
+    ) 
+    db.session.add(product)
     try:
         db.session.commit()
         return jsonify({
