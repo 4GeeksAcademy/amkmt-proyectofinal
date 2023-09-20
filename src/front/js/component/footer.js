@@ -7,7 +7,7 @@ export const Footer = () => (
 	<footer className="container-fluid footer">
 		<div className="container-fluid">
 			<div className="row">
-				<div className="col-md-5 columna1footer">
+				<div className="col-md-4 columna1footer">
 					<h4>Contacto</h4>
 					<p>Dirección: 123 Calle ******</p>
 					<p>Teléfono: (123) ****-****</p>
