@@ -1,11 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-# from datatime import datatime 
-# from enun import Enum
-# app = Flask(__name__)
 db = SQLAlchemy()
-# class UserGender(Enum):
-#     MALE= "male"
-#     FEMALE= "female"
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -18,8 +13,11 @@ class User(db.Model):
     age= db.Column(db.String(150), nullable=False)
     city= db.Column(db.String(150), nullable=False)
     phone= db.Column(db.String(150), nullable=False)
-    # created_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), nullable=False)
-    # updated_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), onupdate=db.func.now(), nullable=False)
+    salt= db.Column(db.String(180), nullable=False)
+    
+    reserva = db.relationship("Reservas", backref="reserva_user", lazy=True)
+
+    
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -35,6 +33,7 @@ class User(db.Model):
             "age": self.age,
             "city": self.city,
             "phone": self.phone,
+            "reservas": [reservas.serialize() for reservas in self.reserva]
             # do not serialize the password, its a security breach
         }
     
@@ -57,51 +56,21 @@ class Products(db.Model):
             "description": self.description,
         }
     
-# Carrito de compras
-class ShoppingCart(db.Model):
+
+class Reservas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    idCarrito = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    #Productos
-    products_id = db.Column(db.Integer, db.ForeignKey("products.id"))
-    cantidad = db.Column(db.Integer, nullable=False)
-    precio = db.Column(db.Integer, nullable=False)
+    reservacion_date = db.Column(db.DateTime, nullable=False)
+    user_id= db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) 
+    
+    user = db.relationship("User", backref="user_reserva", lazy=True)
+    
     def __repr__(self):
-        return f'<ShoppingCart {self.id}>'
+        return f'<Reservas {self.id}>' 
+
     def serialize(self):
         return {
             "id": self.id,
-            "idCarrito": self.idCarrito,
-            "user_id":self.user_id,
-            "products_id":self.products_id,
-            "cantidad": self.cantidad,
-            "precio": self.precio
+            "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"), # Formatea la fecha como una cadena
+            "user_id": self.user_id
         }
-    def serializeProductos(self):
-        results = Products.query.filter_by(id = self.products_id).first()
-        return {
-            "productInfo": results.serialize(),
-        }
-    
-# class Payments(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     full_name= db.Column(db.String(120), nullable=False)
-#     card_number = db.Column(db.String(120), nullable=False)
-#     amount= db.Column(db.String(255),nullable=False) 
-#     validity= db.Column(db.String(150), nullable=False)
-#     cvv = db.Column(db.String(120), nullable=False)
-#     email= db.Column(db.String(400), nullable=False)
 
-#     def __repr__(self):
-#         return f'<Payments {self.id}>'
-    
-#     def serialize(self):
-#         return {
-#             "id": self.id,
-#             "full_name": self.full_name,
-#             "card_number": self.card_number,
-#             "amount": self.amount,
-#             "validity": self.validity,
-#             "cvv":self.cvv,
-#             "email": self.email,
-#         }

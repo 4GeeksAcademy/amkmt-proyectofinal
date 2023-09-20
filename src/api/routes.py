@@ -4,15 +4,28 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint,  current_app  
 from api.models import db, User, Products
 from api.utils import generate_sitemap, APIException
-import json 
+
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
+
 import cloudinary.uploader as uploader
+
+
+from werkzeug.security import generate_password_hash, check_password_hash
+from base64 import b64encode
+import os 
 
 api = Blueprint('api', __name__)
 
+def set_password(password, salt):
+    return generate_password_hash(f"{password}{salt}")
+
+
+def check_password(hash_password, password, salt):
+    return check_password_hash(hash_password, f"{password}{salt}")
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -34,11 +47,14 @@ def signup():
     age = request.json.get("age", None)
     city = request.json.get("city", None)
     phone = request.json.get("phone", None)
+
+    salt = b64encode(os.urandom(32)).decode('utf-8')
+    password = set_password(password, salt) 
     existing_email = User.query.filter_by(email=email).first()
     if existing_email:
         return jsonify({"msg": "email already exists"}), 400
     new_user = User(username=username, password=password, address=address,
-                    name=name, age=age, city=city, phone=phone, email=email, is_active=True)
+                    name=name, age=age, city=city, phone=phone, email=email, salt=salt )
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"user_id": new_user.id}), 200
@@ -85,7 +101,7 @@ def addProducts():
         }) , 500
 
     body=json.loads(request.data)
-    queryNewproducts=Products.query.filter_by(name=body["name"].first())
+    queryNewproducts=Products.query.filter_by(name=body["name"]).first()
     if queryNewproducts is None:
         new_products=Products(name=body["name"], 
         image=body["image"],
@@ -111,48 +127,25 @@ def login():
         email = body.get("email", None)
         password = body.get("password", None)
 
-        if email is "test" or password is "test":
+        if email is None or password is None :
             return jsonify("You need an email and a password"), 400
         else:
             user = User.query.filter_by(email=email).one_or_none()
             if user is None:
                 return jsonify({"message": "Bad credentials"}), 400
             else:
-                if check_password(user.password, password, user.salt):
+                if check_password(user.password,password,user.salt):
                     token = create_access_token(identity=user.id)
                     return jsonify({"token": token}), 200
                 else:
                     return jsonify({"message": "Bad credentials"}), 400
+                
+          
     
     access_token = create_access_token(identity =email)
     return jsonify(access_token= access_token)
 
-@api.route('/user/upload-image', methods=['PUT'])
-@jwt_required()
-def handle_upload():
 
-    # validate that the front-end request was built correctly
-    if 'profile_image' in request.files:
-        print()
-        # upload file to uploadcare
-        result = current_app.cloudinary.uploader.upload(request.files['profile_image'])
-        print(result)
-
-        #obtain user identity
-        identity = get_jwt_identity()
-        print(identity)
-
-        # fetch for the user
-        user1 = User.query.filter_by(identity).first()
-        # update the user with the given cloudinary image URL
-        user1.profile_image_url = result['secure_url']
-
-        db.session.add(user1)
-        db.session.commit()
-
-        return jsonify(user1.serialize()), 200
-    else:
-        raise APIException('Missing profile_image on the FormData')
     
 # Muestra todas las compras
 @api.route("/compras", methods=["GET"])
@@ -161,70 +154,6 @@ def getShopping():
     results = list(map(lambda x: x.serialize(), shoppingCart))
     print (results)
     return jsonify(results), 200
-
-#Crea una compra
-#Busca por Id de cada compra
-#Muestra todo el carrito por id de usuario
-#Borrar un elemento del carrito
-#Modificar una compra
-
-    
-# @api.route("/payments", methods=["POST"])
-# def payments():
-#     if request.method == "POST":
-#         body = request.json
-#         email = body.get("email", None)
-#         password = body.get("password", None)
-#         full_name= body.get("full_name", None)
-#         card_number = body.get("card_number", None)
-#         amount= body.get("amount", None) 
-#         validity= body.get("validity", None)
-#         cvv = body.get("cvv", None)
-#         
-
-#         if email is "test" or password is "test":
-#             return jsonify("You need an email and a password"), 400
-#         else:
-#             user = User.query.filter_by(email=email).one_or_none()
-#             if user is None:
-#                 return jsonify({"message": "Bad credentials"}), 400
-#             else:
-#                 if check_password(user.password, password, user.salt):
-#                     token = create_access_token(identity=user.id)
-#                     return jsonify({"token": token}), 200
-#                 else:
-#                     return jsonify({"message": "Bad credentials"}), 400
-    
-#     access_token = create_access_token(identity =email)
-#     return jsonify(access_token= access_token)
-    
-
-
-
-
-# @api.route('/signup', methods=["POST"])
-# def signup ():
-#     request_body = request.get_json()
-#     email=
-#     address=
-#     name=
-#     username=
-#     age=
-#     city=
-#     phone=
-#     body = request.get_json()
-#     email = body["email"]
-#     password = body["passworef user_register():d"]
-#     is_active = True
-
-#     if body is None:
-#         raise APIException("Body está vacío", status_code=400)
-#     if email is None or email=="":
-#         raise APIException("El email es necesario", status_code=400)
-#     if password is None or password=="":
-#         raise APIException("El password es necesario", status_code=400)
-
-#     user = User.query.filter_by(email=email).first()
 
 
 
