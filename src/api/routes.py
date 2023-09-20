@@ -127,7 +127,6 @@ def login():
 @jwt_required()
 def handle_upload():
 
-
     # validate that the front-end request was built correctly
     if 'profile_image' in request.files:
         print()
@@ -150,6 +149,52 @@ def handle_upload():
         return jsonify(user1.serialize()), 200
     else:
         raise APIException('Missing profile_image on the FormData')
+    
+# Muestra todas las compras
+@api.route("/compras", methods=["GET"])
+def getShopping():
+    shoppingCart = shoppingCart.query.all()
+    results = list(map(lambda x: x.serialize(), shoppingCart))
+    print (results)
+    return jsonify(results), 200
+
+#Crea una compra
+#Busca por Id de cada compra
+#Muestra todo el carrito por id de usuario
+#Borrar un elemento del carrito
+#Modificar una compra
+
+    
+# @api.route("/payments", methods=["POST"])
+# def payments():
+#     if request.method == "POST":
+#         body = request.json
+#         email = body.get("email", None)
+#         password = body.get("password", None)
+#         full_name= body.get("full_name", None)
+#         card_number = body.get("card_number", None)
+#         amount= body.get("amount", None) 
+#         validity= body.get("validity", None)
+#         cvv = body.get("cvv", None)
+#         
+
+#         if email is "test" or password is "test":
+#             return jsonify("You need an email and a password"), 400
+#         else:
+#             user = User.query.filter_by(email=email).one_or_none()
+#             if user is None:
+#                 return jsonify({"message": "Bad credentials"}), 400
+#             else:
+#                 if check_password(user.password, password, user.salt):
+#                     token = create_access_token(identity=user.id)
+#                     return jsonify({"token": token}), 200
+#                 else:
+#                     return jsonify({"message": "Bad credentials"}), 400
+    
+#     access_token = create_access_token(identity =email)
+#     return jsonify(access_token= access_token)
+    
+
 
 
 
