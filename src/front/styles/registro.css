@@ -48,6 +48,7 @@ justify-content: center;
 
 .input-field{
     background-color: rgba(252, 251, 251, 0.807);
+    color: #C99734;
     margin: 15px 0;
     border-radius: 3px;
     display: flex;
@@ -66,11 +67,10 @@ justify-content: center;
     outline: none;
     padding: 10px 10px;
     color: #C99734;
-    color: rgba(0, 0, 0, 0.81);
 }
 
 input::placeholder{
-    color: #7b5915b9 ;
+    color: #1b1b1bb9 ;
 }
 
 .input-field i{
@@ -79,7 +79,7 @@ input::placeholder{
     color:#C99734 ;
 }
 form p{
-    color: #FFFFFF;
+    color: #c4bbbb;
     text-align: center;
     font-size: 13px;
 }

@@ -20,7 +20,14 @@ const Register = () => {
                 /* footer: '<a href="">Why do I have this issue?</a>' */
                 timer: 3500,
             });
-            return;
+
+        } else {
+            Swal.fire({
+
+                icon: "success",
+                title: "Usuario registrado",
+                timer: 1500,
+            });
         }
 
 

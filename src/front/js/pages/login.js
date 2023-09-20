@@ -4,9 +4,11 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 // import "../../styles/registro.css";
 
 export const Login = () => {
+
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   function handleEmail(event) {
     setEmail(event.target.value)
   }
