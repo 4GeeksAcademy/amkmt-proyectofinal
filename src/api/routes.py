@@ -9,6 +9,8 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
+import cloudinary.uploader as uploader
+
 api = Blueprint('api', __name__)
 
 
@@ -52,6 +54,32 @@ def getProducts():
 ## Crea un producto
 @api.route("/products", methods=["POST"])
 def addProducts():
+    data_files=request.files
+    data_form=request.form
+    data={
+        "price":data_form.get("price"),
+         "name":data_form.get("name"),
+         "description":data_form.get("description"),
+         "image":data_files.get("image")
+        }
+    response_image=uploader.upload(data.get("image"))
+    data.update({
+        "image":response_image.get("url")
+
+    })
+    product= Products(data) 
+    db.session.add(data)
+    try:
+        db.session.commit()
+        return jsonify({
+            "msg":"producto guardado exitosamente"
+        }) , 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({
+            "msg":"error al guardar producto"
+        }) , 500
+
     body=json.loads(request.data)
     queryNewproducts=Products.query.filter_by(name=body["name"].first())
     if queryNewproducts is None:
@@ -94,6 +122,34 @@ def login():
     
     access_token = create_access_token(identity =email)
     return jsonify(access_token= access_token)
+
+@api.route('/user/upload-image', methods=['PUT'])
+@jwt_required()
+def handle_upload():
+
+
+    # validate that the front-end request was built correctly
+    if 'profile_image' in request.files:
+        print()
+        # upload file to uploadcare
+        result = current_app.cloudinary.uploader.upload(request.files['profile_image'])
+        print(result)
+
+        #obtain user identity
+        identity = get_jwt_identity()
+        print(identity)
+
+        # fetch for the user
+        user1 = User.query.filter_by(identity).first()
+        # update the user with the given cloudinary image URL
+        user1.profile_image_url = result['secure_url']
+
+        db.session.add(user1)
+        db.session.commit()
+
+        return jsonify(user1.serialize()), 200
+    else:
+        raise APIException('Missing profile_image on the FormData')
 
 
 

@@ -11,6 +11,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(255), unique=False, nullable=False)
+    profile_image_url = db.Column(db.String(255), unique=False, nullable=True)
     address= db.Column(db.String(255),nullable=False) 
     name= db.Column(db.String(150), nullable=False)
     username= db.Column(db.String(150), nullable=False)
@@ -30,6 +31,7 @@ class User(db.Model):
             "address": self.address,
             "name": self.name,
             "username": self.username,
+            "profile_image_url":self.profile_image_url,
             "age": self.age,
             "city": self.city,
             "phone": self.phone,
@@ -39,7 +41,7 @@ class User(db.Model):
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    image= db.Column(db.String(255),nullable=False) 
+    product_image_url= db.Column(db.String(255),nullable=False) 
     price= db.Column(db.String(150), nullable=False)
     description= db.Column(db.String(400), nullable=False)
     
@@ -54,3 +56,26 @@ class Products(db.Model):
             "price": self.price,
             "description": self.description,
         }
+    
+# class Payments(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name= db.Column(db.String(120), nullable=False)
+#     card_number = db.Column(db.String(120), nullable=False)
+#     amount= db.Column(db.String(255),nullable=False) 
+#     validity= db.Column(db.String(150), nullable=False)
+#     cvv = db.Column(db.String(120), nullable=False)
+#     mail= db.Column(db.String(400), nullable=False)
+
+#     def __repr__(self):
+#         return f'<Payments {self.id}>'
+    
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "name": self.name,
+#             "card_number": self.card_number,
+#             "amount": self.amount,
+#             "validity": self.validity,
+#             "cvv":self.cvv,
+#             "mail": self.mail,
+#         }
