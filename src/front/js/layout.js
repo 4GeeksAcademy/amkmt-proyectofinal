@@ -5,12 +5,14 @@ import { BackendURL } from "./component/backendURL";
 
 import Home from "./pages/home";
 import { Demo } from "./pages/demo";
-import { Login } from "./pages/login";
+import { Login } from "./pages/login.js";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import Register from "./pages/registro.jsx";
 import CrearMenu from "./pages/crearMenu";
-
+import MenuPage from "./pages/menupage.jsx";
+import Reservation from "./pages/reservation.jsx";
+import PaymentForm from "./pages/pago.jsx";
 
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -39,8 +41,10 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<Register />} path="/register" />
-
                         <Route element={<CrearMenu />} path="/crearMenu" />
+                        <Route element={<MenuPage />} path="/especialidades" />
+                        <Route element={<Reservation />} path="/reservation" />
+                        <Route element={<PaymentForm />} path="/pago" />
 
                         <Route element={<Menu />} path="/menu" />
 
