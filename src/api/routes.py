@@ -9,9 +9,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
+
+
+import cloudinary.uploader as uploader
+
+
 from werkzeug.security import generate_password_hash, check_password_hash
 from base64 import b64encode
 import os 
+
 api = Blueprint('api', __name__)
 
 def set_password(password, salt):
@@ -62,6 +68,36 @@ def getProducts():
 ## Crea un producto
 @api.route("/products", methods=["POST"])
 def addProducts():
+    data_files=request.files
+    data_form=request.form
+    data={
+        "price":data_form.get("price"),
+         "name":data_form.get("name"),
+         "description":data_form.get("description"),
+         "image":data_files.get("image")
+        }
+    response_image=uploader.upload(data.get("image"))
+    data.update({
+        "image":response_image.get("url")
+    })
+    product= Products(
+        name=data.get("name"),
+        price=data.get("price"),
+        description=data.get("description"),
+        product_image_url=data.get("image")
+    ) 
+    db.session.add(product)
+    try:
+        db.session.commit()
+        return jsonify({
+            "msg":"producto guardado exitosamente"
+        }) , 201
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({
+            "msg":"error al guardar producto"
+        }) , 500
+
     body=json.loads(request.data)
     queryNewproducts=Products.query.filter_by(name=body["name"]).first()
     if queryNewproducts is None:
@@ -102,12 +138,20 @@ def login():
                 else:
                     return jsonify({"message": "Bad credentials"}), 400
                 
-            #    if check_password(user.password, password, user.salt):
-            #         token = create_access_token(identity=user.id)
-            #         return jsonify({"token": token}), 200
-            #     else:
-            #         return jsonify({"message": "Bad credentials"}), 400
+          
     
     access_token = create_access_token(identity =email)
     return jsonify(access_token= access_token)
+
+
+    
+# Muestra todas las compras
+@api.route("/compras", methods=["GET"])
+def getShopping():
+    shoppingCart = shoppingCart.query.all()
+    results = list(map(lambda x: x.serialize(), shoppingCart))
+    print (results)
+    return jsonify(results), 200
+
+
 
