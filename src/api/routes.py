@@ -1,7 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint,  current_app  
+from flask import Flask, request, jsonify, url_for, Blueprint,  current_app
 from api.models import db, User, Products
 from api.utils import generate_sitemap, APIException
 
@@ -16,9 +16,10 @@ import cloudinary.uploader as uploader
 
 from werkzeug.security import generate_password_hash, check_password_hash
 from base64 import b64encode
-import os 
+import os
 
 api = Blueprint('api', __name__)
+
 
 def set_password(password, salt):
     return generate_password_hash(f"{password}{salt}")
@@ -26,6 +27,7 @@ def set_password(password, salt):
 
 def check_password(hash_password, password, salt):
     return check_password_hash(hash_password, f"{password}{salt}")
+
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -35,6 +37,8 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
 @api.route('/signup', methods=["POST"])
 def signup():
     email = request.json.get("email", None)
@@ -47,74 +51,78 @@ def signup():
     phone = request.json.get("phone", None)
 
     salt = b64encode(os.urandom(32)).decode('utf-8')
-    password = set_password(password, salt) 
+    password = set_password(password, salt)
     existing_email = User.query.filter_by(email=email).first()
     if existing_email:
         return jsonify({"msg": "email already exists"}), 400
     new_user = User(username=username, password=password, address=address,
-                    name=name, age=age, city=city, phone=phone, email=email, salt=salt )
+                    name=name, age=age, city=city, phone=phone, email=email, salt=salt)
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"user_id": new_user.id}), 200
 
-## Muestra todos los productos
+# Muestra todos los productos
+
+
 @api.route("/products", methods=["GET"])
 def getProducts():
     products = Products.query.all()
-    results = list(map(lambda x: x.serialize(), products ))
-    print (results)
+    results = list(map(lambda x: x.serialize(), products))
+    print(results)
     return jsonify(results), 200
 
-## Crea un producto
+# Crea un producto
+
+
 @api.route("/products", methods=["POST"])
 def addProducts():
-    data_files=request.files
-    data_form=request.form
-    data={
-        "price":data_form.get("price"),
-         "name":data_form.get("name"),
-         "description":data_form.get("description"),
-         "image":data_files.get("image")
-        }
-    response_image=uploader.upload(data.get("image"))
+    data_files = request.files
+    data_form = request.form
+    data = {
+        "price": data_form.get("price"),
+        "name": data_form.get("name"),
+        "description": data_form.get("description"),
+        "image": data_files.get("image")
+    }
+    response_image = uploader.upload(data.get("image"))
     data.update({
-        "image":response_image.get("url")
+        "image": response_image.get("url")
     })
-    product= Products(
+    product = Products(
         name=data.get("name"),
         price=data.get("price"),
         description=data.get("description"),
         product_image_url=data.get("image")
-    ) 
+    )
     db.session.add(product)
     try:
         db.session.commit()
         return jsonify({
-            "msg":"producto guardado exitosamente"
-        }) , 201
+            "msg": "producto guardado exitosamente"
+        }), 201
     except Exception as error:
         db.session.rollback()
         return jsonify({
-            "msg":"error al guardar producto"
-        }) , 500
+            "msg": "error al guardar producto"
+        }), 500
 
-    body=json.loads(request.data)
-    queryNewproducts=Products.query.filter_by(name=body["name"]).first()
+    body = json.loads(request.data)
+    queryNewproducts = Products.query.filter_by(name=body["name"]).first()
     if queryNewproducts is None:
-        new_products=Products(name=body["name"], 
-        image=body["image"],
-        description=body["description"],
-        price=body["price"]
-        )
+        new_products = Products(name=body["name"],
+                                image=body["image"],
+                                description=body["description"],
+                                price=body["price"]
+                                )
         db.session.add(new_products)
         db.session.commit()
-        response_body={
-            "msg":"new product added"
+        response_body = {
+            "msg": "new product added"
         }
         return jsonify(new_products.serialize()), 200
-    response_body={
-            "msg":"product already created"
-        }
+    response_body = {
+        "msg": "product already created"
+    }
     return jsonify(response_body), 400
 
 
@@ -125,33 +133,27 @@ def login():
         email = body.get("email", None)
         password = body.get("password", None)
 
-        if email is None or password is None :
+        if email is None or password is None:
             return jsonify("You need an email and a password"), 400
         else:
             user = User.query.filter_by(email=email).one_or_none()
             if user is None:
                 return jsonify({"message": "Bad credentials"}), 400
             else:
-                if check_password(user.password,password,user.salt):
+                if check_password(user.password, password, user.salt):
                     token = create_access_token(identity=user.id)
                     return jsonify({"token": token}), 200
                 else:
                     return jsonify({"message": "Bad credentials"}), 400
-                
-          
-    
-    access_token = create_access_token(identity =email)
-    return jsonify(access_token= access_token)
+
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token)
 
 
-    
 # Muestra todas las compras
-@api.route("/compras", methods=["GET"])
-def getShopping():
-    shoppingCart = shoppingCart.query.all()
-    results = list(map(lambda x: x.serialize(), shoppingCart))
-    print (results)
-    return jsonify(results), 200
-
-
-
+# @api.route("/compras", methods=["GET"])
+# def getShopping():
+#     shoppingCart = shoppingCart.query.all()
+#     results = list(map(lambda x: x.serialize(), shoppingCart))
+#     print (results)
+#     return jsonify(results), 200
