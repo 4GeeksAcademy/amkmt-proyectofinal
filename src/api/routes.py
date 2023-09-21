@@ -140,10 +140,33 @@ def login():
                 else:
                     return jsonify({"message": "Bad credentials"}), 400
                 
+@api.route('/hacer_reserva', methods=['POST'])
+def hacer_reserva():
+    if session.get('is_authenticated'):
+        # Si la sesión está autenticada, permite hacer la reserva
+        # Obtiene los datos de la reserva desde la solicitud POST
+        reservation_data = request.json  # Asume que los datos de la reserva se envían como JSON en la solicitud
+
+        # Crea una nueva instancia de Reservation y asigna el usuario autenticado
+        nueva_reserva = Reservation(
+            reservation_date=reservation_data['reservation_date'],
+            user=current_user,  # Supongamos que current_user representa al usuario autenticado
+        )
+
+        # Guarda la reserva en la base de datos
+        db.session.add(nueva_reserva)
+        db.session.commit()
+
+        return jsonify({"message": "Reserva creada con éxito."}), 201
+    else:
+        return jsonify({"message": "Usuario no autenticado."}), 401
+                
           
     
     access_token = create_access_token(identity =email)
     return jsonify(access_token= access_token)
+
+
 
 
     

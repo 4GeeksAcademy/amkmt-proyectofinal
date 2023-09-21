@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logo from '../../img/logo.png'
 
 const Navbar2 = () => {
     return (
         <nav className="navbar navbar-dark navbar-expand-lg colornavbar transition">
             <div className="container-fluid">
-                <Link className="navbar-brand text-warning" to="/"><img src='img/logo-removebg-preview'></img> </Link>
+                <Link className="navbar-brand text-warning" to="/"><img className="navbar-logo-img" src={Logo} /> </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
