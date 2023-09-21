@@ -9,13 +9,14 @@ const CrearMenu = () => {
     const [image, setImage] = useState("");
     const [price, setPrice] = useState("");
     const { store, actions } = useContext(Context);
-const agregarMenu= (event)=> {event.preventDefault();
-    actions.agregarMenu(name, description , image, price)
-    setName ("");
-    setDescription ("");
-    setImage ("");
-    setPrice ("");
-}
+    const agregarMenu = (event) => {
+        event.preventDefault();
+        actions.agregarMenu(name, description, image, price)
+        setName("");
+        setDescription("");
+        setImage("");
+        setPrice("");
+    }
 
     return (
         <>
@@ -25,33 +26,33 @@ const agregarMenu= (event)=> {event.preventDefault();
                     <form>
                         <div className="    ">
                             <div className="input-field" id="nameInput">
-                            <i class="fa-solid fa-utensils"></i>
-                                <input type="text" placeholder="Nombre"onChange={
-                                        (event) => setName(event.target.value)
-                                    }
-                                    value={name}/> 
+                                <i class="fa-solid fa-utensils"></i>
+                                <input type="text" placeholder="Nombre" onChange={
+                                    (event) => setName(event.target.value)
+                                }
+                                    value={name} />
                             </div>
                             <div className="input-field">
-                            <i class="fa-regular fa-file-lines"></i>
-                                <input type="description" placeholder="descripcion"onChange={
-                                        (event) => setDescription(event.target.value)
-                                    }
-                                    value={description}/>  
+                                <i class="fa-regular fa-file-lines"></i>
+                                <input type="description" placeholder="descripcion" onChange={
+                                    (event) => setDescription(event.target.value)
+                                }
+                                    value={description} />
                             </div>
                             <div className="input-field">
-                            <i class="fa-regular fa-image"></i>
-                                <input type="text" placeholder="imagen"onChange={
-                                        (event) => setImage(event.target.value)
-                                    }
-                                    value={image}/>  
+                                <i class="fa-regular fa-image"></i>
+                                <input type="text" placeholder="imagen" onChange={
+                                    (event) => setImage(event.target.value)
+                                }
+                                    value={image} />
                             </div>
 
                             <div className="input-field" id="nameInput">
-                               <i class="fa-solid fa-tag"></i>
+                                <i class="fa-solid fa-tag"></i>
                                 <input type="text" placeholder="precio" onChange={
-                                        (event) => setPrice(event.target.value)
-                                    }
-                                    value={price}/> 
+                                    (event) => setPrice(event.target.value)
+                                }
+                                    value={price} />
                             </div>
                         </div>
                         <div className="btn-field">
