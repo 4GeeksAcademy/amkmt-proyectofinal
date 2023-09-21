@@ -42,6 +42,11 @@ async function handleSubmit(event) {
                
                 >Send</button>
             </div>
+            <div className="btn-field">
+                <button className="col-4" id="signIn" type="button" 
+               
+                >Send</button>
+            </div>
         </form>
     </div>
 </div>
