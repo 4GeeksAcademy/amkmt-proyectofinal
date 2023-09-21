@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -107,32 +109,87 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			},
+			register: async (email, password) => {
+				try {
+					let data = await axios.post(process.env.BACKEND_URL + "/signup", {
+						"email": email,
+						"password": password,
+						"address": "Costa Rica",
+						"name": "ash",
+						"username": "Vale",
+						"age": "20",
+						"city": "SJ",
+						"phone": "25331050"
+					})
+					console.log(data);
+					//esto es lo que guarda en el localStorage
+					// localStorage.setItem("token", data.data.access_token);
+
+					return true;
+				} catch (error) {
+					console.log("errorrrrr:" + error)
+					if (error.response.status === 404) {
+						alert(error.response.data.msg)
+					}
+					return false;
+				}
+
+
+
+			},
+
+			reservation: async (cantidad, fechaReserva, email, nombre, mesaRe) => {
+				try {
+					let data = await axios.post(process.env.BACKEND_URL + "/reservation", {
+						"MesaReservada": mesaRe,
+						"Nombre": nombre,
+						"Email": email,
+						"FechaReserva": fechaReserva,
+						"Cantidad": cantidad
+					})
+					console.log(data);
+					//esto es lo que guarda en el localStorage
+					// localStorage.setItem("token", data.data.access_token);
+
+					return true;
+				} catch (error) {
+					console.log("errorrrrr:" + error)
+					if (error.response.status === 404) {
+						alert(error.response.data.msg)
+					}
+					return false;
+				}
+
+
+			},
+
 			logout: () => { localStorage.removeItem("token") },
+
 			agregarMenu: async (name, description, image, price) => {
 				try {
-				  const response = await fetch(process.env.BACKEND_URL + "/api/products", {
-					method: 'POST',
-					headers: {
-					  'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-					  name,
-					  description,
-					  image,
-					  price,
-					}),
-				  });
-			  
-				  if (!response.ok) {
-					// Manejo de errores si la solicitud no fue exitosa
-					throw new Error('No se pudo agregar el elemento al menú');
-				  }
-				  // Manejo de éxito, si es necesario
-				  // Puedes actualizar el estado aquí si es necesario
-				  return true; // Opcional: devuelve un valor para indicar que la solicitud fue exitosa
+					const response = await fetch(process.env.BACKEND_URL + "/api/products", {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							name,
+							description,
+							image,
+							price,
+						}),
+					});
+
+					if (!response.ok) {
+						// Manejo de errores si la solicitud no fue exitosa
+						throw new Error('No se pudo agregar el elemento al menú');
+					}
+					// Manejo de éxito, si es necesario
+					// Puedes actualizar el estado aquí si es necesario
+					return true; // Opcional: devuelve un valor para indicar que la solicitud fue exitosa
 				} catch (error) {
-				  console.error('Error al agregar el elemento al menú:', error);
-				  return false; // Opcional: devuelve un valor para indicar que la solicitud falló
+					console.error('Error al agregar el elemento al menú:', error);
+					return false; // Opcional: devuelve un valor para indicar que la solicitud falló
 				}
 			}
 

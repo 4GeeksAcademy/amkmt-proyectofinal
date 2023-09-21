@@ -1,0 +1,137 @@
+body {
+background-image: url(https://img.freepik.com/premium-vector/hand-drawn-bakery-white-background-seamless-pattern-retro-style_505564-1509.jpg?w=2000);
+backdrop-filter: blur(1px);
+margin: 0;
+padding: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.contenedor{
+   display: block;
+   justify-content: center;
+}
+.form-content{
+    /* Estos margin me ayudaron a separar el footer y a centrar el diseño */
+    margin-top:10%;
+    margin-bottom: 45%;
+    margin-left: 30%;
+    width: 300%;
+    max-width: 600px;
+    max-height: 520px;
+    background-color: #ce1b27e3;
+    padding: 55px 40px 70px;
+    text-align: center;
+    border-radius: 10px;
+    /* box-shadow: 15px #422f39db; */
+}
+
+.form-content h1{
+    font-size: 30px;
+    margin-bottom: 30px;
+    color:#FFFFFF;
+    position: relative;
+}
+
+.form-content h1::after{
+    content:'';
+    width: 50px;
+    height: 4px;
+    border-radius: 3px;
+    background-color: #C99734;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.input-field{
+    background-color: rgba(252, 251, 251, 0.807);
+    color: #C99734;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    transition: max-height 05s;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.losinput{
+    font-family: 'Oswald', sans-serif;
+
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: none;
+    padding: 10px 10px;
+    color: #C99734;
+}
+
+input::placeholder{
+    color: #1b1b1bb9 ;
+}
+
+.input-field i{
+    
+    margin-left: 15px;
+    color:#C99734 ;
+}
+form p{
+    color: #c4bbbb;
+    text-align: center;
+    font-size: 13px;
+}
+
+form p a {
+    color: #C99734;
+    margin-left: 5px;
+}
+
+.btn-field{
+    width: 100%;
+    /* display: flex; */
+    justify-content: space-between;
+}
+
+.btn-field button{
+    
+    /* flex-basis:48%; */
+    margin-top: 2%;
+    padding-bottom: 2px;
+    margin-inline-start: 15px;
+    margin-inline-end: 15px;
+    font-size: 16px;
+    background-color: #C99734;
+    color: white;
+    height: 40px;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.input-group{
+    justify-content: center;
+    height: 250px;
+}
+
+.btn-field button.disable{
+    background-color: #EAEAEA;
+    color: #2C2F35;
+    width: 150px;
+}
+
+#title{
+    font-size: 33px;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+#signUp, #signIn{
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+  
+}

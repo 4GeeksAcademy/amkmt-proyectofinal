@@ -1,21 +1,24 @@
 from flask_sqlalchemy import SQLAlchemy
+# from datatime import datatime
+# from enun import Enum
+# app = Flask(__name__)
 db = SQLAlchemy()
+
 
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(255), unique=False, nullable=False)
-    profile_image_url = db.Column(db.String(255), unique=False, nullable=True)
-    address= db.Column(db.String(255),nullable=False) 
-    name= db.Column(db.String(150), nullable=False)
-    username= db.Column(db.String(150), nullable=False)
-    age= db.Column(db.String(150), nullable=False)
-    city= db.Column(db.String(150), nullable=False)
-    phone= db.Column(db.String(150), nullable=False)
-    salt= db.Column(db.String(180), nullable=False)
-    
-    reserva = db.relationship("Reservas", backref="reserva_user", lazy=True)
+    address = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(150), nullable=False)
+    username = db.Column(db.String(150), nullable=False)
+    age = db.Column(db.String(150), nullable=False)
+    city = db.Column(db.String(150), nullable=False)
+    phone = db.Column(db.String(150), nullable=False)
+    salt = db.Column(db.String(180), nullable=False)
+
+    reserva = db.relationship("Reservas", backref="user", lazy=True)
 
     
 
@@ -36,7 +39,8 @@ class User(db.Model):
             "reservas": [reservas.serialize() for reservas in self.reserva]
             # do not serialize the password, its a security breach
         }
-    
+
+
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
@@ -44,6 +48,7 @@ class Products(db.Model):
     price= db.Column(db.String(150), nullable=False)
     description= db.Column(db.String(400), nullable=False)
     
+
     def __repr__(self):
         return f'<Products {self.id}>'
 
@@ -55,22 +60,22 @@ class Products(db.Model):
             "price": self.price,
             "description": self.description,
         }
-    
+
 
 class Reservas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reservacion_date = db.Column(db.DateTime, nullable=False)
-    user_id= db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) 
-    
-    user = db.relationship("User", backref="user_reserva", lazy=True)
-    
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    reservacion_hour = db.Column(db.DateTime, nullable=False)
+
+
     def __repr__(self):
-        return f'<Reservas {self.id}>' 
+        return f'<Reservas {self.id}>'
 
     def serialize(self):
         return {
             "id": self.id,
-            "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"), # Formatea la fecha como una cadena
+            # Formatea la fecha como una cadena
+            "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"),
             "user_id": self.user_id
         }
-
