@@ -9,45 +9,39 @@ import { Link } from 'react-router-dom';
 const Home = () => {
 	return (
 		<>
-			<div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
-				<div className="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-				</div>
-				<div className="carousel-inner">
-					<div className="carousel-item active" data-bs-interval="10000">
-						<img src="https://fondosmil.com/fondo/73620.jpg" className="d-block w-100" alt="..." />
-						<div className="carousel-caption d-none d-md-block">
-							<h3>Bienvenidos a La Casita Feliz</h3>
-							<p>Mirá nuestro Menú</p>
-							<Link className="nav-link text-dark" to="/menu">Menú</Link>
+			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item bg-dak vh-100 active">
+						<div className="container h-100 d-flex aling-items-center justify-content-center">
+							<div className="row justify-content-center">
+								<div className="col-lg-8">
+									<h6 class="text-white">DONDE LA PROGRAMACIÓN SE ENCUENTRA CON EL SABOR</h6>
+									<img src="img/logo-removebg-preview"></img>
+									<a href="#" class="btn btn-brand">Reservaciones</a>
+								</div>
+							</div>
 						</div>
+
 					</div>
-					<div className="carousel-item" data-bs-interval="2000">
-						<img src="https://fondosmil.com/fondo/73680.jpg" className="d-block w-100" alt="..." />
-						<div className="carousel-caption d-none d-md-block">
-							<h3>Bienvenidos a La Casita Feliz</h3>
-							<p>Mirá nuestro Menú</p>
-							<Link className="nav-link text-dark" to="/menu">Menú</Link>
-						</div>
-					</div>
-					<div className="carousel-item">
-						<img src="https://fondosmil.com/fondo/73680.jpg" className="d-block w-100" alt="..." />
-						<div className="carousel-caption d-none d-md-block">
-							<h3>Bienvenidos a La Casita Feliz</h3>
-							<p>Mirá nuestro Menú</p>
-							<Link className="nav-link text-dark" to="/menu">Menú</Link>
+					<div class="carousel-item">
+					<div className="container h-100 d-flex aling-items-center justify-content-center">
+							<div className="row justify-content-center">
+								<div className="col-lg-8">
+									<h6 class="text-white">DONDE LA PROGRAMACIÓN SE ENCUENTRA CON EL SABOR</h6>
+									<img src="img/logo-removebg-preview"></img>
+									<a href="#" class="btn btn-brand">Reservaciones</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-				<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-					<span className="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span className="visually-hidden">Previous</span>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
 				</button>
-				<button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-					<span className="carousel-control-next-icon" aria-hidden="true"></span>
-					<span className="visually-hidden">Next</span>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
 		</>
