@@ -147,13 +147,6 @@ def login():
 
 
     
-# Muestra todas las compras
-@api.route("/compras", methods=["GET"])
-def getShopping():
-    shoppingCart = shoppingCart.query.all()
-    results = list(map(lambda x: x.serialize(), shoppingCart))
-    print (results)
-    return jsonify(results), 200
 
 
 
