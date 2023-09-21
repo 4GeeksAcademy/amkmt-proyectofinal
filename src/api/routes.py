@@ -2,12 +2,12 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint,  current_app
-from api.models import db, User, Products
+from api.models import db, User, Products, TokenBlocked
 from api.utils import generate_sitemap, APIException
-
+from flask_bcrypt import Bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, get_jwt
 from flask_jwt_extended import jwt_required
 
 
@@ -150,10 +150,24 @@ def login():
     return jsonify(access_token=access_token)
 
 
-# Muestra todas las compras
-# @api.route("/compras", methods=["GET"])
-# def getShopping():
-#     shoppingCart = shoppingCart.query.all()
-#     results = list(map(lambda x: x.serialize(), shoppingCart))
-#     print (results)
-#     return jsonify(results), 200
+@api.route("/logout", methods=["POST"])
+@jwt_required()
+def logout():
+    try:
+        jti = get_jwt()["jti"]
+        identity = get_jwt_identity()  # asociada al correo
+        print("jti: ", jti)
+        # creamos una instancia de la clase TokenBlocked
+        new_register = TokenBlocked(token=jti, email=identity)
+
+        db.session.add(new_register)
+        db.session.commit()
+
+        return jsonify({"message": "logout succesfully"}), 200
+
+    except Exception as error:
+        print(str(error))
+        return jsonify({"message": "error trying to logout"}), 403
+
+
+

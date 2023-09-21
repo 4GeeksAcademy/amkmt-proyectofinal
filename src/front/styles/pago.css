@@ -132,7 +132,7 @@ body {
     
     }
     
-    #signUp, #signIn{
+    #signUpp, #signIn{
         font-size: 18px;
         font-family: 'Oswald', sans-serif;
       
@@ -146,4 +146,9 @@ body {
 
     .tituloprincipal{
         color: #57285dc3;
+    }
+
+    #signUpp{
+        margin-top:25px;
+        background-color: #002f8792;
     }
