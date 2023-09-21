@@ -138,10 +138,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			Reservation: async (cantidad, fechaReserva, email, nombre, mesare) => {
+			reservation: async (cantidad, fechaReserva, email, nombre, mesaRe) => {
 				try {
 					let data = await axios.post(process.env.BACKEND_URL + "/reservation", {
-						"MesaReservada": mesare,
+						"MesaReservada": mesaRe,
 						"Nombre": nombre,
 						"Email": email,
 						"FechaReserva": fechaReserva,

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/reservation.css";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext"
 
 
-const reservation = () => {
+
+const Reservation = () => {
+  const { store, actions } = useContext(Context)
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [fechaReserva, setFechaReserva] = useState("");
@@ -105,10 +108,10 @@ const reservation = () => {
           <option value="6">6 personas</option>
         </select>
         <div>
-          
-          <button className="col-6" type="submit" onClick={() => reservation()}>1. Reservar</button>
-          <Link to= "/pago">
-          <button className="col-6 pagar" >2. Pagar reservación</button>
+
+          <button className="col-6" type="button" onClick={(e) => actions.reservation(cantidad, fechaReserva, email, nombre, mesaRe)}>1. Reservar</button>
+          <Link to="/pago">
+            <button className="col-6 pagar" >2. Pagar reservación</button>
           </Link>
         </div>
       </form>
@@ -116,4 +119,4 @@ const reservation = () => {
   );
 };
 
-export default reservation;
+export default Reservation;

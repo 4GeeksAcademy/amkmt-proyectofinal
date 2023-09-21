@@ -30,7 +30,7 @@ const PaymentForm = () => {
                     <div className='tituloprincipal'>¡Hora de completar la reservación!</div>
                     {/* <h6>Cada vez más cerca de probar nuestras delicias</h6> */}
 
-                    <div className="fieldimput1" id="nameInput">
+                    {/* <div className="fieldimput1" id="nameInput">
 
                         <input className='inputforms'
                             type="text"
@@ -40,8 +40,8 @@ const PaymentForm = () => {
                             placeholder="Titular de la tarjeta"
                             required
                         />
-                    </div>
-                    <div className="fieldimput1" id="nameInput">
+                    </div> */}
+                    {/* <div className="fieldimput1" id="nameInput">
                         <input className='inputforms1'
                             type="text"
                             name="cardNumber"
@@ -50,7 +50,7 @@ const PaymentForm = () => {
                             placeholder="Número de identificación"
                             required
                         />
-                    </div>
+                    </div> */}
                     <div></div>
                     <button className="col-4" id="signUp" type="button" onClick>Pagar</button>
                 </form>

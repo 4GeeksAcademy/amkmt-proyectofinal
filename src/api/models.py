@@ -20,7 +20,7 @@ class User(db.Model):
     phone = db.Column(db.String(150), nullable=False)
     salt = db.Column(db.String(180), nullable=False)
 
-    reserva = db.relationship("Reservas", backref="reserva_user", lazy=True)
+    reserva = db.relationship("Reservas", backref="user", lazy=True)
 
     # created_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), nullable=False)
     # updated_at = db.Column(db.DateTime(timezone=True), default=db.func.now(), onupdate=db.func.now(), nullable=False)
@@ -67,9 +67,8 @@ class Reservas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reservacion_date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    reservacion_hour = db.Column(db.DateTime, nullable=False) 
+    reservacion_hour = db.Column(db.DateTime, nullable=False)
 
-    user = db.relationship("User", backref="user_reserva", lazy=True)
 
     def __repr__(self):
         return f'<Reservas {self.id}>'
