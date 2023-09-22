@@ -1,9 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
+import datetime
 # from datatime import datatime
 # from enun import Enum
 # app = Flask(__name__)
 db = SQLAlchemy()
-
 
 
 class User(db.Model):
@@ -20,8 +20,6 @@ class User(db.Model):
 
     reserva = db.relationship("Reservas", backref="user", lazy=True)
 
-    
-
     def __repr__(self):
         return f'<User {self.email}>'
 
@@ -32,7 +30,7 @@ class User(db.Model):
             "address": self.address,
             "name": self.name,
             "username": self.username,
-            "profile_image_url":self.profile_image_url,
+            "profile_image_url": self.profile_image_url,
             "age": self.age,
             "city": self.city,
             "phone": self.phone,
@@ -44,10 +42,9 @@ class User(db.Model):
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), nullable=False)
-    product_image_url= db.Column(db.String(255),nullable=False) 
-    price= db.Column(db.String(150), nullable=False)
-    description= db.Column(db.String(400), nullable=False)
-    
+    product_image_url = db.Column(db.String(255), nullable=False)
+    price = db.Column(db.String(150), nullable=False)
+    description = db.Column(db.String(400), nullable=False)
 
     def __repr__(self):
         return f'<Products {self.id}>'
@@ -71,7 +68,6 @@ class Reservas(db.Model):
     # Agrega una relación con el usuario para acceder a su nombre y email
     user = db.relationship("User", back_populates="reservas")
 
-
     def __repr__(self):
         return f'<Reservas {self.id}>'
 
@@ -85,4 +81,21 @@ class Reservas(db.Model):
             "email_usuario": self.user.email,
             "reservacion_hour": self.reservacion_hour.strftime("%Y-%m-%d %H:%M:%S"),
             "cantidad_personas": self.cantidad.personas,
+        }
+
+
+class TokenBlocked(db.Model):
+    __tablename__ = "tokenblocked"
+    id = db.Column(db.Integer, primary_key=True)
+    token = db.Column(db.String(200), unique=False, nullable=False)
+    email = db.Column(db.String(200), unique=False, nullable=False)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "token": self.token,
+            "date": self.date
+            # do not serialize the password, its a security breach
         }

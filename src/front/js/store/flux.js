@@ -163,7 +163,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			logout: () => { localStorage.removeItem("token") },
+			// logout: () => { localStorage.removeItem("token") },
 
 			agregarMenu: async (name, description, image, price) => {
 				try {
@@ -191,21 +191,45 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error al agregar el elemento al menú:', error);
 					return false; // Opcional: devuelve un valor para indicar que la solicitud falló
 				}
+			},
+
+			logout: async (id, token, email, date) => {
+				try {
+					let data = await axios.post(process.env.BACKEND_URL + "/logout", {
+						"id": id,
+						"email": email,
+						"token": token,
+						"date": date
+					})
+					console.log(data);
+					//esto es lo que guarda en el localStorage
+					// localStorage.setItem("token", data.data.access_token);
+
+					return true;
+				} catch (error) {
+					console.log("errorrrrr:" + error)
+					if (error.response.status === 404) {
+						alert(error.response.data.msg)
+					}
+					return false;
+				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			}
-
-
-
-
-
-
-
-
-
-
-
-
-
-		}
+		},
 	};
 };
 
