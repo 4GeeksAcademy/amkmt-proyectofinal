@@ -29,8 +29,22 @@ def check_password(hash_password, password, salt):
     return check_password_hash(hash_password, f"{password}{salt}")
 
 
+def verifyToken(jti):
+    search = TokenBlocked.query.filter_by(token=jti).first()
+
+    if search == None:
+        return True  # para este caso el token no estaría en la lista de bloqueados
+    else:
+        return False  # para este caso el token no estaría en la lista de bloqueados
+
+
 @api.route('/hello', methods=['POST', 'GET'])
+@jwt_required()
 def handle_hello():
+
+    verification = verifyToken(get_jwt()["jti"])
+    if verification == False:
+        return jsonify({"message": "forbidden"}), 403
 
     response_body = {
         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
@@ -153,6 +167,11 @@ def login():
 @api.route("/logout", methods=["POST"])
 @jwt_required()
 def logout():
+
+    verification = verifyToken(get_jwt()["jti"])
+    if verification == False:
+        return jsonify({"message": "forbidden"}), 403
+
     try:
         jti = get_jwt()["jti"]
         identity = get_jwt_identity()  # asociada al correo
@@ -168,6 +187,3 @@ def logout():
     except Exception as error:
         print(str(error))
         return jsonify({"message": "error trying to logout"}), 403
-
-
-

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
-// import "../../styles/registro.css";
+import "../../styles/registro.css";
 
 export const Login = () => {
 
@@ -10,6 +10,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
 
   function handleEmail(event) {
+    s
     setEmail(event.target.value)
   }
   function handlePAssword(event) {
