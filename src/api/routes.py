@@ -37,7 +37,6 @@ def verifyToken(jti):
     else:
         return False  # para este caso el token no estaría en la lista de bloqueados
 
-
 @api.route('/hello', methods=['POST', 'GET'])
 @jwt_required()
 def handle_hello():
@@ -187,3 +186,31 @@ def logout():
     except Exception as error:
         print(str(error))
         return jsonify({"message": "error trying to logout"}), 403
+
+@api.route('/hacer_reserva', methods=['POST'])
+def hacer_reserva():
+
+    if request.method == "POST":
+        # Si la sesión está autenticada, permite hacer la reserva
+        # Obtiene los datos de la reserva desde la solicitud POST
+        # Asume que los datos de la reserva se envían como JSON en la solicitud
+        reservation_data = request.json
+
+        # Crea una nueva instancia de Reservation y asigna el usuario autenticado
+        nueva_reserva = Reservas(
+            reservation_date=reservation_data['reservation_date'],
+            user=1,  # Supongamos que current_user representa al usuario autenticado
+            reservation_hour=reservation_data['reservation_date'],
+        )
+
+        # Guarda la reserva en la base de datos
+        db.session.add(nueva_reserva)
+        db.session.commit()
+
+        return jsonify({"message": "Reserva creada con éxito."}), 201
+    else:
+        return jsonify({"message": "Usuario no autenticado."}), 401
+
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token)
+

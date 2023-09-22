@@ -1,3 +1,25 @@
-.cartas {
-    margin-left: 100px;
+.colorenlace {
+    color: #EAEAEA !important
 }
+
+.colornavbar{
+    background-color: #201119db;
+}
+
+.colorfooter{
+    background-color: #2f1e27db ;
+}
+
+.btn-brand {
+    color: #FFFFFF;
+    font-weight: 500;
+    border-color: #C99734;
+    background-color: #C99734;
+}
+
+.navbar-logo-img{
+    height: 60px;
+    width: 130px;
+}
+
+
