@@ -3,14 +3,6 @@ import "../../styles/footer.css";
 import logoOriginal from "../../img/logo.jpeg";
 
 export const Footer = () => (
-<<<<<<< HEAD
-	
-	<footer className="footer mt-auto py-3 text-center colorfooter text-white text-center py-3">
-		<p>
-			Made with <i className="fa fa-heart text-danger" /> 
-			
-		</p>
-=======
 
 	<footer className="container-fluid footer">
 		<div className="container-fluid">
@@ -31,6 +23,5 @@ export const Footer = () => (
 				</div>
 			</div>
 		</div>
->>>>>>> 6a5ed58dde0c7c85d9663b9fa425edfb2179b7d2
 	</footer>
 );
