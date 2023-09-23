@@ -50,18 +50,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			fetchPromise: async (path, metodo = "GET", data = null) => {
-				const BASE_URL = process.env.BACKEND_URL;
-				let url = BASE_URL + path;
+				const BASE_URL = process.env.BACKEND_URL
+				let url = BASE_URL + path
 
 				let obj = {
 					method: metodo,
 					headers: {
 						"Content-Type": "application/json",
-						Authorization: "Bearer " + localStorage.getItem("token"),
+						"Authorization": "Bearer " + localStorage.getItem("token")
 					},
+					body: JSON.stringify(data)
 				}
-			},
 
+				if (metodo == "GET") {
+					obj = {
+						method: metodo,
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": "Bearer " + localStorage.getItem("token")
+						}
+					}
+				}
+
+				let response = await fetch(url, obj)
+				return response
+
+			},
 			getMessage: async () => {
 				try {
 					// fetching data from the backend
