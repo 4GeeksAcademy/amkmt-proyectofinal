@@ -193,13 +193,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			logout: async (id, token, email, date) => {
+			logout: async () => {
 				try {
-					let data = await axios.post(process.env.BACKEND_URL + "/logout", {
-						"id": id,
-						"email": email,
-						"token": token,
-						"date": date
+					let data = await axios.post(process.env.BACKEND_URL + "/logout", {}, {
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + localStorage.getItem("token"),
+						},
+
 					})
 					console.log(data);
 					//esto es lo que guarda en el localStorage

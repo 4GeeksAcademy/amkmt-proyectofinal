@@ -82,7 +82,8 @@ class TokenBlocked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     token = db.Column(db.String(200), unique=False, nullable=False)
     email = db.Column(db.String(200), unique=False, nullable=False)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    date = db.Column(db.DateTime, nullable=False,
+                     default=datetime.datetime.utcnow)
 
     def serialize(self):
         return {
