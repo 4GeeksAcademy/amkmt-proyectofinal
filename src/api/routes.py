@@ -71,7 +71,7 @@ def getProducts():
     print(results)
     return jsonify(results), 200
 
-# Crea un producto
+# Crea un   producto
 
 
 @api.route("/products", methods=["POST"])
