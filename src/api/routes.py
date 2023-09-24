@@ -2,12 +2,12 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint,  current_app
-from api.models import db, User, Products, Reservas
+from api.models import db, User, Products, TokenBlocked
 from api.utils import generate_sitemap, APIException
-
+from flask_bcrypt import Bcrypt
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import get_jwt_identity, get_jwt
 from flask_jwt_extended import jwt_required
 
 
@@ -29,8 +29,22 @@ def check_password(hash_password, password, salt):
     return check_password_hash(hash_password, f"{password}{salt}")
 
 
+def verifyToken(jti):
+    search = TokenBlocked.query.filter_by(token=jti).first()
+
+    if search == None:
+        return True  # para este caso el token no estaría en la lista de bloqueados
+    else:
+        return False  # para este caso el token no estaría en la lista de bloqueados
+
+
 @api.route('/hello', methods=['POST', 'GET'])
+@jwt_required()
 def handle_hello():
+
+    verification = verifyToken(get_jwt()["jti"])
+    if verification == False:
+        return jsonify({"message": "forbidden"}), 403
 
     response_body = {
         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
@@ -146,6 +160,34 @@ def login():
                 else:
                     return jsonify({"message": "Bad credentials"}), 400
 
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=access_token)
+
+
+@api.route("/logout", methods=["POST"])
+@jwt_required()
+def logout():
+
+    verification = verifyToken(get_jwt()["jti"])
+    if verification == False:
+        return jsonify({"message": "forbidden"}), 403
+
+    try:
+        jti = get_jwt()["jti"]
+        identity = get_jwt_identity()  # asociada al correo
+        print("jti: ", jti)
+        # creamos una instancia de la clase TokenBlocked
+        new_register = TokenBlocked(token=jti, email=identity)
+
+        db.session.add(new_register)
+        db.session.commit()
+
+        return jsonify({"message": "logout succesfully"}), 200
+
+    except Exception as error:
+        print(str(error))
+        return jsonify({"message": "error trying to logout"}), 403
+
 
 @api.route('/hacer_reserva', methods=['POST'])
 def hacer_reserva():
@@ -173,3 +215,69 @@ def hacer_reserva():
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
+
+
+# Definición de la clase Reservas (como se muestra en tu código)
+
+# Ruta para obtener todas las reservas
+
+
+@api.route('/reservas', methods=['GET'])
+def get_reservas():
+    reservas = Reservas.query.all()
+    return jsonify([reserva.serialize() for reserva in reservas])
+
+# Ruta para obtener una reserva por su ID
+
+
+@api.route('/reservas/<int:id>', methods=['GET'])
+def get_reserva(id):
+    reserva = Reservas.query.get(id)
+    if reserva is None:
+        return jsonify({"error": "Reserva no encontrada"}), 404
+    return jsonify(reserva.serialize())
+
+# Ruta para crear una nueva reserva
+
+
+@api.route('/reservas', methods=['POST'])
+def create_reserva():
+    data = request.get_json()
+    nueva_reserva = Reservas(
+        reservacion_date=data['reservacion_date'],
+        user_id=data['user_id'],
+        reservacion_hour=data['reservacion_hour'],
+        cantidad_personas=data['cantidad_personas']
+    )
+    db.session.add(nueva_reserva)
+    db.session.commit()
+    return jsonify(nueva_reserva.serialize()), 201
+
+# Ruta para actualizar una reserva por su ID
+
+
+@api.route('/reservas/<int:id>', methods=['PUT'])
+def update_reserva(id):
+    reserva = Reservas.query.get(id)
+    if reserva is None:
+        return jsonify({"error": "Reserva no encontrada"}), 404
+
+    data = request.get_json()
+    reserva.reservacion_date = data['reservacion_date']
+    reserva.user_id = data['user_id']
+    reserva.reservacion_hour = data['reservacion_hour']
+    reserva.cantidad_personas = data['cantidad_personas']
+    db.session.commit()
+    return jsonify(reserva.serialize())
+
+# Ruta para eliminar una reserva por su ID
+
+
+@api.route('/reservas/<int:id>', methods=['DELETE'])
+def delete_reserva(id):
+    reserva = Reservas.query.get(id)
+    if reserva is None:
+        return jsonify({"error": "Reserva no encontrada"}), 404
+    db.session.delete(reserva)
+    db.session.commit()
+    return jsonify({"message": "Reserva eliminada con éxito"})

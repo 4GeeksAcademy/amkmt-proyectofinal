@@ -3,6 +3,7 @@ background-image: url(https://img.freepik.com/premium-vector/hand-drawn-bakery-w
 backdrop-filter: blur(1px);
 margin: 0;
 padding: 0;
+bs-gutter-x: 1.5rem;
 }
 
 
@@ -44,7 +45,7 @@ padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 250px;
+    /* height: 250px; */
 }
 
 .btn-field button.disable{

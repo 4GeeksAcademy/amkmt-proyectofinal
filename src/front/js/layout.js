@@ -13,6 +13,7 @@ import CrearMenu from "./pages/crearMenu";
 import MenuPage from "./pages/menupage.jsx";
 import Reservation from "./pages/reservation.jsx";
 import PaymentForm from "./pages/pago.jsx";
+import Logout from "./pages/logout.jsx";
 
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -35,6 +36,8 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar2 />
+
+
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
@@ -45,6 +48,7 @@ const Layout = () => {
                         <Route element={<MenuPage />} path="/especialidades" />
                         <Route element={<Reservation />} path="/reservation" />
                         <Route element={<PaymentForm />} path="/pago" />
+                        <Route element={<Logout />} path="/logout" />
 
                         <Route element={<Menu />} path="/menu" />
 
