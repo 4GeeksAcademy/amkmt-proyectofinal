@@ -155,13 +155,28 @@ def login():
                 return jsonify({"message": "Bad credentials"}), 400
             else:
                 if check_password(user.password, password, user.salt):
-                    token = create_access_token(identity=user.id)
-                    return jsonify({"token": token}), 200
+                    # Crear un diccionario con los datos del usuario
+                    user_data = {
+                        "id": user.id,
+                        "email": user.email,
+                        "admin": user.admin,
+                        "username": user.username,
+
+                        # Agrega otros campos de usuario que desees incluir
+                    }
+
+                    # Crear el token
+                    token = create_access_token(identity=user_data)
+
+                    # Incluir tanto el token como los datos del usuario en la respuesta
+                    response_data = {
+                        "token": token,
+                        "user": user_data
+                    }
+
+                    return jsonify(response_data), 200
                 else:
                     return jsonify({"message": "Bad credentials"}), 400
-
-    access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
 
 
 @api.route("/logout", methods=["POST"])

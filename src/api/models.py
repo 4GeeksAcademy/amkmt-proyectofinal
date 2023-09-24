@@ -66,9 +66,9 @@ class Reservas(db.Model):
     reservacion_date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     reservacion_hour = db.Column(db.DateTime, nullable=False)
-    cantidad_personas = db.Column(db.Interger, nullable=False)
+    cantidad_personas = db.Column(db.Integer, nullable=False)
     # Agrega una relación con el usuario para acceder a su nombre y email
-    user = db.relationship("User", back_populates="reservas")
+    user_reserva = db.relationship("User", back_populates="reserva")
 
     def __repr__(self):
         return f'<Reservas {self.id}>'
