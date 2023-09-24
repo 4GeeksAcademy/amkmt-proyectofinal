@@ -17,7 +17,8 @@ class User(db.Model):
     city = db.Column(db.String(150), nullable=False)
     phone = db.Column(db.String(150), nullable=False)
     salt = db.Column(db.String(180), nullable=False)
-
+    admin = db.Column(db.Boolean, unique=False, default=False)
+  
     reserva = db.relationship("Reservas", backref="user", lazy=True)
 
     def __repr__(self):
@@ -34,7 +35,8 @@ class User(db.Model):
             "age": self.age,
             "city": self.city,
             "phone": self.phone,
-            "reservas": [reservas.serialize() for reservas in self.reserva]
+            "reservas": [reservas.serialize() for reservas in self.reserva],
+            "admin": self.admin,
             # do not serialize the password, its a security breach
         }
 
