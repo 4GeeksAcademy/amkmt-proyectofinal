@@ -153,7 +153,7 @@ def hacer_reserva():
     if request.method == "POST":
         # Si la sesión está autenticada, permite hacer la reserva
         # Obtiene los datos de la reserva desde la solicitud POST
-        # Asume que los datos de la reserva se envían como JSON en la solicitud
+        # Asume que los datos de la reserva se   envían como JSON en la solicitud
         reservation_data = request.json
 
         # Crea una nueva instancia de Reservation y asigna el usuario autenticado
