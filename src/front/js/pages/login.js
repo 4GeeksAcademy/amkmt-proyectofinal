@@ -24,7 +24,7 @@ export const Login = () => {
         email: email,
         password: password,
       };
-      let response = await actions.fetchPromise("/api/login", "POST", data);
+      let response = await actions.fetchPromise("/login", "POST", data);
 
       if (response && response.ok) {
         let responseJson = await response.json();
