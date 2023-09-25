@@ -1,10 +1,15 @@
+.sobre-nosotros{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
 
 .resena-historica{
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
     
 }
@@ -14,7 +19,6 @@
     padding: 2rem;
     margin: 2rem;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
 }
 
@@ -22,10 +26,14 @@
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .factor-diferenciador{
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;
+    display: flex;
+    flex-direction: column;
 }
