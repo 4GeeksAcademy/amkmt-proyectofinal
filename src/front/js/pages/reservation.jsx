@@ -12,7 +12,7 @@ const Reservation = () => {
   const [fechaReserva, setFechaReserva] = useState("");
   const [hora, setHora] = useState("");
   const [cantidad, setCantidad] = useState("");
-
+console.log(store.mercadopago)
   const handleNombreChange = (event) => {
     setNombre(event.target.value);
   };
@@ -37,7 +37,15 @@ const Reservation = () => {
     event.preventDefault();
     // Aquí puedes agregar la lógica para procesar la reserva
   };
-
+//Esto es mercado pago
+const pagar = async () => {
+  let total = subtotal * 1.22; //aca creamos la variable total que guarda la suma a pagar por el cliente
+  console.log(total);
+  await actions.pagoMercadoPago(total);
+  let direccion = await store.mercadoPago.init_point;// direccion guarda la url que trae init_point
+  // console.log(direccion);
+  window.location.replace(direccion);// window es para renderizar y mandar al cliente a la url de pagar
+  };
   return (
     <div className="containnn">
       <h2 className="reservademesa">Reserva de Mesa</h2>
@@ -110,9 +118,11 @@ const Reservation = () => {
         <div>
 
           <button className="col-6" type="button" onClick={(e) => actions.reservation(cantidad, fechaReserva, email, nombre, mesaRe)}>1. Reservar</button>
-          <Link to="/pago">
+          {/* <Link to="/pago">
             <button className="col-6 pagar" >2. Pagar reservación</button>
-          </Link>
+          </Link> */}
+          <button type="button" className="rounded-1 m-3 px-3 col-6 pagar"
+          onClick={pagar}> Pagar </button>
         </div>
       </form>
     </div>

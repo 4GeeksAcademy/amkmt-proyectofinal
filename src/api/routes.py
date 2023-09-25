@@ -10,8 +10,13 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 
-
 import cloudinary.uploader as uploader
+
+# SDK de Mercado Pago
+import mercadopago
+
+# Agrega credenciales
+sdk = mercadopago.SDK("APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
 
 
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -143,15 +148,35 @@ def login():
     access_token = create_access_token(identity =email)
     return jsonify(access_token= access_token)
 
+@api.route("/preference", methods=["POST"])
+def preference():
+    body = json.loads(request.data) # aca esta toda la info
+    total = body["total"] # acá decimos que en el body mandamos el total a pagar por el cliente?
+# Crea un ítem en la preferencia
+    preference_data = {
+    "items": [
+    {
+    "title": "Geeks Coffee", #aquí ponemos el nombre de nuestra app.
+    "quantity": 1, #por defecto se deja 1
+    "unit_price": total, #aca mandamos lo que guarda la variable "total", la suma del total a pagar
+    }
+    ],
+    "payer":{
+    "email":"test_user_17805074@testuser.com" #este es el usuario de prueba comprador
+    },
+    "back_urls": {
+    "success": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pagar",
+    "failure": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pagar",
+    "pending": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pagar" # En
+    #este caso las tres están configuradas para que lo manden de nuevo a la página home de la app.
+    },
+    "auto_return": "approved"
+    } #preference es el nombre que le dimos a nuestra ruta para pagar con mercadopago
+    preference_response = sdk.preference().create(preference_data)
+    preference = preference_response["response"]
+    return preference, 200
 
-    
-# Muestra todas las compras
-@api.route("/compras", methods=["GET"])
-def getShopping():
-    shoppingCart = shoppingCart.query.all()
-    results = list(map(lambda x: x.serialize(), shoppingCart))
-    print (results)
-    return jsonify(results), 200
+
 
 
 

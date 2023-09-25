@@ -1,9 +1,11 @@
 import axios from "axios"
 
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			mercadopago: {},
 			demo: [
 				{
 					title: "FIRST",
@@ -191,7 +193,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error al agregar el elemento al menú:', error);
 					return false; // Opcional: devuelve un valor para indicar que la solicitud falló
 				}
-			}
+			},
+			pagoMercadoPago: async (total) => {
+				console.log(total)
+				try {
+					const response = await axios.post(back + "/api/preference", {
+						total: total, //acá está de nuevo la variable donde se guarda el total a pagar por el cliente
+					});
+					console.log(response.data);
+					setStore({ mercadoPago: response.data });//guardamos la info en el objeto que creamos en store
+				} catch (error) {
+					console.log(error);
+				}
+			},
+
 
 
 
