@@ -37,6 +37,7 @@ def verifyToken(jti):
     else:
         return False  # para este caso el token no estaría en la lista de bloqueados
 
+
 @api.route('/hello', methods=['POST', 'GET'])
 @jwt_required()
 def handle_hello():
@@ -84,7 +85,7 @@ def getProducts():
     print(results)
     return jsonify(results), 200
 
-# Crea un producto
+# Crea un   producto
 
 
 @api.route("/products", methods=["POST"])
@@ -154,13 +155,28 @@ def login():
                 return jsonify({"message": "Bad credentials"}), 400
             else:
                 if check_password(user.password, password, user.salt):
-                    token = create_access_token(identity=user.id)
-                    return jsonify({"token": token}), 200
+                    # Crear un diccionario con los datos del usuario
+                    user_data = {
+                        "id": user.id,
+                        "email": user.email,
+                        "admin": user.admin,
+                        "username": user.username,
+
+                        # Agrega otros campos de usuario que desees incluir
+                    }
+
+                    # Crear el token
+                    token = create_access_token(identity=user_data)
+
+                    # Incluir tanto el token como los datos del usuario en la respuesta
+                    response_data = {
+                        "token": token,
+                        "user": user_data
+                    }
+
+                    return jsonify(response_data), 200
                 else:
                     return jsonify({"message": "Bad credentials"}), 400
-
-    access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
 
 
 @api.route("/logout", methods=["POST"])
@@ -187,13 +203,14 @@ def logout():
         print(str(error))
         return jsonify({"message": "error trying to logout"}), 403
 
+
 @api.route('/hacer_reserva', methods=['POST'])
 def hacer_reserva():
 
     if request.method == "POST":
         # Si la sesión está autenticada, permite hacer la reserva
         # Obtiene los datos de la reserva desde la solicitud POST
-        # Asume que los datos de la reserva se envían como JSON en la solicitud
+        # Asume que los datos de la reserva se   envían como JSON en la solicitud
         reservation_data = request.json
 
         # Crea una nueva instancia de Reservation y asigna el usuario autenticado
@@ -214,3 +231,68 @@ def hacer_reserva():
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
 
+
+# Definición de la clase Reservas (como se muestra en tu código)
+
+# Ruta para obtener todas las reservas
+
+
+@api.route('/reservas', methods=['GET'])
+def get_reservas():
+    reservas = Reservas.query.all()
+    return jsonify([reserva.serialize() for reserva in reservas])
+
+# Ruta para obtener una reserva por su ID
+
+
+@api.route('/reservas/<int:id>', methods=['GET'])
+def get_reserva(id):
+    reserva = Reservas.query.get(id)
+    if reserva is None:
+        return jsonify({"error": "Reserva no encontrada"}), 404
+    return jsonify(reserva.serialize())
+
+# Ruta para crear una nueva reserva
+
+
+@api.route('/reservas', methods=['POST'])
+def create_reserva():
+    data = request.get_json()
+    nueva_reserva = Reservas(
+        reservacion_date=data['reservacion_date'],
+        user_id=data['user_id'],
+        reservacion_hour=data['reservacion_hour'],
+        cantidad_personas=data['cantidad_personas']
+    )
+    db.session.add(nueva_reserva)
+    db.session.commit()
+    return jsonify(nueva_reserva.serialize()), 201
+
+# Ruta para actualizar una reserva por su ID
+
+
+@api.route('/reservas/<int:id>', methods=['PUT'])
+def update_reserva(id):
+    reserva = Reservas.query.get(id)
+    if reserva is None:
+        return jsonify({"error": "Reserva no encontrada"}), 404
+
+    data = request.get_json()
+    reserva.reservacion_date = data['reservacion_date']
+    reserva.user_id = data['user_id']
+    reserva.reservacion_hour = data['reservacion_hour']
+    reserva.cantidad_personas = data['cantidad_personas']
+    db.session.commit()
+    return jsonify(reserva.serialize())
+
+# Ruta para eliminar una reserva por su ID
+
+
+@api.route('/reservas/<int:id>', methods=['DELETE'])
+def delete_reserva(id):
+    reserva = Reservas.query.get(id)
+    if reserva is None:
+        return jsonify({"error": "Reserva no encontrada"}), 404
+    db.session.delete(reserva)
+    db.session.commit()
+    return jsonify({"message": "Reserva eliminada con éxito"})
