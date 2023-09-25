@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity, get_jwt
 from flask_jwt_extended import jwt_required
-
+from datetime import datetime
 
 import cloudinary.uploader as uploader
 
@@ -205,6 +205,7 @@ def logout():
 
 
 @api.route('/hacer_reserva', methods=['POST'])
+@jwt_required()
 def hacer_reserva():
 
     if request.method == "POST":
@@ -212,24 +213,32 @@ def hacer_reserva():
         # Obtiene los datos de la reserva desde la solicitud POST
         # Asume que los datos de la reserva se   envían como JSON en la solicitud
         reservation_data = request.json
-
+        fecha_dtr = datetime.strptime(
+            reservation_data['reservation_date'], "%Y-%m-%d %H:%M:%S")
+        # print(get_jwt_identity())
         # Crea una nueva instancia de Reservation y asigna el usuario autenticado
         nueva_reserva = Reservas(
-            reservation_date=reservation_data['reservation_date'],
-            user=1,  # Supongamos que current_user representa al usuario autenticado
-            reservation_hour=reservation_data['reservation_date'],
+            reservacion_date=fecha_dtr,
+            # Supongamos que current_user representa al usuario autenticado
+            user_id=get_jwt_identity()["id"],
+
+            reservacion_hour=fecha_dtr,
+            cantidad_personas=reservation_data['cantidad_personas']
         )
+        try:
+            # Guarda la reserva en la base de datos
+            db.session.add(nueva_reserva)
+            db.session.commit()
+            return jsonify({"message": "Reserva creada con éxito."}), 201
 
-        # Guarda la reserva en la base de datos
-        db.session.add(nueva_reserva)
-        db.session.commit()
+        except Exception as error:
+            db.session.rollback()
+            return jsonify({"message": f"Error : {error}"}), 201
+    # else:
+    #     return jsonify({"message": "Usuario no autenticado."}), 401
 
-        return jsonify({"message": "Reserva creada con éxito."}), 201
-    else:
-        return jsonify({"message": "Usuario no autenticado."}), 401
-
-    access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    # access_token = create_access_token(identity=email)
+    # return jsonify(access_token=access_token)
 
 
 # Definición de la clase Reservas (como se muestra en tu código)

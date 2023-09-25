@@ -18,7 +18,7 @@ class User(db.Model):
     phone = db.Column(db.String(150), nullable=False)
     salt = db.Column(db.String(180), nullable=False)
     admin = db.Column(db.Boolean, unique=False, default=False)
-  
+
     reserva = db.relationship("Reservas", backref="user", lazy=True)
 
     def __repr__(self):
@@ -68,7 +68,7 @@ class Reservas(db.Model):
     reservacion_hour = db.Column(db.DateTime, nullable=False)
     cantidad_personas = db.Column(db.Integer, nullable=False)
     # Agrega una relación con el usuario para acceder a su nombre y email
-    user_reserva = db.relationship("User", back_populates="reserva")
+    # user_reserva = db.relationship("User", back_populates="reserva")
 
     def __repr__(self):
         return f'<Reservas {self.id}>'
