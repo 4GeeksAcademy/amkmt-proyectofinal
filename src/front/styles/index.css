@@ -1,3 +1,28 @@
-.cartas {
-    margin-left: 100px;
+.colorenlace {
+    color: #EAEAEA !important
+}
+
+.colornavbar{
+    background-color: #2c1c24db;
+    /* background-color: red; */
+    
+}
+
+.colorfooter{
+    /* background-color: #2f1e27db ; */
+     
+}
+
+.navbar-logo-img{
+    height: 60px;
+    width: 130px;
+}
+
+.text-color{
+    color: #201a11e4;
+    font-family: 'Oleo Script', cursive;
+}
+
+#app{
+    --bs-gutter-x: 0;
 }

@@ -52,18 +52,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			fetchPromise: async (path, metodo = "GET", data = null) => {
-				const BASE_URL = process.env.BACKEND_URL;
-				let url = BASE_URL + path;
-
-				let obj = {
-					method: metodo,
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: "Bearer " + localStorage.getItem("token"),
-					},
-				}
-			},
-
+                const BASE_URL = process.env.BACKEND_URL;
+                let url = BASE_URL + path;
+                let obj = {
+                  method: metodo,
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                  },
+                  body: JSON.stringify(data)
+                }
+                if (metodo === "GET") {
+                  obj = {
+                    method: metodo,
+                    headers: {
+                      "Content-Type": "application/json",
+                      "Authorization": "Bearer " + localStorage.getItem("token")
+                    }
+                  }
+                }
+                try {
+                  let response = await fetch(url, obj);
+                  if (response.ok) {
+                    return response;
+                  } else {
+                    console.error("Error en la respuesta:", response.status, response.statusText);
+                    return null; // Retorna null en caso de respuesta no exitosa
+                  }
+                } catch (error) {
+                  console.error("Error al realizar la solicitud:", error);
+                  return null; // Retorna null en caso de error en la solicitud
+                }
+              },
 			getMessage: async () => {
 				try {
 					// fetching data from the backend
@@ -112,34 +132,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 			register: async (email, password) => {
-				try {
-					let data = await axios.post(process.env.BACKEND_URL + "/signup", {
-						"email": email,
-						"password": password,
-						"address": "Costa Rica",
-						"name": "ash",
-						"username": "Vale",
-						"age": "20",
-						"city": "SJ",
-						"phone": "25331050"
-					})
-					console.log(data);
-					//esto es lo que guarda en el localStorage
-					// localStorage.setItem("token", data.data.access_token);
-
-					return true;
-				} catch (error) {
-					console.log("errorrrrr:" + error)
-					if (error.response.status === 404) {
-						alert(error.response.data.msg)
-					}
-					return false;
-				}
-
-
-
-			},
-
+                try {
+                    let data = await axios.post(process.env.BACKEND_URL + "/api/signup", {
+                        "email": email,
+                        "password": password,
+                        "address": "Costa Rica",
+                        "name": "ash",
+                        "username": "Vale",
+                        "age": "20",
+                        "city": "SJ",
+                        "phone": "25331050"
+                    })
+                    setStore(data);
+                    //esto es lo que guarda en el localStorage
+                    // localStorage.setItem("token", data.data.access_token);
+                    return true;
+                } catch (error) {
+                    // console.log("errorrrrr:" + error)
+                    // if (error.response.status === 404) {
+                    //  alert(error.response.data.msg)
+                    // }
+                    // return false;
+                }
+            },
 			reservation: async (cantidad, fechaReserva, email, nombre, mesaRe) => {
 				try {
 					let data = await axios.post(process.env.BACKEND_URL + "/reservation", {
@@ -165,7 +180,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			logout: () => { localStorage.removeItem("token") },
+			// logout: () => { localStorage.removeItem("token") },
 
 			agregarMenu: async (name, description, image, price) => {
 				try {
@@ -193,20 +208,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error al agregar el elemento al menú:', error);
 					return false; // Opcional: devuelve un valor para indicar que la solicitud falló
 				}
-			},
-			pagoMercadoPago: async (total) => {
-				console.log(total)
-				try {
-					const response = await axios.post(back + "/api/preference", {
-						total: total, //acá está de nuevo la variable donde se guarda el total a pagar por el cliente
-					});
-					console.log(response.data);
-					setStore({ mercadoPago: response.data });//guardamos la info en el objeto que creamos en store
-				} catch (error) {
-					console.log(error);
-				}
-			},
-
+			}
 
 
 

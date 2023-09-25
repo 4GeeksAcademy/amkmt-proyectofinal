@@ -52,7 +52,7 @@ const PaymentForm = () => {
                         />
                     </div> */}
                     <div></div>
-                    <button className="col-4" id="signUp" type="button" onClick>Pagar</button>
+                    <button className="col-4 botondepagopaypal" id="signUpp" type="button" onClick>Pagar</button>
                 </form>
             </div>
         </div>
