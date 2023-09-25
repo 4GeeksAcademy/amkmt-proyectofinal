@@ -16,7 +16,7 @@ bs-gutter-x: 1.5rem;
     padding: 55px 40px 70px;
     text-align: center;
     border-radius: 25px;
-    box-shadow: 15px #422f39db;
+    box-shadow: 15px #dad2d6db;
 }
 
 .form-content h1{
@@ -158,3 +158,5 @@ bs-gutter-x: 1.5rem;
         color: #2C2F35;
         width: 130px;
     }
+
+   

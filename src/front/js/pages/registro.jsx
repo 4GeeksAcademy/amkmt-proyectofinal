@@ -19,8 +19,17 @@ const Register = () => {
                 title: "Oops...",
                 text: "Por favor llene ambos campos!",
                 timer: 3500,
+
+
             });
-            return; // Salir de la función si falta información
+
+        } else {
+            Swal.fire({
+
+                icon: "success",
+                title: "Usuario registrado",
+                timer: 1500,
+            });
         }
 
         // Sección para enviar la data al backend
