@@ -14,6 +14,7 @@ import MenuPage from "./pages/menupage.jsx";
 import Reservation from "./pages/reservation.jsx";
 import PaymentForm from "./pages/pago.jsx";
 import Logout from "./pages/logout.jsx";
+import Contacto from "./pages/contacto.jsx"
 
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -49,6 +50,7 @@ const Layout = () => {
                         <Route element={<Reservation />} path="/reservation" />
                         <Route element={<PaymentForm />} path="/pago" />
                         <Route element={<Logout />} path="/logout" />
+                        <Route element={<Contacto />} path="/contacto" />
 
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

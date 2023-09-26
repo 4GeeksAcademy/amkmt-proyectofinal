@@ -28,6 +28,9 @@ const Navbar2 = () => {
                         <li className="nav-item">
                             <Link className="nav-link  colorenlace " to="/register">Registrarse</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link  colorenlace " to="/contacto">Contáctanos</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
