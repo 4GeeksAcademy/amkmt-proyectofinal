@@ -150,11 +150,11 @@ def login():
         body = request.json
         email = body.get("email", None)
         password = body.get("password", None)
-
+        print(body)
         if email is None or password is None:
             return jsonify("You need an email and a password"), 400
         else:
-            user = User.query.filter_by(email=email).one_or_none()
+            user = User.query.filter_by(email=email).first()
             if user is None:
                 return jsonify({"message": "Bad credentials"}), 400
             else:
