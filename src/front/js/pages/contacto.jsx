@@ -1,19 +1,61 @@
-import React from 'react';
+import React from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faFacebook,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
+import "../../styles/contacto.css";
 
 const Contacto = () => {
-    return (
-        <section id="contacto">
-        <div className="contacto-container">
-          <div className="contacto-info">
-            <h2>Contacto</h2>
-            <p>Teléfono: (123) 456-7890</p>
-            <p>Dirección: 123 Calle Principal, Ciudad</p>
-            <p>Horario: Lunes a Viernes de 11:00 AM a 9:00 PM</p>
-            <p>Correo: ejemplo@restaurante.com</p>
+  return (
+    <section className="contacto">
+      <div className="contacto-container">
+        <div className="contacto-info">
+          <h2>Contáctenos</h2>
+          <p>
+            ¡Un mundo donde la tecnología y la gastronomía convergen de manera
+            innovadora!
+          </p>
+        </div>
+        <div className="contacto-info-container">
+          <div className="contacto-detalles">
+            <h2>Detalles</h2>
+            <ul>
+              <li>Teléfono: (506) 2456-7890</li>
+              <li>Dirección: San Pedro, Costa Rica</li>
+              <li>Horario: Lunes a Viernes de 7:00 AM a 9:00 PM</li>
+              <li>Correo: GeeksCoffee@gmail.com</li>
+            </ul>
+            <div className="contacto-redes-sociales">
+              {<FontAwesomeIcon icon="fa-brands fa-instagram" />}
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+              {<FontAwesomeIcon icon="fa-brands fa-facebook" />}
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faFacebook} />
+              </a>
+              {<FontAwesomeIcon icon="fa-brands fa-twitter"  />}
+              <a
+                href="https://www.twitter.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FontAwesomeIcon icon={faTwitter} />
+              </a>
+            </div>
           </div>
+
           <div className="contacto-mapa">
             {/* Aquí puedes integrar un mapa de Google Maps o cualquier otro servicio de mapas */}
             {/* Ejemplo de un mapa de Google Maps */}
@@ -28,23 +70,9 @@ const Contacto = () => {
             ></iframe>
           </div>
         </div>
-
-        <div className="contacto-redes-sociales">
-        {<FontAwesomeIcon icon="fa-brands fa-instagram" />}
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
-        { <FontAwesomeIcon icon="fa-brands fa-facebook" />}
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} />
-        </a>
-        {<FontAwesomeIcon icon="fa-brands fa-twitter" />}
-        <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faTwitter} />
-        </a>
       </div>
-      </section>
-    );
-  }
-  
-  export default Contacto;
+    </section>
+  );
+};
+
+export default Contacto;
