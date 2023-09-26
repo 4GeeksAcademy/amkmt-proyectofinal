@@ -3,9 +3,10 @@ import React from "react";
 import "../../styles/index.css";
 
 
-import Jumbotron from "../component/jumbotron.jsx"
+import Jumbotron from "../component/jumbotron.jsx";
 
-import Card from "../component/card.jsx"
+import Card from "../component/card.jsx";
+
 
 
 //create your first component
