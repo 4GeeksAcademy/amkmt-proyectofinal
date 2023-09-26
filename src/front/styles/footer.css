@@ -1,36 +1,24 @@
-.footer{
+.footer {
     background-color: #a7815e;
-    margin-left: 0;
-    margin-right: 0;
 }
 
-.columna1footer{
+.columna3footer {
+    /* font-family: 'Martian Mono', monospace; */
+    /* font-family: 'Oswald', sans-serif; */
     font-family: 'Dancing Script', cursive;
-    margin-left: 50px;
-    font-size: 20px;
 
-    margin-top: 35px;
-    color: aliceblue;
-}
-
-.columna2footer{
-    font-family: 'Dancing Script', cursive;
-    margin-top: 35px;
-    font-size: 20px;
-
-    color: aliceblue;
-}
-
-.columna3footer{
-    font-family: 'Dancing Script', cursive;
-    margin-top: 35px;
-    font-size: 24px;
-    color: aliceblue;
-
-}
-.imagendefooter{
-    width: 90px;
+    float: left;
+    margin-left: 20px;
+    font-size: 27px;
     margin-top: 30px;
+    color: aliceblue;
+}
+
+
+.imagendefooter {
+    margin-top: 30px;
+    float: right;
+    margin-right: 0;
+    width: 100px;
     border-radius: 80%;
 }
-
