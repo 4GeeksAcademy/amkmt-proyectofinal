@@ -17,6 +17,7 @@ class User(db.Model):
     city = db.Column(db.String(150), nullable=False)
     phone = db.Column(db.String(150), nullable=False)
     salt = db.Column(db.String(180), nullable=False)
+    admin = db.Column(db.Boolean, unique=False, default=False)
 
     reserva = db.relationship("Reservas", backref="user", lazy=True)
 
@@ -34,7 +35,8 @@ class User(db.Model):
             "age": self.age,
             "city": self.city,
             "phone": self.phone,
-            "reservas": [reservas.serialize() for reservas in self.reserva]
+            "reservas": [reservas.serialize() for reservas in self.reserva],
+            "admin": self.admin,
             # do not serialize the password, its a security breach
         }
 
@@ -64,9 +66,9 @@ class Reservas(db.Model):
     reservacion_date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     reservacion_hour = db.Column(db.DateTime, nullable=False)
-    cantidad_personas = db.Column(db.Interger, nullable=False)
+    cantidad_personas = db.Column(db.Integer, nullable=False)
     # Agrega una relación con el usuario para acceder a su nombre y email
-    user = db.relationship("User", back_populates="reservas")
+    # user_reserva = db.relationship("User", back_populates="reserva")
 
     def __repr__(self):
         return f'<Reservas {self.id}>'
@@ -89,7 +91,8 @@ class TokenBlocked(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     token = db.Column(db.String(200), unique=False, nullable=False)
     email = db.Column(db.String(200), unique=False, nullable=False)
-    date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    date = db.Column(db.DateTime, nullable=False,
+                     default=datetime.datetime.utcnow)
 
     def serialize(self):
         return {

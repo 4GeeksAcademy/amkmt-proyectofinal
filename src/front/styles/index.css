@@ -8,10 +8,10 @@
     
 }
 
-.colorfooter{
+/* .colorfooter{
     /* background-color: #2f1e27db ; */
-     
-}
+/*      
+} */ */
 
 .navbar-logo-img{
     height: 60px;
@@ -24,5 +24,5 @@
 }
 
 #app{
-    --bs-gutter-x: 0;
+    --bs-gutter-x: 0;
 }
