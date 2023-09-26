@@ -31,15 +31,15 @@ const Contacto = () => {
 
         <div className="contacto-redes-sociales">
         {<FontAwesomeIcon icon="fa-brands fa-instagram" />}
-        <a href="https://www.instagram.com/tu-restaurante" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faInstagram} />
         </a>
         { <FontAwesomeIcon icon="fa-brands fa-facebook" />}
-        <a href="https://www.facebook.com/tu-restaurante" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebook} />
         </a>
         {<FontAwesomeIcon icon="fa-brands fa-twitter" />}
-        <a href="https://www.twitter.com/tu-restaurante" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.twitter.com/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faTwitter} />
         </a>
       </div>
