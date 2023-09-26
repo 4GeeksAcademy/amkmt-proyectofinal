@@ -8,7 +8,18 @@ bs-gutter-x: 1.5rem;
 
 
 .form-content{
-    margin-top: 100px;
+    justify-content: center;
+    max-width: 600px;
+    max-height: 720px;
+    /* margin: 0 auto; */
+    margin-top:6%;
+    margin-bottom: 28%;
+    margin-left: 34%;
+    padding: 20px;
+    background-color: rgba(252, 251, 251, 0.807);
+    border-radius: 15px;
+    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+    /* margin-top: 100px;
     width: 300%;
     max-width: 500px;
     max-height: 520px;
@@ -16,7 +27,7 @@ bs-gutter-x: 1.5rem;
     padding: 55px 40px 70px;
     text-align: center;
     border-radius: 25px;
-    box-shadow: 15px #dad2d6db;
+    box-shadow: 15px #dad2d6db; */
 }
 
 .form-content h1{
@@ -99,7 +110,8 @@ bs-gutter-x: 1.5rem;
     input{
         width: 100%;
         background: transparent;
-        border: 0;
+        border: 1px solid #ccc;
+
         outline: none;
         padding: 10px 10px;
         color: black;
@@ -138,7 +150,7 @@ bs-gutter-x: 1.5rem;
         margin-inline-start: 15px;
         margin-inline-end: 15px;
         font-size: 16px;
-        background-color: #C99734;
+        background-color: #a7815e;
         color: white;
         height: 40px;
         border-radius: 10px;
@@ -159,4 +171,8 @@ bs-gutter-x: 1.5rem;
         width: 130px;
     }
 
-   
+   #Login{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    background-color: #a7815e;
+   }

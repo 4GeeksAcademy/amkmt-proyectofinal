@@ -38,16 +38,20 @@ def verifyToken(jti):
         return False  # para este caso el token no estaría en la lista de bloqueados
 
 
-@api.route('/hello', methods=['POST', 'GET'])
+@api.route('/auth', methods=['GET'])
 @jwt_required()
-def handle_hello():
+def auth():
 
     verification = verifyToken(get_jwt()["jti"])
     if verification == False:
         return jsonify({"message": "forbidden"}), 403
+    user_data = get_jwt_identity()
+    user = User.query.get(user_data["id"])
+    if user is None:
+        return jsonify({"message": "not found"}), 404
 
     response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+        "user": user.serialize()
     }
 
     return jsonify(response_body), 200
@@ -189,7 +193,7 @@ def logout():
 
     try:
         jti = get_jwt()["jti"]
-        identity = get_jwt_identity()  # asociada al correo
+        identity = get_jwt_identity()["email"]  # asociada al correo
         print("jti: ", jti)
         # creamos una instancia de la clase TokenBlocked
         new_register = TokenBlocked(token=jti, email=identity)

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
-
+import "../../styles/prueba.css";
 export const Login = () => {
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState("");
@@ -58,11 +58,11 @@ export const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="">
               <div className="input-field" id="nameInput">
-                <i className="fa-regular fa-envelope"></i>
+                {/* <i className="fa-regular fa-envelope"></i> */}
                 <input onChange={handleEmail} type="email" placeholder="Email" />
               </div>
               <div className="input-field">
-                <i className="fa-solid fa-lock"></i>
+                {/* <i className="fa-solid fa-lock"></i> */}
                 <input onChange={handlePassword} type="password" placeholder="Password" />
               </div>
             </div>
@@ -71,11 +71,7 @@ export const Login = () => {
                 Login
               </button>
             </div>
-            <div className="btn-field">
-              <button className="col-4" id="signIn" type="button">
-                Registrarse
-              </button>
-            </div>
+
           </form>
         </div>
       </div>

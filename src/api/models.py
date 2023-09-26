@@ -31,7 +31,6 @@ class User(db.Model):
             "address": self.address,
             "name": self.name,
             "username": self.username,
-            "profile_image_url": self.profile_image_url,
             "age": self.age,
             "city": self.city,
             "phone": self.phone,

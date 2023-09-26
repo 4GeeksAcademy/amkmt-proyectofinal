@@ -1,21 +1,36 @@
 .footer{
-    background-color: rgba(65, 56, 48, 0.918);
+    background-color: #a7815e;
     margin-left: 0;
     margin-right: 0;
 }
 
 .columna1footer{
+    font-family: 'Dancing Script', cursive;
     margin-left: 50px;
-    margin-top: 25px;
+    font-size: 20px;
+
+    margin-top: 35px;
     color: aliceblue;
 }
 
 .columna2footer{
+    font-family: 'Dancing Script', cursive;
     margin-top: 35px;
+    font-size: 20px;
+
     color: aliceblue;
 }
-.imagendefooter{
-    width: 150px;
-    margin-top: 30px;
-    border-radius: 120%;
+
+.columna3footer{
+    font-family: 'Dancing Script', cursive;
+    margin-top: 35px;
+    font-size: 24px;
+    color: aliceblue;
+
 }
+.imagendefooter{
+    width: 90px;
+    margin-top: 30px;
+    border-radius: 80%;
+}
+

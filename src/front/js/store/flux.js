@@ -3,19 +3,7 @@ import axios from "axios"
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white",
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white",
-				},
-			],
+			current_user: null
 		},
 		actions: {
 
@@ -52,12 +40,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return null; // Retorna null en caso de error en la solicitud
 				}
 			},
-			getMessage: async () => {
+			getAuth: async () => {
+				const actions = getActions()
+				const store = getStore()
 				try {
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
+					const resp = await actions.fetchPromise("/auth")
 					const data = await resp.json()
-					setStore({ message: data.message })
+					console.log(data)
+					setStore({ ...store, current_user: data.user })
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -111,7 +102,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"city": "SJ",
 						"phone": "25331050"
 					})
-					setStore(data);
+					// setStore(data);
 					//esto es lo que guarda en el localStorage
 					// localStorage.setItem("token", data.data.access_token);
 					return true;

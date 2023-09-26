@@ -2,27 +2,32 @@
     color: #EAEAEA !important
 }
 
-.colornavbar{
-    background-color: #2c1c24db;
+.colornavbar {
+    background-color: #a7815e;
     /* background-color: red; */
-    
+
+}
+
+.nav-item {
+    font-size: 30px;
+    font-family: 'Dancing Script', cursive;
+
 }
 
 /* .colorfooter{
     /* background-color: #2f1e27db ; */
 /*      
-} */ */
-
-.navbar-logo-img{
+} */
+*/ .navbar-logo-img {
     height: 60px;
     width: 130px;
 }
 
-.text-color{
+.text-color {
     color: #201a11e4;
     font-family: 'Oleo Script', cursive;
 }
 
-#app{
+#app {
     --bs-gutter-x: 0;
 }
