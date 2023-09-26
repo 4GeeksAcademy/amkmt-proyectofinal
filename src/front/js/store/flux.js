@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
+			mercadoPago: {},
 			demo: [
 				{
 					title: "FIRST",
@@ -18,6 +19,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 		},
 		actions: {
+			pagoMercadoPago: async (total) => {
+				try {
+					const response = await axios.post(process.env.BACKEND_URL + "/api/preference", {
+						total: total, //acá está de nuevo la variable donde se guarda el total a pagar por el cliente
+					});
+					console.log(response.data);
+					setStore({ mercadoPago: response.data });//guardamos la info en el objeto que creamos en store
+				} catch (error) {
+					console.log(error);
+				}
+			},
 
 			fetchPromise: async (path, metodo = "GET", data = null) => {
 				const BASE_URL = process.env.BACKEND_URL;
