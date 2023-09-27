@@ -1,0 +1,45 @@
+.sobre-nosotros{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: justify;
+    padding: 5rem;
+    
+}
+
+.resena-historica{
+    background: #f9f9f9;
+    padding: 2rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    
+}
+
+.vision{
+    background: #f9f9f9;
+    padding: 2rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+
+.mision{
+    background: #f9f9f9;
+    padding: 2rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+
+.factor-diferenciador{
+    background: #f9f9f9;
+    padding: 2rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}

@@ -28,6 +28,15 @@ const Navbar2 = () => {
                         <li className="nav-item">
                             <Link className="nav-link " to="/reservation">Reservar</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link  colorenlace " to="/login">Ingresar</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link  colorenlace " to="/register">Registrarse</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link  colorenlace " to="/contacto">Contáctanos</Link>
+                        </li>
                         {/* {!store?.current_user && */}
                         <>
                             <li className="nav-item">
