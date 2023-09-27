@@ -64,7 +64,6 @@ class Reservas(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     reservacion_date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    reservacion_hour = db.Column(db.DateTime, nullable=False)
     cantidad_personas = db.Column(db.Integer, nullable=False)
     # Agrega una relación con el usuario para acceder a su nombre y email
     # user_reserva = db.relationship("User", back_populates="reserva")
@@ -78,10 +77,7 @@ class Reservas(db.Model):
             # Formatea la fecha como una cadena
             "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"),
             "user_id": self.user_id,
-            "nombre_usuario": self.user.name,
-            "email_usuario": self.user.email,
-            "reservacion_hour": self.reservacion_hour.strftime("%Y-%m-%d %H:%M:%S"),
-            "cantidad_personas": self.cantidad.personas,
+            "cantidad_personas": self.cantidad_personas,
         }
 
 

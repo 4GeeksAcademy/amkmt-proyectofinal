@@ -225,8 +225,6 @@ def hacer_reserva():
             reservacion_date=fecha_dtr,
             # Supongamos que current_user representa al usuario autenticado
             user_id=get_jwt_identity()["id"],
-
-            reservacion_hour=fecha_dtr,
             cantidad_personas=reservation_data['cantidad_personas']
         )
         try:

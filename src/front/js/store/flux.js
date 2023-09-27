@@ -114,22 +114,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// return false;
 				}
 			},
-			reservation: async (cantidad, fechaReserva, email, nombre, mesaRe) => {
+			reservation: async (reservation_date, cantidad_personas) => {
 				try {
 					let data = await axios.post(process.env.BACKEND_URL + "/reservation", {
-						"MesaReservada": mesaRe,
-						"Nombre": nombre,
-						"Email": email,
-						"FechaReserva": fechaReserva,
-						"Cantidad": cantidad
+
+						"reservation_date": reservation_date,
+						"cantidad_personas": cantidad_personas
 					})
 					console.log(data);
 					//esto es lo que guarda en el localStorage
-					// localStorage.setItem("token", data.data.access_token);
+					localStorage.setItem("token", data.data.access_token);
 
 					return true;
 				} catch (error) {
-					console.log("errorrrrr:" + error)
+					console.log("el errorrrrr es:" + error)
 					if (error.response.status === 404) {
 						alert(error.response.data.msg)
 					}
