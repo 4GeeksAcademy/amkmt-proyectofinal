@@ -14,7 +14,8 @@ import MenuPage from "./pages/menupage.jsx";
 import Reservation from "./pages/reservation.jsx";
 import PaymentForm from "./pages/pago.jsx";
 import Logout from "./pages/logout.jsx";
-import Reseñas from "./pages/reseñas.jsx";
+import Contacto from "./pages/contacto.jsx"
+import Administrador from "./pages/administrador.jsx"
 
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -45,11 +46,14 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<Register />} path="/register" />
-                        <Route element={<CrearMenu />} path="/crearMenu" />
+                        <Route element={<CrearMenu />} path="/productos" />
                         <Route element={<MenuPage />} path="/especialidades" />
                         <Route element={<Reservation />} path="/reservation" />
                         <Route element={<PaymentForm />} path="/pago" />
                         <Route element={<Logout />} path="/logout" />
+                        <Route element={<Contacto />} path="/contacto" />
+                        <Route element={<Administrador />} path="/administrador" />
+
                         <Route element={<Menu />} path="/menu" />
                         <Route element={<Reseñas />} path="/resenas" />
 
