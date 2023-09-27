@@ -2,7 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    text-align: justify;
+    padding: 5rem;
+    
 }
 
 .resena-historica{
@@ -11,6 +13,7 @@
     margin: 2rem;
     display: flex;
     flex-direction: column;
+    text-align: justify;
     
 }
 
@@ -20,6 +23,7 @@
     margin: 2rem;
     display: flex;
     flex-direction: column;
+    text-align: justify;
 }
 
 .mision{
@@ -28,6 +32,7 @@
     margin: 2rem;
     display: flex;
     flex-direction: column;
+    text-align: justify;
 }
 
 .factor-diferenciador{
@@ -36,4 +41,5 @@
     margin: 2rem;
     display: flex;
     flex-direction: column;
+    text-align: justify;
 }

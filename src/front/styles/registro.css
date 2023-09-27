@@ -11,26 +11,42 @@ justify-content: center;
 .contenedor{
    display: block;
    justify-content: center;
+   
 }
 .form-content{
     /* Estos margin me ayudaron a separar el footer y a centrar el diseño */
-    margin-top:10%;
+    /* margin-top:10%;
     margin-bottom: 45%;
     margin-left: 30%;
     width: 300%;
     max-width: 600px;
     max-height: 520px;
-    background-color: #422f39db;
-    padding: 55px 40px 70px;
+    background-color: #926e4ce3;
+    border-radius: 15px;
+    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1); */
+
+
+    /* padding: 55px 40px 70px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 15px; */
     /* box-shadow: 15px #422f39db; */
+    justify-content: center;
+    max-width: 600px;
+    max-height: 720px;
+    /* margin: 0 auto; */
+    margin-top:6%;
+    margin-bottom: 28%;
+    margin-left: 34%;
+    padding: 20px;
+    background-color: rgba(252, 251, 251, 0.807);
+    border-radius: 15px;
+    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-content h1{
     font-size: 30px;
     margin-bottom: 30px;
-    color:#FFFFFF;
+    color:black;
     position: relative;
 }
 
@@ -59,11 +75,11 @@ justify-content: center;
 }
 
 .losinput{
+    margin-left: 2%;
     font-family: 'Oswald', sans-serif;
-
+    border-radius: 5%;
     width: 100%;
-    background: transparent;
-    border: 0;
+    border: 1px solid #ccc;
     outline: none;
     padding: 10px 10px;
     color: #C99734;
@@ -119,19 +135,28 @@ form p a {
 }
 
 .btn-field button.disable{
-    background-color: #EAEAEA;
+    background-color: #f7e2b7;
     color: #2C2F35;
     width: 150px;
 }
 
 #title{
     font-size: 33px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Dancing Script', cursive;
+
 
 }
 
-#signUp, #signIn{
+#signUp, #signInn{
     font-size: 18px;
     font-family: 'Oswald', sans-serif;
   
+}
+#signUp{
+    background-color: #926E4C;
+}
+
+#signInn{
+    color: white;
+    background-color: #a7815e;
 }

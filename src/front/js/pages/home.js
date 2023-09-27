@@ -15,7 +15,7 @@ const Home = () => {
 			<Carousel />
 			<section class="sobre-nosotros">
 				<div class="resena-historica">
-					<h2>Reseña Histórica</h2>
+					<h2> Nuestra Historia </h2>
 					<p>
 						Geeks Café nació de la pasión y la creatividad de un grupo de chicas programadoras con una profunda pasión por la cocina y el deseo de emprender. En un mundo donde la tecnología y la gastronomía convergen de manera innovadora, estas visionarias mujeres unieron fuerzas para dar vida a un sueño único.
 					</p>
@@ -39,7 +39,7 @@ const Home = () => {
 				</div>
 
 				<div class="factor-diferenciador">
-					<h2>Factor Diferenciador</h2>
+					<h2>Somos diferentes</h2>
 					<p>
 						Lo que realmente distingue a Geeks Café de otras cafeterías es nuestra habilidad para combinar la programación con la gastronomía de una manera única. No solo creamos un espacio digital funcional para que nuestros clientes conozcan nuestra historia, sino que también utilizamos la tecnología para mejorar su experiencia en el café. Desde aplicaciones interactivas para hacer pedidos hasta eventos temáticos que celebran la cultura geek, estamos constantemente innovando y sorprendiendo a nuestros visitantes.
 					</p>
