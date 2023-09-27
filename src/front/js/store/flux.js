@@ -166,7 +166,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			agregarMenu: async (data) => {
 				try {
-					const response = await fetch(process.env.BACKEND_URL + "/api/products", {
+					const response = await fetch(process.env.BACKEND_URL + "/products", {
 						method: 'POST',
 						headers: {
 							// 'Content-Type': 'application/json',

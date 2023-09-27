@@ -64,18 +64,14 @@ def signup():
     password = request.json.get("password", None)
     address = request.json.get("address", None)
     name = request.json.get("name", None)
-    username = request.json.get("username", None)
-    age = request.json.get("age", None)
-    city = request.json.get("city", None)
     phone = request.json.get("phone", None)
-
     salt = b64encode(os.urandom(32)).decode('utf-8')
     password = set_password(password, salt)
     existing_email = User.query.filter_by(email=email).first()
     if existing_email:
         return jsonify({"msg": "email already exists"}), 400
-    new_user = User(username=username, password=password, address=address,
-                    name=name, age=age, city=city, phone=phone, email=email, salt=salt)
+    new_user = User(password=password, address=address,
+                    name=name, phone=phone, email=email, salt=salt)
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"user_id": new_user.id}), 200
