@@ -25,6 +25,15 @@ const Reservation = () => {
     // Aquí puedes agregar la lógica para procesar la reserva
   };
 
+  const pagar = async () => {
+    let total = 10
+    console.log(total);
+    await actions.pagoMercadoPago(total);
+    let direccion = await store.mercadoPago.init_point;// direccion guarda la url que trae init_point
+    // console.log(direccion);
+    window.location.replace(direccion);// window es para renderizar y mandar al cliente a la url de pagar
+  };
+
   return (
     <div className="containnn">
       <h2 className="reservademesa">Reserva de Mesa</h2>
@@ -61,7 +70,9 @@ const Reservation = () => {
           <button className="col-6" type="button" onClick={(e) => actions.reservation(reservation_date, cantidad_personas)}>1. Reservar</button>
           <Link to="/pago">
             <button className="col-6 pagar" >2. Pagar reservación</button>
-          </Link>
+          </Link> */
+          <button type="button" className="btn btn-sm rounded-1 bg-naranja-200 border-marron m-3 px-3"
+            onClick={pagar}> Pagar </button>
         </div>
       </form>
     </div>

@@ -1,6 +1,8 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
+import os
+from base64 import b64encode
 from flask import Flask, request, jsonify, url_for, Blueprint,  current_app
 from api.models import db, User, Products, TokenBlocked, Reservas
 from api.utils import generate_sitemap, APIException
@@ -10,13 +12,15 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity, get_jwt
 from flask_jwt_extended import jwt_required
 from datetime import datetime
-
+import json 
 import cloudinary.uploader as uploader
 
+# SDK de Mercado Pago
+import mercadopago
 
-from werkzeug.security import generate_password_hash, check_password_hash
-from base64 import b64encode
-import os
+# Agrega credenciales
+sdk = mercadopago.SDK("APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
+
 
 api = Blueprint('api', __name__)
 
@@ -307,3 +311,36 @@ def delete_reserva(id):
     db.session.delete(reserva)
     db.session.commit()
     return jsonify({"message": "Reserva eliminada con éxito"})
+
+
+@api.route("/preference", methods=["POST"])
+def preference():
+    body = json.loads(request.data)  # aca esta toda la info
+    # acá decimos que en el body mandamos el total a pagar por el cliente?
+    total = body["total"]
+    # Crea un ítem en la preferencia
+    preference_data = {
+        "items": [
+            {
+                # aquí ponemos el nombre de nuestra app.
+                "title": "Geeks Coffee",
+                "quantity": 1,  # por defecto se deja 1
+                # aca mandamos lo que guarda la variable "total", la suma del total a pagar
+                "unit_price": total,
+            }
+        ],
+        "payer": {
+            # este es el usuario de prueba comprador
+            "email": "test_user_17805074@testuser.com"
+        },
+        "back_urls": {
+            "success": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago",
+            "failure": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago",
+            # En este caso las tres están configuradas para que lo manden de nuevo a la página home de la app.
+            "pending": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago"
+        },
+        "auto_return": "approved"
+    }  # preference es el nombre que le dimos a nuestra ruta para pagar con mercadopago
+    preference_response = sdk.preference().create(preference_data)
+    preference = preference_response["response"]
+    return preference, 200

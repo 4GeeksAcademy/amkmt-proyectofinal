@@ -3,7 +3,20 @@ import axios from "axios"
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			current_user: null
+			current_user: null,
+			mercadoPago: {},
+			demo: [
+				{
+					title: "FIRST",
+					background: "white",
+					initial: "white",
+				},
+				{
+					title: "SECOND",
+					background: "white",
+					initial: "white",
+				},
+			],
 		},
 		actions: {
 
