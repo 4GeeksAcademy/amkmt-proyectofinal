@@ -139,7 +139,51 @@ def addProducts():
     }
     return jsonify(response_body), 400
 
+# Ruta para actualizar un producto (PUT)
+@api.route("/products/<int:id>", methods=["PUT"])
+def updateProduct(id):
+    # Buscar el producto por su ID
+    product = Products.query.get(id)
 
+    # Si el producto no se encuentra, devolver un error 404
+    if not product:
+        return jsonify({"error": "Producto no encontrado"}), 404
+
+    # Obtener los datos enviados en la solicitud JSON
+    data = request.get_json()
+
+    # Actualizar los campos del producto si se proporcionan en la solicitud
+    if "name" in data:
+        product.name = data["name"]
+    if "product_image_url" in data:
+        product.product_image_url = data["product_image_url"]
+    if "price" in data:
+        product.price = data["price"]
+    if "description" in data:
+        product.description = data["description"]
+
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+
+    # Devolver una respuesta de éxito
+    return jsonify({"message": "Producto actualizado exitosamente"}), 200
+
+# Ruta para eliminar un producto (DELETE)
+@api.route("/products/<int:id>", methods=["DELETE"])
+def deleteProduct(id):
+    # Buscar el producto por su ID
+    product = Products.query.get(id)
+
+    # Si el producto no se encuentra, devolver un error 404
+    if not product:
+        return jsonify({"error": "Producto no encontrado"}), 404
+
+    # Eliminar el producto de la base de datos
+    db.session.delete(product)
+    db.session.commit()
+
+    # Devolver una respuesta de éxito
+    return jsonify({"message": "Producto eliminado exitosamente"}), 200
 @api.route("/login", methods=["POST"])
 def login():
     if request.method == "POST":
