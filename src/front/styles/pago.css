@@ -125,12 +125,13 @@ body {
     }
     
     #title{
-        font-size: 33px;
-        font-family: 'Oswald', sans-serif;
+        font-size: 40px;
+        font-family: 'Dancing Script', cursive;
+
     
     }
     
-    #signUpp, #signIn{
+    #signUpp{
         font-size: 18px;
         font-family: 'Oswald', sans-serif;
       

@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../../styles/index.css";
+import "../../styles/carousel.css";
 
 
 import Jumbotron from "../component/jumbotron.jsx";
