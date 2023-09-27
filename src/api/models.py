@@ -47,6 +47,7 @@ class Products(db.Model):
     product_image_url = db.Column(db.String(255), nullable=False)
     price = db.Column(db.String(150), nullable=False)
     description = db.Column(db.String(400), nullable=False)
+    
 
     def __repr__(self):
         return f'<Products {self.id}>'
