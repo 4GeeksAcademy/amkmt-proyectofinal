@@ -16,9 +16,9 @@ import json
 import cloudinary.uploader as uploader
 
 # SDK de Mercado Pago
-
+# import mercadopago
 # Agrega credenciales
-
+# sdk = mercadopago.SDK("APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
 api = Blueprint('api', __name__)
 
 

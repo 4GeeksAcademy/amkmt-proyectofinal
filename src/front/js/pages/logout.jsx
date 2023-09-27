@@ -10,10 +10,15 @@ const Logout = () => {
             <h1 className="titulologout">¿Está seguro que desea cerrar la sesión?</h1>
 
             {/* <!-- Botón de Logout --> */}
+            {/* <Link to="/">
+                <button id="volverButton">< i class=" fa-solid fa-house fa-2x"></i></button>
+            </Link> */}
             <Link to="/">
                 <button id="volverButton">< i class=" fa-solid fa-house fa-2x"></i></button>
             </Link>
-            <button id="logoutButton" onClick={() => actions.logout()}>Cerrar</button>
+            <Link to="/login">
+                <button id="logoutButton" onClick={() => actions.logout()}>Cerrar</button>
+            </Link>
 
 
         </div>
