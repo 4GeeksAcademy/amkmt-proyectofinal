@@ -12,15 +12,12 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity, get_jwt
 from flask_jwt_extended import jwt_required
 from datetime import datetime
-import json 
+import json
 import cloudinary.uploader as uploader
 
 # SDK de Mercado Pago
-import mercadopago
 
 # Agrega credenciales
-sdk = mercadopago.SDK("APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
-
 
 api = Blueprint('api', __name__)
 
@@ -42,16 +39,20 @@ def verifyToken(jti):
         return False  # para este caso el token no estaría en la lista de bloqueados
 
 
-@api.route('/hello', methods=['POST', 'GET'])
+@api.route('/auth', methods=['GET'])
 @jwt_required()
-def handle_hello():
+def auth():
 
     verification = verifyToken(get_jwt()["jti"])
     if verification == False:
         return jsonify({"message": "forbidden"}), 403
+    user_data = get_jwt_identity()
+    user = User.query.get(user_data["id"])
+    if user is None:
+        return jsonify({"message": "not found"}), 404
 
     response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+        "user": user.serialize()
     }
 
     return jsonify(response_body), 200
@@ -193,7 +194,7 @@ def logout():
 
     try:
         jti = get_jwt()["jti"]
-        identity = get_jwt_identity()  # asociada al correo
+        identity = get_jwt_identity()["email"]  # asociada al correo
         print("jti: ", jti)
         # creamos una instancia de la clase TokenBlocked
         new_register = TokenBlocked(token=jti, email=identity)
@@ -225,8 +226,6 @@ def hacer_reserva():
             reservacion_date=fecha_dtr,
             # Supongamos que current_user representa al usuario autenticado
             user_id=get_jwt_identity()["id"],
-
-            reservacion_hour=fecha_dtr,
             cantidad_personas=reservation_data['cantidad_personas']
         )
         try:

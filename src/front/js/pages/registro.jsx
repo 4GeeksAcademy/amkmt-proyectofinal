@@ -63,11 +63,11 @@ const Register = () => {
                     <h1 id="title">Registro</h1>
                     <form>
                         <div className="input-field" id="nameInput">
-                            <i className="fa-solid fa-user"></i>
+                            {/* <i className="fa-solid fa-user"></i> */}
                             <input className="losinput" type="text" placeholder="Nombre" />
                         </div>
                         <div className="input-field">
-                            <i className="fa-solid fa-envelope"></i>
+                            {/* <i className="fa-solid fa-envelope"></i> */}
                             <input
                                 className="losinput"
                                 type="email"
@@ -78,7 +78,7 @@ const Register = () => {
                             />
                         </div>
                         <div className="input-field">
-                            <i className="fa-solid fa-lock"></i>
+                            {/* <i className="fa-solid fa-lock"></i> */}
                             <input
                                 className="losinput"
                                 type="password"
@@ -90,17 +90,13 @@ const Register = () => {
                         </div>
 
                         <div className="input-field" id="nameInput">
-                            <i class="fa-solid fa-house"></i>
+                            {/* <i class="fa-solid fa-house"></i> */}
                             <input className="losinput" type="text" placeholder="Dirección" />
                         </div>
                         <div className="input-field" id="nameInput">
-                            <i class="fa-solid fa-phone"></i>
+                            {/* <i class="fa-solid fa-phone"></i> */}
                             <input className="losinput" type="text" placeholder="Teléfono" />
                         </div>
-
-                        <p>
-                            Olvidaste tu contraseña <a href="#">Click aquí</a>
-                        </p>
 
                         <div className="btn-field">
                             <button className="col-4" id="signUp" type="button" onClick={() => register()}>
@@ -108,7 +104,7 @@ const Register = () => {
                             </button>
 
                             <Link to="/login">
-                                <button className="col-4 disable" id="signIn" type="button" >
+                                <button className="col-4 disable" id="signInn" type="button" >
                                     Login
                                 </button>
                             </Link>

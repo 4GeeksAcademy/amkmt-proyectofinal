@@ -3,6 +3,7 @@ import axios from "axios"
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			current_user: null,
 			message: null,
 			mercadoPago: {},
 			demo: [
@@ -64,12 +65,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return null; // Retorna null en caso de error en la solicitud
 				}
 			},
-			getMessage: async () => {
+			getAuth: async () => {
+				const actions = getActions()
+				const store = getStore()
 				try {
 					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
+					const resp = await actions.fetchPromise("/auth")
 					const data = await resp.json()
-					setStore({ message: data.message })
+					console.log(data)
+					setStore({ ...store, current_user: data.user })
 					// don't forget to return something, that is how the async resolves
 					return data;
 				} catch (error) {
@@ -123,7 +127,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"city": "SJ",
 						"phone": "25331050"
 					})
-					setStore(data);
+					// setStore(data);
 					//esto es lo que guarda en el localStorage
 					// localStorage.setItem("token", data.data.access_token);
 					return true;
@@ -135,22 +139,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// return false;
 				}
 			},
-			reservation: async (cantidad, fechaReserva, email, nombre, mesaRe) => {
+			reservation: async (reservation_date, cantidad_personas) => {
 				try {
 					let data = await axios.post(process.env.BACKEND_URL + "/reservation", {
-						"MesaReservada": mesaRe,
-						"Nombre": nombre,
-						"Email": email,
-						"FechaReserva": fechaReserva,
-						"Cantidad": cantidad
+
+						"reservation_date": reservation_date,
+						"cantidad_personas": cantidad_personas
 					})
 					console.log(data);
 					//esto es lo que guarda en el localStorage
-					// localStorage.setItem("token", data.data.access_token);
+					localStorage.setItem("token", data.data.access_token);
 
 					return true;
 				} catch (error) {
-					console.log("errorrrrr:" + error)
+					console.log("el errorrrrr es:" + error)
 					if (error.response.status === 404) {
 						alert(error.response.data.msg)
 					}

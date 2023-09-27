@@ -49,7 +49,7 @@ const Layout = () => {
                         <Route element={<Reservation />} path="/reservation" />
                         <Route element={<PaymentForm />} path="/pago" />
                         <Route element={<Logout />} path="/logout" />
-
+                        <Route element={<Menu />} path="/menu" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
