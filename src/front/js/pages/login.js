@@ -54,7 +54,7 @@ export const Login = () => {
     <>
       <div className="container">
         <div className="form-content">
-          <h1 id="title">Login</h1>
+          <h1 id="title">Iniciar Sesión</h1>
           <form onSubmit={handleSubmit}>
             <div className="">
               <div className="input-field" id="nameInput">
@@ -66,6 +66,7 @@ export const Login = () => {
                 <input onChange={handlePassword} type="password" placeholder="Password" />
               </div>
             </div>
+
             <div className="btn-field">
               <button className="col-4" id="Login" type="submit">
                 Login

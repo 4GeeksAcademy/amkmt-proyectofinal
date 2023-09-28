@@ -12,13 +12,9 @@ class User(db.Model):
     password = db.Column(db.String(255), unique=False, nullable=False)
     address = db.Column(db.String(255), nullable=False)
     name = db.Column(db.String(150), nullable=False)
-    username = db.Column(db.String(150), nullable=False)
-    age = db.Column(db.String(150), nullable=False)
-    city = db.Column(db.String(150), nullable=False)
     phone = db.Column(db.String(150), nullable=False)
     salt = db.Column(db.String(180), nullable=False)
     admin = db.Column(db.Boolean, unique=False, default=False)
-
     reserva = db.relationship("Reservas", backref="user", lazy=True)
 
     def __repr__(self):
@@ -30,9 +26,6 @@ class User(db.Model):
             "email": self.email,
             "address": self.address,
             "name": self.name,
-            "username": self.username,
-            "age": self.age,
-            "city": self.city,
             "phone": self.phone,
             "reservas": [reservas.serialize() for reservas in self.reserva],
             "admin": self.admin,
@@ -54,7 +47,7 @@ class Products(db.Model):
         return {
             "id": self.id,
             "name": self.name,
-            "image": self.image,
+            "image": self.product_image_url,
             "price": self.price,
             "description": self.description,
         }
