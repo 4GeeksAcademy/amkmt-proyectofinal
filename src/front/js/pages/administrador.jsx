@@ -9,7 +9,7 @@ const Administrador = () => {
             <h2>Administrador </h2>
             <div className="container-Button">
                 <Link to="/productos">
-                    <Button variant="primary" size="lg">
+                    <Button className="btn productos"variant="primary" size="lg">
                         Productos
                     </Button>
                 </Link>

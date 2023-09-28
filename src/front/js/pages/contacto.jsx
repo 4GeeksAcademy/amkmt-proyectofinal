@@ -13,7 +13,7 @@ const Contacto = () => {
     <section className="contacto">
       <div className="contacto-container">
         <div className="contacto-info">
-          <h2>Contáctenos</h2>
+          <h1>Contáctenos</h1>
           <p>
             ¡Un mundo donde la tecnología y la gastronomía convergen de manera
             innovadora!

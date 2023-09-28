@@ -98,10 +98,10 @@ body {
     button{
         
         /* flex-basis:48%; */
-        margin-top: 5%;
+        /* margin-top: 5%; */
         padding-bottom: 2px;
-        margin-inline-start: 15px;
-        margin-inline-end: 15px;
+        /* margin-inline-start: 15px;
+        margin-inline-end: 15px; */
         font-size: 16px;
         background-color: #b584c592;
         color: white;
