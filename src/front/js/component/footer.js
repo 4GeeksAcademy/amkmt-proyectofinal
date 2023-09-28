@@ -20,7 +20,7 @@ export const Footer = () => (
 				</div> */}
 				<div className="col-md-10 columna3footer">
 					<p>¡Te esperamos y estaremos encantadas de atenderte!</p>
-					<p className="parrafo2">Recuerda, si quisieras visitarnos reserva una mesa para asegurar tu espacio o te esperamos en horario regular. No te vas a arrepentir! Te dejamos algunas opiniones de nuestros clientes. Dale click al loguito para verlos.</p>
+					<p className="parrafo2"> Te dejamos algunas opiniones de nuestros clientes. Dale click al loguito para verlos.</p>
 				</div>
 				<div className="col-md-1 fotofooter">
 					{/* <img className="imagendefooter" src={logoOriginal} alt="" /> */}
