@@ -9,15 +9,16 @@
 
     float: left;
     margin-left: 20px;
-    font-size: 27px;
+    font-size: 22px;
     margin-top: 30px;
     color: aliceblue;
 }
 
 
 .imagendefooter {
-    margin-top: 30px;
-    float: right;
+    margin-top:30%;
+    margin-left: 50%;
+    /* float: right; */
     margin-right: 0;
     width: 100px;
     border-radius: 80%;

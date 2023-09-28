@@ -1,5 +1,4 @@
 #carouselExampleSlidesOnly {
-    -ms-transform-origin-x: 0cqmin;
-    transition-duration: 0s;
-    /* transition: ease-in-out; */
+    -ms-transform-origin-x: -0cqmin;
+    transition-duration: 2ms;
 }
