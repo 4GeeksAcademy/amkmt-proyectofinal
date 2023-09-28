@@ -7,19 +7,23 @@ import "../../styles/administrador.css";
 const Administrador = () => {
     return (
         <div className="container">
-            <h2>Administrador </h2>
-            <div className="container-Button">
-                <Link to="/productos">
-                    <Button className="btn productos"variant="primary" size="lg">
-                        Productos
-                    </Button>
-                </Link>
-                <Button variant="primary" size="lg">
-                    Reservas
-                </Button>
-                <Button variant="primary" size="lg">
-                    Usuarios
-                </Button>
+            <div className="row">
+                <div className="col-12">
+                    <h2>Administrador </h2>
+                    <div className="container-button ">
+                        <Link className = "btn btn-product" variant="primary" size="lg" to="/productos">
+                             
+                                Productos
+                        
+                        </Link>
+                        <Link className = "btn btn-product" variant="primary" size="lg" to="/">
+                            Reservas
+                        </Link>
+                        <Link className = "btn btn-product" variant="primary" size="lg" to="/">
+                            Usuarios
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
     );
