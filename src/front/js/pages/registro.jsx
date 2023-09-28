@@ -118,11 +118,7 @@ const Register = () => {
                             <button className="col-4" id="signUp" type="button" onClick={() => register()}>
                                 Sign Up
                             </button>
-                            <Link to="/login">
-                                <button className="col-4 disable" id="signInn" type="button" >
-                                    Login
-                                </button>
-                            </Link>
+
                         </div>
                     </form>
                 </div>

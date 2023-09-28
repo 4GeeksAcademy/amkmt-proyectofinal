@@ -22,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			pagoMercadoPago: async (total) => {
 				try {
-					const response = await axios.post(process.env.BACKEND_URL + "/api/preference", {
+					const response = await axios.post(process.env.BACKEND_URL + "/preference", {
 						total: total, //acá está de nuevo la variable donde se guarda el total a pagar por el cliente
 					});
 					console.log(response.data);
@@ -115,29 +115,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			},
-			register: async (email, password) => {
+			register: async (data) => {
+				let store = getStore()
 				try {
-					let data = await axios.post(process.env.BACKEND_URL + "/signup", {
-						"email": email,
-						"password": password,
-						"address": "Costa Rica",
-						"name": "ash",
-						"username": "Vale",
-						"age": "20",
-						"city": "SJ",
-						"phone": "25331050"
+					let response = await fetch(`${process.env.BACKEND_URL}/signup`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
 					})
-					// setStore(data);
-					//esto es lo que guarda en el localStorage
-					// localStorage.setItem("token", data.data.access_token);
-					return true;
+					return response.status
 				} catch (error) {
-					// console.log("errorrrrr:" + error)
-					// if (error.response.status === 404) {
-					//  alert(error.response.data.msg)
-					// }
-					// return false;
+					console.log(error)
 				}
+				// try {
+				//  let data = await axios.post(process.env.BACKEND_URL + "/signup", {
+				//      "email": email,
+				//      "password": password,
+				//      "address": "Costa Rica",
+				//      "name": "ash",
+				//      "username": "Vale",
+				//      "age": "20",
+				//      "city": "SJ",
+				//      "phone": "25331050"
+				//  })
+				//  // setStore(data);
+				//  //esto es lo que guarda en el localStorage
+				//  // localStorage.setItem("token", data.data.access_token);
+				//  return true;
+				// } catch (error) {
+				//  // console.log("errorrrrr:" + error)
+				//  // if (error.response.status === 404) {
+				//  //  alert(error.response.data.msg)
+				//  // }
+				//  // return false;
+				// }
 			},
 			reservation: async (reservation_date, cantidad_personas) => {
 				try {
