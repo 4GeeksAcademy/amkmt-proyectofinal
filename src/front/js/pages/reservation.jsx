@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import "../../styles/reservation.css";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext"
+import Swal from "sweetalert2";
+
 
 
 
@@ -28,12 +30,25 @@ const Reservation = () => {
       "reservation_date": reservation_date,
       "cantidad_personas": cantidad_personas
     }
+
     let respuesta = await actions.fetchPromise("/reservation", "POST", data)
     if (respuesta.ok) {
       respuesta = await respuesta.json()
       console.log(respuesta)
+      Swal.fire({
+        icon: "success",
+        title: "Reserva exitosa",
+        text: "Puedes proceder con el pago",
+        timer: 3500
+      })
+
+
+
+
     }
+
   };
+
 
   const pagar = async () => {
     let total = 10
@@ -78,13 +93,14 @@ const Reservation = () => {
         <div>
 
           {/* <button className="col-6" type="button" onClick={(e) => actions.reservation(reservation_date, cantidad_personas)}>1. Reservar</button> */}
-          <button className="col-6" type="submit" >1. Reservar</button>
-          <button type="button" className="col-6 pagar" onClick={pagar}  >2. Pagar reservación</button>
+          <button className="col-6 reservar" type="submit" >1. Reservar</button>
+          <button type="button" className="col-6 pagar" onClick={pagar}  >2. Pagar reservación </button>
 
         </div>
       </form>
     </div>
   );
 };
+
 
 export default Reservation;

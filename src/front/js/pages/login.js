@@ -31,9 +31,7 @@ export const Login = () => {
 
         // Almacena el token en el localStorage
         localStorage.setItem("token", responseJson.token);
-
-        // Almacena los datos del usuario en el localStorage
-        localStorage.setItem("user", JSON.stringify(responseJson.user));
+        actions.setCurrentUser(responseJson.user)
 
         // Verifica si el usuario es administrador
         if (responseJson.user && responseJson.user.admin) {

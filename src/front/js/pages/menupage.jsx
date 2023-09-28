@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import "../../styles/inicio.css";
+import { Link } from "react-router-dom";
 
 const MenuPage = (id, name) => {
     // Datos del menú (sustituir los datos)
@@ -53,12 +54,14 @@ const MenuPage = (id, name) => {
                                 {/* {<img src="rigo-baby.jpg" alt="" />} */}
                                 <Card.Title className="nombresdecomidas">{item.name}</Card.Title>
                                 <Card.Text className="descripciondecomidas">{item.description}</Card.Text>
-                                <Button className="botondemenucompleto" variant="justify-content-center">
-                                    MÁS
+                                <Link to="/menu">
+                                    <Button className="botondemenucompleto" variant="justify-content-center">
+                                        MÁS
 
-                                    <br />
-                                    ——
-                                </Button>
+                                        <br />
+                                        ——
+                                    </Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     </Col>

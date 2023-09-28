@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "../../styles/footer.css";
 import logoOriginal from "../../img/logo.jpeg";
-
+import Codigo from '../../img/codigo.png'
+import { Link } from "react-router-dom";
 export const Footer = () => (
 
 	<footer className="container-fluid footer">
@@ -17,12 +18,15 @@ export const Footer = () => (
 					<p>Lunes - Viernes: 1:30 AM - 7:30 PM</p>
 					<p>Sábados - Domingos: 1:30 AM - 7:30 PM</p>
 				</div> */}
-				<div className="col-md-9 columna3footer">
+				<div className="col-md-10 columna3footer">
 					<p>¡Te esperamos y estaremos encantadas de atenderte!</p>
-					<p className="parrafo2">Recuerda, si quisieras visitarnos puedes reservar el lugar para asegurar tu espacio o venir en nuestro horario regular.</p>
+					<p className="parrafo2"> Te dejamos algunas opiniones de nuestros clientes. Dale click al loguito para verlos.</p>
 				</div>
-				<div className="col-md-2 fotofooter">
-					<img className="imagendefooter" src={logoOriginal} alt="" />
+				<div className="col-md-1 fotofooter">
+					{/* <img className="imagendefooter" src={logoOriginal} alt="" /> */}
+					<Link to="/testimonio">
+						<img className="imagendefooter" src={logoOriginal} alt="" />
+					</Link>
 				</div>
 			</div>
 		</div>

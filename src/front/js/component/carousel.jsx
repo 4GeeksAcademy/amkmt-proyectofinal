@@ -6,6 +6,7 @@ import Foto3 from '../../img/GeeksCoffee3.png'
 import Recetas1 from "../../img/Recetas1.png"
 import Recetas2 from "../../img/Recetas2.png"
 // import Historia from "../../img/Historia.png"
+import "../../styles/carousel.css";
 
 
 
@@ -36,7 +37,9 @@ const Carousel = () => {
 
         </div>
 
+
+
     )
 }
 
-export default Carousel
+export default Carousel;

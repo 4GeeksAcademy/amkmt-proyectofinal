@@ -16,6 +16,8 @@ import PaymentForm from "./pages/pago.jsx";
 import Logout from "./pages/logout.jsx";
 import Contacto from "./pages/contacto.jsx"
 import Administrador from "./pages/administrador.jsx"
+import Testimonio from "./pages/testimonios.jsx";
+
 
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
@@ -54,7 +56,7 @@ const Layout = () => {
                         <Route element={<Logout />} path="/logout" />
                         <Route element={<Contacto />} path="/contacto" />
                         <Route element={<Administrador />} path="/administrador" />
-
+                        <Route element={<Testimonio />} path="/testimonio" />
                         <Route element={<Menu />} path="/menu" />
 
                         <Route element={<h1>Not found!</h1>} />
