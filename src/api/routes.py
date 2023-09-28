@@ -375,10 +375,12 @@ def preference():
             "email": "test_user_17805074@testuser.com"
         },
         "back_urls": {
-            "success": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago",
-            "failure": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago",
-            # En este caso   las tres están configuradas para que lo manden de nuevo a la página home de la app.
-            "pending": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago"
+
+            "success": os.environ["FRONTEND_URL"]+"/pago",
+            "failure": os.environ["FRONTEND_URL"]+"/pago",
+            # En este caso las tres están configuradas para que lo manden de nuevo a la página home de la app.
+            "pending": os.environ["FRONTEND_URL"]+"/pago"
+
         },
         "auto_return": "approved"
     }  # preference es el nombre que le dimos a nuestra ruta para pagar con mercadopago
