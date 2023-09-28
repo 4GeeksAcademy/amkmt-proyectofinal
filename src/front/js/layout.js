@@ -52,9 +52,10 @@ const Layout = () => {
                         <Route element={<PaymentForm />} path="/pago" />
                         <Route element={<Logout />} path="/logout" />
                         <Route element={<Contacto />} path="/contacto" />
-                        <Route element={<Administrador/>} path= "/administrador" />
+                        <Route element={<Administrador />} path="/administrador" />
 
                         <Route element={<Menu />} path="/menu" />
+
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

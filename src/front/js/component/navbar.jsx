@@ -45,6 +45,17 @@ const Navbar2 = () => {
                             <li className="nav-item">
                                 <Link className="nav-link  colorenlace " to="/register">Registrarse</Link>
                             </li>
+                            <div class="dropdown dropdowncerrar">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li className="nav-item botonsalir">
+                                        <Link className="nav-link colorenlace" to="/logout">Salir</Link>
+                                    </li>
+
+                                </ul>
+                            </div>
                         </>
                         {/* } */}
 

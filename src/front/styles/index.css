@@ -31,4 +31,19 @@
 }
 
 
+.botondereservaen {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 45px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50;
+    margin-bottom: 0px;
+    padding: 2%;
+    /* width: 100px; */
+    background-color: white;
+}
 
+.titulodereserva {
+    font-family: 'Nunito Sans', sans-serif;
+
+}
