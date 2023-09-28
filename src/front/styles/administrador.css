@@ -1,0 +1,12 @@
+.container-Button{
+ background: white;
+ display: flex;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.Button{
+    width: 150px;
+height: 40px;
+}

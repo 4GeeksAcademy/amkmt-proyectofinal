@@ -1,18 +1,23 @@
 import React from "react"
 import {Link} from "react-router-dom"
+import Button from 'react-bootstrap/Button';
+import "../../styles/administrador.css"
 
+
+  
 
 const Administrador = () =>{
  
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-12 col-md-4">
+        <div className="container-Button">
+            <h2>Administrador </h2>
+                <div className="Button">
                     <Link to = "/productos">
-                    productos
+                        <Button variant="primary" size="lg">
+                         Productos
+                         </Button>
                     </Link>
                 </div>
-            </div>
         </div>
     )
 }
