@@ -11,19 +11,20 @@ import Recetas2 from "../../img/Recetas2.png"
 
 const Carousel = () => {
     return (
+        
         <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner">
                 <div className="carousel-item active text-center">
-                    <img src={Foto} className="d-block w-100" alt="" />
+                    <img src={Foto} className="d-block w-100" alt=""/>
                 </div>
                 <div className="carousel-item">
-                    <img src={Foto2} className="d-block w-100" alt="" />
+                    <img src={Foto2} className="d-block w-100" alt=""/>
                 </div>
                 <div className="carousel-item">
-                    <img src={Foto3} className="d-block w-100" alt="" />
+                    <img src={Foto3} className="d-block w-100" alt=""/>
                 </div>
             </div>
-            <div className="Recetas1">
+            <div className="Recetas">
             <img src={Recetas1} className="d-block w-100" alt="" />
             <img src={Recetas2} className="d-block w-100" alt="" />
             </div>
@@ -35,8 +36,6 @@ const Carousel = () => {
 
         </div>
 
-
-        
     )
 }
 
