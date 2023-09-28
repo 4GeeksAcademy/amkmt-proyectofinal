@@ -91,6 +91,7 @@ def getProducts():
 
 
 @api.route("/products", methods=["POST"])
+# @jwt_required(required_rol=['admin'])
 def addProducts():
     data_files = request.files
     data_form = request.form
@@ -121,6 +122,11 @@ def addProducts():
         return jsonify({
             "msg": "error al guardar producto"
         }), 500
+# if 'admin' in claims['roles']:
+#         # Aquí puedes permitir que los usuarios administradores creen productos
+#         return jsonify({"message": "Producto creado exitosamente"}), 200
+#     else:
+#         return jsonify({"error": "Acceso no autorizado"}), 403
 
     body = json.loads(request.data)
     queryNewproducts = Products.query.filter_by(name=body["name"]).first()
@@ -141,7 +147,51 @@ def addProducts():
     }
     return jsonify(response_body), 400
 
+# Ruta para actualizar un producto (PUT)
+@api.route("/products/<int:id>", methods=["PUT"])
+def updateProduct(id):
+    # Buscar el producto por su ID
+    product = Products.query.get(id)
 
+    # Si el producto no se encuentra, devolver un error 404
+    if not product:
+        return jsonify({"error": "Producto no encontrado"}), 404
+
+    # Obtener los datos enviados en la solicitud JSON
+    data = request.get_json()
+
+    # Actualizar los campos del producto si se proporcionan en la solicitud
+    if "name" in data:
+        product.name = data["name"]
+    if "product_image_url" in data:
+        product.product_image_url = data["product_image_url"]
+    if "price" in data:
+        product.price = data["price"]
+    if "description" in data:
+        product.description = data["description"]
+
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+
+    # Devolver una respuesta de éxito
+    return jsonify({"message": "Producto actualizado exitosamente"}), 200
+
+# Ruta para eliminar un producto (DELETE)
+@api.route("/products/<int:id>", methods=["DELETE"])
+def deleteProduct(id):
+    # Buscar el producto por su ID
+    product = Products.query.get(id)
+
+    # Si el producto no se encuentra, devolver un error 404
+    if not product:
+        return jsonify({"error": "Producto no encontrado"}), 404
+
+    # Eliminar el producto de la base de datos
+    db.session.delete(product)
+    db.session.commit()
+
+    # Devolver una respuesta de éxito
+    return jsonify({"message": "Producto eliminado exitosamente"}), 200
 @api.route("/login", methods=["POST"])
 def login():
     if request.method == "POST":
@@ -331,10 +381,12 @@ def preference():
             "email": "test_user_17805074@testuser.com"
         },
         "back_urls": {
+
             "success": os.environ["FRONTEND_URL"]+"/pago",
             "failure": os.environ["FRONTEND_URL"]+"/pago",
             # En este caso las tres están configuradas para que lo manden de nuevo a la página home de la app.
             "pending": os.environ["FRONTEND_URL"]+"/pago"
+
         },
         "auto_return": "approved"
     }  # preference es el nombre que le dimos a nuestra ruta para pagar con mercadopago

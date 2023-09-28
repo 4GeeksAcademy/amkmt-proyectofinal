@@ -20,13 +20,19 @@ const Navbar2 = () => {
                             <Link className="nav-link active  colorenlace  " aria-current="page" to="/">Inicio</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link " to="/especialidades">Especiales</Link>
+                            <Link className="nav-link " colorenlace to="/especialidades">Especiales</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link  colorenlace " to="/menu">Menú</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link " colorenlace to="/reservation">Reservar</Link>
+                        </li>
                         {/* <li className="nav-item">
-                            <Link className="nav-link " to="/reservation">Reservar</Link>
+                            <Link className="nav-link  colorenlace " to="/login">Ingresar</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link  colorenlace " to="/register">Registrarse</Link>
                         </li> */}
                         <li className="nav-item">
                             <Link className="nav-link  colorenlace " to="/contacto">Contáctanos</Link>
