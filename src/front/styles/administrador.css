@@ -1,10 +1,9 @@
-
-.container{
+.container {
   justify-content: center;
   max-width: 600px;
   max-height: 720px;
   /* margin: 0 auto; */
-  margin-top:6%;
+  margin-top: 6%;
   margin-bottom: 28%;
   margin-left: 34%;
   padding: 20px;
@@ -13,7 +12,12 @@
   box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
 }
 
-.button{
-  margin: 1rem;
-  
+.container-Button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  width: 100%;
+
 }
