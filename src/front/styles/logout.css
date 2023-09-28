@@ -1,39 +1,42 @@
-.titulologout{
+.titulologout {
     font-family: 'Nunito Sans', sans-serif;
     font-size: 55px;
     padding-top: 3%;
     color: white;
 }
 
-.contenedorlogout{
+.contenedorlogout {
     margin-left: 29%;
     width: 700px;
     margin-top: 10%;
     margin-bottom: 35%;
     text-align: center;
-    background-color: #422f39a2;
+    background-color: #a7815eb0;
 }
 
-#logoutButton{
+#logoutButton {
     margin-bottom: 2%;
-    background-color:transparent;
-    font-family: 'Oswald', sans-serif;
+    background-color: transparent;
+    /* font-family: 'Oswald', sans-serif; */
     width: 90px;
     font-size: 23px;
 
 
 }
-#logoutButton:hover{
- background-color:#586079b1}
 
-#volverButton:hover{
-    background-color:#98918ab1;
+#logoutButton:hover {
+    background-color: #586079b1
 }
-#volverButton{
-    
+
+#volverButton:hover {
+    background-color: #98918ab1;
+}
+
+#volverButton {
+
     margin-bottom: 3%;
     font-family: 'Oswald', sans-serif;
     width: 90px;
     color: white;
-    background-color:transparent;
+    background-color: transparent;
 }

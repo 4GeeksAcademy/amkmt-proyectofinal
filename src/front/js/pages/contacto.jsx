@@ -71,13 +71,13 @@ const Contacto = () => {
             ></iframe> */}
 
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31440.06520546787!2d-84.0683757086592!3d9.93327859359981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3f14d13a1b5%3A0x55def35dd8fbd62d!2sSan%20Jos%C3%A9%2C%20San%20Pedro!5e0!3m2!1ses-419!2scr!4v1695834060795!5m2!1ses-419!2scr"
-              
+
               style={{ "border": 0 }}
               allowFullScreen=""
               loading="lazy"
             // referrerpolicy="no-referrer-when-downgrade"
             >
-        
+
             </iframe>
 
 
