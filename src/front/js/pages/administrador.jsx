@@ -9,17 +9,17 @@ const Administrador = () => {
         <div className="container">
             <div className="row">
                 <div className="col-12">
-                    <h2>Administrador </h2>
+                    <h2>Administrador <i class="fa-solid fa-user-gear"></i></h2>
                     <div className="container-button ">
-                        <Link className = "btn btn-product" variant="primary" size="lg" to="/productos">
-                             
-                                Productos
-                        
+                        <Link className="btn btn-product" variant="primary" size="lg" to="/productos">
+
+                            Productos
+
                         </Link>
-                        <Link className = "btn btn-product" variant="primary" size="lg" to="/">
+                        <Link className="btn btn-product" variant="primary" size="lg" to="/">
                             Reservas
                         </Link>
-                        <Link className = "btn btn-product" variant="primary" size="lg" to="/">
+                        <Link className="btn btn-product" variant="primary" size="lg" to="/">
                             Usuarios
                         </Link>
                     </div>

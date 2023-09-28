@@ -20,13 +20,13 @@ const Navbar2 = () => {
                             <Link className="nav-link active  colorenlace  " aria-current="page" to="/">Inicio</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link " colorenlace to="/especialidades">Especiales</Link>
+                            <Link className="nav-link colorenlace" to="/especialidades">Especiales</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link  colorenlace " to="/menu">Menú</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link " colorenlace to="/reservation">Reservar</Link>
+                            <Link className="nav-link colorenlace" to="/reservation">Reservar</Link>
                         </li>
                         {/* <li className="nav-item">
                             <Link className="nav-link  colorenlace " to="/login">Ingresar</Link>
@@ -47,7 +47,7 @@ const Navbar2 = () => {
                             </li>
                             <div className="dropdown dropdowncerrar">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-
+                                    <i class="fa-solid fa-user"></i>
                                 </button>
                                 <ul className="dropdown-menu">
                                     <li className="nav-item botonsalir">

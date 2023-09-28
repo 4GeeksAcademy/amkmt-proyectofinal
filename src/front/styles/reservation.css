@@ -99,12 +99,12 @@ button[type="button"] {
 }
 
 button[type="button"]:hover {
-    background-color: #b179b87e;
+    background-color: #926E4C;
 }
 
 .pagar {
     font-family: 'Oswald', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     /* width: 120px; */
     color: #fff;
     display: inline-block;
