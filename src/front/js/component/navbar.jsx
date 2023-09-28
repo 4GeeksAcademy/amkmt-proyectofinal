@@ -39,11 +39,14 @@ const Navbar2 = () => {
                                 <li className="nav-item">
                                     <Link className="nav-link  colorenlace " to="/register">Registrarse</Link>
                                 </li>
+
                             </>
                             :
                             <li className="nav-item botonsalir">
                                 <Link className="nav-link colorenlace" to="/logout">Salir</Link>
                             </li>
+
+
                         }
 
                     </ul>

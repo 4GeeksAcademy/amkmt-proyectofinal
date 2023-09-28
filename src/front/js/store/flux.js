@@ -168,12 +168,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 							// 'Content-Type': 'application/json',
 						},
 						body: data
+
 					});
 					console.log(response)
+
 					if (!response.ok) {
 						// Manejo de errores si la solicitud no fue exitosa
 						throw new Error('No se pudo agregar el elemento al menú');
 					}
+
 					// Manejo de éxito, si es necesario
 					// Puedes actualizar el estado aquí si es necesario
 					return response.status; // Opcional: devuelve un valor para indicar que la solicitud fue exitosa
@@ -181,6 +184,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error('Error al agregar el elemento al menú:', error);
 					return false; // Opcional: devuelve un valor para indicar que la solicitud falló
 				}
+
 			},
 
 			logout: async () => {
