@@ -377,7 +377,7 @@ def preference():
         "back_urls": {
             "success": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago",
             "failure": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago",
-            # En este caso las tres están configuradas para que lo manden de nuevo a la página home de la app.
+            # En este caso   las tres están configuradas para que lo manden de nuevo a la página home de la app.
             "pending": "https://miniature-xylophone-g4xj7vg67wrf9jvq-3000.app.github.dev/pago"
         },
         "auto_return": "approved"
