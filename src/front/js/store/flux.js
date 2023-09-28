@@ -80,6 +80,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
+			getAllMenu: async () => {
+                let store = getStore()
+                try {
+                    let responde = await fetch(`${process.env.BACKEND_URL}/products`)
+                    let data = await responde.json()
+                    if(responde.ok){
+                        setStore({
+                            products:data
+                        })
+                    }else{
+                        console.log("Errores")
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            },
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -178,27 +194,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// logout: () => { localStorage.removeItem("token") },
 
 			agregarMenu: async (data) => {
-				try {
-					const response = await fetch(process.env.BACKEND_URL + "/products", {
-						method: 'POST',
-						headers: {
-							// 'Content-Type': 'application/json',
-						},
-						body: data
-					});
-					console.log(response)
-					if (!response.ok) {
-						// Manejo de errores si la solicitud no fue exitosa
-						throw new Error('No se pudo agregar el elemento al menú');
-					}
-					// Manejo de éxito, si es necesario
-					// Puedes actualizar el estado aquí si es necesario
-					return response.status; // Opcional: devuelve un valor para indicar que la solicitud fue exitosa
-				} catch (error) {
-					console.error('Error al agregar el elemento al menú:', error);
-					return false; // Opcional: devuelve un valor para indicar que la solicitud falló
-				}
-			},
+                try {
+                    const response = await fetch(process.env.BACKEND_URL + "/products", {
+                        method: 'POST',
+                        headers: {
+                            // 'Content-Type': 'application/json',
+                        },
+                        body: data
+                    });
+                    console.log(response)
+                    if (!response.ok) {
+                        // Manejo de errores si la solicitud no fue exitosa
+                        throw new Error('No se pudo agregar el elemento al menú');
+                    }
+                    // Manejo de éxito, si es necesario
+                    // Puedes actualizar el estado aquí si es necesario
+                    return response.status; // Opcional: devuelve un valor para indicar que la solicitud fue exitosa
+                } catch (error) {
+                    console.error('Error al agregar el elemento al menú:', error);
+                    return false; // Opcional: devuelve un valor para indicar que la solicitud falló
+                }
+            },
 
 			logout: async () => {
 				try {
