@@ -1,12 +1,25 @@
-.container-Button{
- background: white;
- display: flex;
+.container{
+
+  display: flex;
   justify-content: center;
-  height: 100vh;
+  align-items: center;
+  
+}
+
+.container-Button{
+  padding: 1rem;
+  margin: 0.75rem;
+  background: #ffffff;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  height: auto;
+  width: 50%;
+  border-radius: 0.75rem;
   text-align: center;
+  
 }
 
 .Button{
-    width: 150px;
-height: 40px;
+ width: 150px;
+ height: 40px;
+ 
 }
