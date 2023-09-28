@@ -12,16 +12,14 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity, get_jwt
 from flask_jwt_extended import jwt_required
 from datetime import datetime
-import json 
+import json
 import cloudinary.uploader as uploader
 
 # SDK de Mercado Pago
 import mercadopago
-
 # Agrega credenciales
-sdk = mercadopago.SDK("APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
-
-
+sdk = mercadopago.SDK(
+    "APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
 api = Blueprint('api', __name__)
 
 
@@ -42,16 +40,20 @@ def verifyToken(jti):
         return False  # para este caso el token no estaría en la lista de bloqueados
 
 
-@api.route('/hello', methods=['POST', 'GET'])
+@api.route('/auth', methods=['GET'])
 @jwt_required()
-def handle_hello():
+def auth():
 
     verification = verifyToken(get_jwt()["jti"])
     if verification == False:
         return jsonify({"message": "forbidden"}), 403
+    user_data = get_jwt_identity()
+    user = User.query.get(user_data["id"])
+    if user is None:
+        return jsonify({"message": "not found"}), 404
 
     response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+        "user": user.serialize()
     }
 
     return jsonify(response_body), 200
@@ -63,18 +65,14 @@ def signup():
     password = request.json.get("password", None)
     address = request.json.get("address", None)
     name = request.json.get("name", None)
-    username = request.json.get("username", None)
-    age = request.json.get("age", None)
-    city = request.json.get("city", None)
     phone = request.json.get("phone", None)
-
     salt = b64encode(os.urandom(32)).decode('utf-8')
     password = set_password(password, salt)
     existing_email = User.query.filter_by(email=email).first()
     if existing_email:
         return jsonify({"msg": "email already exists"}), 400
-    new_user = User(username=username, password=password, address=address,
-                    name=name, age=age, city=city, phone=phone, email=email, salt=salt)
+    new_user = User(password=password, address=address,
+                    name=name, phone=phone, email=email, salt=salt)
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"user_id": new_user.id}), 200
@@ -158,13 +156,14 @@ def login():
             if user is None:
                 return jsonify({"message": "Bad credentials"}), 400
             else:
+                print("realizando verificación de password")
                 if check_password(user.password, password, user.salt):
+                    print("coincide password")
                     # Crear un diccionario con los datos del usuario
                     user_data = {
                         "id": user.id,
                         "email": user.email,
-                        "admin": user.admin,
-                        "username": user.username,
+                        "admin": user.admin
 
                         # Agrega otros campos de usuario que desees incluir
                     }
@@ -193,7 +192,7 @@ def logout():
 
     try:
         jti = get_jwt()["jti"]
-        identity = get_jwt_identity()  # asociada al correo
+        identity = get_jwt_identity()["email"]  # asociada al correo
         print("jti: ", jti)
         # creamos una instancia de la clase TokenBlocked
         new_register = TokenBlocked(token=jti, email=identity)
@@ -208,7 +207,7 @@ def logout():
         return jsonify({"message": "error trying to logout"}), 403
 
 
-@api.route('/hacer_reserva', methods=['POST'])
+@api.route('/reservation', methods=['POST'])
 @jwt_required()
 def hacer_reserva():
 
@@ -217,16 +216,16 @@ def hacer_reserva():
         # Obtiene los datos de la reserva desde la solicitud POST
         # Asume que los datos de la reserva se   envían como JSON en la solicitud
         reservation_data = request.json
+        print(reservation_data)
         fecha_dtr = datetime.strptime(
             reservation_data['reservation_date'], "%Y-%m-%d %H:%M:%S")
         # print(get_jwt_identity())
         # Crea una nueva instancia de Reservation y asigna el usuario autenticado
+        print(get_jwt_identity()["id"])
         nueva_reserva = Reservas(
             reservacion_date=fecha_dtr,
             # Supongamos que current_user representa al usuario autenticado
             user_id=get_jwt_identity()["id"],
-
-            reservacion_hour=fecha_dtr,
             cantidad_personas=reservation_data['cantidad_personas']
         )
         try:
@@ -341,4 +340,5 @@ def preference():
     }  # preference es el nombre que le dimos a nuestra ruta para pagar con mercadopago
     preference_response = sdk.preference().create(preference_data)
     preference = preference_response["response"]
+    print(preference)
     return preference, 200

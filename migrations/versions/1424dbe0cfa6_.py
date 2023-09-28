@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 92fa9a79f2ec
+Revision ID: 1424dbe0cfa6
 Revises: 
-Create Date: 2023-09-25 22:24:42.149657
+Create Date: 2023-09-27 23:42:37.421756
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '92fa9a79f2ec'
+revision = '1424dbe0cfa6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,9 +39,6 @@ def upgrade():
     sa.Column('password', sa.String(length=255), nullable=False),
     sa.Column('address', sa.String(length=255), nullable=False),
     sa.Column('name', sa.String(length=150), nullable=False),
-    sa.Column('username', sa.String(length=150), nullable=False),
-    sa.Column('age', sa.String(length=150), nullable=False),
-    sa.Column('city', sa.String(length=150), nullable=False),
     sa.Column('phone', sa.String(length=150), nullable=False),
     sa.Column('salt', sa.String(length=180), nullable=False),
     sa.Column('admin', sa.Boolean(), nullable=True),
@@ -52,7 +49,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('reservacion_date', sa.DateTime(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('reservacion_hour', sa.DateTime(), nullable=False),
     sa.Column('cantidad_personas', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')

@@ -1,21 +1,24 @@
-.footer{
-    background-color: rgba(65, 56, 48, 0.918);
-    margin-left: 0;
-    margin-right: 0;
+.footer {
+    background-color: #a7815e;
 }
 
-.columna1footer{
-    margin-left: 50px;
-    margin-top: 25px;
-    color: aliceblue;
-}
+.columna3footer {
+    /* font-family: 'Martian Mono', monospace; */
+    /* font-family: 'Oswald', sans-serif; */
+    font-family: 'Nunito Sans', sans-serif;
 
-.columna2footer{
-    margin-top: 35px;
-    color: aliceblue;
-}
-.imagendefooter{
-    width: 150px;
+    float: left;
+    margin-left: 20px;
+    font-size: 27px;
     margin-top: 30px;
-    border-radius: 120%;
+    color: aliceblue;
+}
+
+
+.imagendefooter {
+    margin-top: 30px;
+    float: right;
+    margin-right: 0;
+    width: 100px;
+    border-radius: 80%;
 }

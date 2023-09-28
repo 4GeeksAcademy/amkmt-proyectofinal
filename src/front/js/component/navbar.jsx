@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../../img/logo.png'
+import { Context } from "../store/appContext"
 
 
 const Navbar2 = () => {
+    const { store, actions } = useContext(Context);
+
     return (
         <nav className=" container-fluid navbar navbar-dark navbar-expand colornavbar transition">
             <div className="container-fluid">
@@ -17,17 +20,39 @@ const Navbar2 = () => {
                             <Link className="nav-link active  colorenlace  " aria-current="page" to="/">Inicio</Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link " to="/especialidades">Especiales</Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link  colorenlace " to="/menu">Menú</Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link " to="/reservation">Reservar</Link>
-                        </li>
+                        </li> */}
                         <li className="nav-item">
-                            <Link className="nav-link  colorenlace " to="/login">Ingresar</Link>
+                            <Link className="nav-link  colorenlace " to="/contacto">Contáctanos</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link  colorenlace " to="/register">Registrarse</Link>
-                        </li>
+                        {/* {!store?.current_user && */}
+                        <>
+                            <li className="nav-item">
+                                <Link className="nav-link  colorenlace " to="/login">Ingresar</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link  colorenlace " to="/register">Registrarse</Link>
+                            </li>
+                            <div class="dropdown dropdowncerrar">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li className="nav-item botonsalir">
+                                        <Link className="nav-link colorenlace" to="/logout">Salir</Link>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </>
+                        {/* } */}
+
                     </ul>
                 </div>
             </div>

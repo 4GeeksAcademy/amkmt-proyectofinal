@@ -32,7 +32,7 @@ const MenuPage = (id, name) => {
     ];
 
     return (
-        <Container className="inicio">
+        <div className="container-fluid inicio">
             <h1 className="titulodeinicio">Nuestros especiales</h1>
             <br />
             <br />
@@ -64,7 +64,7 @@ const MenuPage = (id, name) => {
                     </Col>
                 ))}
             </Row>
-        </Container>
+        </div>
     );
 };
 
