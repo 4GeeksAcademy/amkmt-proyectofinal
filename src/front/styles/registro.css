@@ -1,19 +1,20 @@
 body {
-background-image: url(https://img.freepik.com/premium-vector/hand-drawn-bakery-white-background-seamless-pattern-retro-style_505564-1509.jpg?w=2000);
-backdrop-filter: blur(1px);
-margin: 0;
-padding: 0;
-display: flex;
-align-items: center;
-justify-content: center;
+    background-image: url(https://img.freepik.com/premium-vector/hand-drawn-bakery-white-background-seamless-pattern-retro-style_505564-1509.jpg?w=2000);
+    backdrop-filter: blur(1px);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.contenedor{
-   display: block;
-   justify-content: center;
-   
+.contenedor {
+    display: block;
+    justify-content: center;
+
 }
-.form-content{
+
+.form-content {
     /* Estos margin me ayudaron a separar el footer y a centrar el diseño */
     /* margin-top:10%;
     margin-bottom: 45%;
@@ -34,24 +35,24 @@ justify-content: center;
     max-width: 600px;
     max-height: 720px;
     /* margin: 0 auto; */
-    margin-top:6%;
+    margin-top: 15%;
     margin-bottom: 28%;
-    margin-left: 34%;
+    margin-left: 28%;
     padding: 20px;
     background-color: rgba(252, 251, 251, 0.807);
     border-radius: 15px;
     box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-content h1{
+.form-content h1 {
     font-size: 30px;
     margin-bottom: 30px;
-    color:black;
+    color: black;
     position: relative;
 }
 
-.form-content h1::after{
-    content:'';
+.form-content h1::after {
+    content: '';
     width: 50px;
     height: 4px;
     border-radius: 3px;
@@ -62,7 +63,7 @@ justify-content: center;
     transform: translate(-50%);
 }
 
-.input-field{
+.input-field {
     background-color: rgba(252, 251, 251, 0.807);
     color: #C99734;
     margin: 15px 0;
@@ -74,7 +75,7 @@ justify-content: center;
     border-radius: 15px;
 }
 
-.losinput{
+.losinput {
     margin-left: 2%;
     font-family: 'Oswald', sans-serif;
     border-radius: 5%;
@@ -85,16 +86,17 @@ justify-content: center;
     color: #C99734;
 }
 
-input::placeholder{
-    color: #1b1b1bb9 ;
+input::placeholder {
+    color: #1b1b1bb9;
 }
 
-.input-field i{
-    
+.input-field i {
+
     margin-left: 15px;
-    color:#C99734 ;
+    color: #C99734;
 }
-form p{
+
+form p {
     color: #c4bbbb;
     text-align: center;
     font-size: 13px;
@@ -105,14 +107,14 @@ form p a {
     margin-left: 5px;
 }
 
-.btn-field{
+.btn-field {
     width: 100%;
     /* display: flex; */
     justify-content: space-between;
 }
 
-.btn-field button{
-    
+.btn-field button {
+
     /* flex-basis:48%; */
     margin-top: 2%;
     padding-bottom: 2px;
@@ -129,34 +131,36 @@ form p a {
     transition: background 1s;
 }
 
-.input-group{
+.input-group {
     justify-content: center;
     height: 250px;
 }
 
-.btn-field button.disable{
+.btn-field button.disable {
     background-color: #f7e2b7;
     color: #2C2F35;
     width: 150px;
 }
 
-#title{
+#title {
     font-size: 33px;
     font-family: 'Dancing Script', cursive;
 
 
 }
 
-#signUp, #signInn{
+#signUp,
+#signInn {
     font-size: 18px;
     font-family: 'Oswald', sans-serif;
-  
+
 }
-#signUp{
+
+#signUp {
     background-color: #926E4C;
 }
 
-#signInn{
+#signInn {
     color: white;
     background-color: #a7815e;
 }

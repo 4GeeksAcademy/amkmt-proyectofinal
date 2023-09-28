@@ -78,8 +78,8 @@ const Reservation = () => {
         <div>
 
           {/* <button className="col-6" type="button" onClick={(e) => actions.reservation(reservation_date, cantidad_personas)}>1. Reservar</button> */}
-          <button className="col-6" type="submit" >1. Reservar</button>
-          <button type="button" className="col-6 pagar" onClick={pagar}  >2. Pagar reservación</button>
+          <button className="col-6 reservar" type="submit" >1. Reservar</button>
+          <button type="button" className="col-6 pagar" onClick={pagar}  >2. Pagar reservación </button>
 
         </div>
       </form>

@@ -94,26 +94,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			login: async (email, password) => {
-				try {
-					let data = await axios.post(process.env.BACKEND_URL + "/login", {
-						"email": email,
-						"password": password
-					})
-					console.log(data);
-					//esto es lo que guarda en el localStorage
-					localStorage.setItem("token", data.data.access_token);
-
-					return true;
-				} catch (error) {
-					console.log("errorrrrr:" + error)
-					if (error.response.status === 404) {
-						alert(error.response.data.msg)
-					}
-					return false;
-				}
-
-
+			setCurrentUser: (data) => {
+				const store = getStore()
+				setStore({ ...store, current_user: data })
 			},
 			register: async (data) => {
 				let store = getStore()
@@ -201,6 +184,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			logout: async () => {
+				const actions = getActions()
 				try {
 					let data = await axios.post(process.env.BACKEND_URL + "/logout", {}, {
 						headers: {
@@ -212,7 +196,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 					//esto es lo que guarda en el localStorage
 					// localStorage.setItem("token", data.data.access_token);
+					if (data.status) {
+						data.status == 200 && actions.setCurrentUser(null)
 
+					}
 					return true;
 				} catch (error) {
 					console.log("errorrrrr:" + error)
