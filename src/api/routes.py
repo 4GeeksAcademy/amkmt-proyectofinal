@@ -94,6 +94,7 @@ def getProducts():
 
 
 @api.route("/products", methods=["POST"])
+# @jwt_required(required_rol=['admin'])
 def addProducts():
     data_files = request.files
     data_form = request.form
@@ -124,6 +125,11 @@ def addProducts():
         return jsonify({
             "msg": "error al guardar producto"
         }), 500
+# if 'admin' in claims['roles']:
+#         # Aquí puedes permitir que los usuarios administradores creen productos
+#         return jsonify({"message": "Producto creado exitosamente"}), 200
+#     else:
+#         return jsonify({"error": "Acceso no autorizado"}), 403
 
     body = json.loads(request.data)
     queryNewproducts = Products.query.filter_by(name=body["name"]).first()

@@ -4,13 +4,11 @@
 
 .colornavbar {
     background-color: #a7815e;
-    /* background-color: red; */
-
 }
 
 .nav-item {
-    font-size: 30px;
-    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    font-family: 'Dancing Script', cursive; 
 
 }
 
