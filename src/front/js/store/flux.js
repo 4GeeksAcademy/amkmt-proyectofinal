@@ -80,6 +80,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
+			getAllMenu: async () => {
+                let store = getStore()
+                try {
+                    let responde = await fetch(`${process.env.BACKEND_URL}/products`)
+                    let data = await responde.json()
+                    if(responde.ok){
+                        setStore({
+                            products:data
+                        })
+                    }else{
+                        console.log("Errores")
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            },
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

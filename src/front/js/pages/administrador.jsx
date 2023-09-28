@@ -1,20 +1,32 @@
-import React from "react"
-import {Link} from "react-router-dom"
 
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import "../../styles/administrador.css";
 
-const Administrador = () =>{
- 
+const Administrador = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-12 col-md-4">
-                    <Link to = "/productos">
-                    productos
-                    </Link>
+                <div className="col-12">
+                    <h2>Administrador </h2>
+                    <div className="container-button ">
+                        <Link className = "btn btn-product" variant="primary" size="lg" to="/productos">
+                             
+                                Productos
+                        
+                        </Link>
+                        <Link className = "btn btn-product" variant="primary" size="lg" to="/">
+                            Reservas
+                        </Link>
+                        <Link className = "btn btn-product" variant="primary" size="lg" to="/">
+                            Usuarios
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Administrador 
+export default Administrador;

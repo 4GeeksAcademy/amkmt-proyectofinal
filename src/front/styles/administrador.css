@@ -1,0 +1,35 @@
+/* .container {
+  justify-content: center;
+  max-width: 600px;
+  max-height: 720px;
+  /* margin: 0 auto; 
+  margin-top: 6%;
+  margin-bottom: 28%;
+  margin-left: 34%;
+  padding: 20px;
+  background-color: rgba(252, 251, 251, 0.807);
+  border-radius: 15px;
+  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container-Button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  width: 100%;
+  padding: 1rem;
+
+} */
+.container-button {
+  display: flex;
+  justify-content: space-between;
+  border: 0px solid red;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+.btn-product{
+  background-color:red;
+  border: 0px solid red;
+}
