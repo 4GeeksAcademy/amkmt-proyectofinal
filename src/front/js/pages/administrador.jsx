@@ -1,29 +1,28 @@
-import React, {useContext} from "react"
-import {Link, useNavigate} from "react-router-dom"
-import {Context  } from "../store/appContext";
 
-const Administrador = () =>{
- const {store} =useContext(Context)
- const navigate= useNavigate()
+import React from "react";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import "../../styles/administrador.css";
+
+const Administrador = () => {
     return (
-        
-            <>
-            {store.current_user?.admin ?
-          <div className="container">
-            <div className="row">
-                <div className="col-12 col-md-4">
-                    <Link to = "/productos">
-                    productos
-                    </Link>
-                </div>
+        <div className="container">
+            <h2>Administrador </h2>
+            <div className="container-Button">
+                <Link to="/productos">
+                    <Button className="btn productos"variant="primary" size="lg">
+                        Productos
+                    </Button>
+                </Link>
+                <Button variant="primary" size="lg">
+                    Reservas
+                </Button>
+                <Button variant="primary" size="lg">
+                    Usuarios
+                </Button>
             </div>
-        </div>:navigate("/login")
+        </div>
+    );
+};
 
-        }
-            </>
-        
-        
-    )
-}
-
-export default Administrador 
+export default Administrador;
