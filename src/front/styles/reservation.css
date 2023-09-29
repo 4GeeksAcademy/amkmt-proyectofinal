@@ -105,8 +105,8 @@ button[type="button"]:hover {
 .pagar,
 .reservar {
     font-family: 'Oswald', sans-serif;
-    font-size: 21px;
-    /* width: 200px; */
+    font-size: 20px;
+    /* width: 120px; */
     color: #fff;
     display: inline-block;
     margin: 0 auto;

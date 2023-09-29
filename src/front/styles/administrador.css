@@ -25,11 +25,17 @@
 .container-button {
   display: flex;
   justify-content: space-between;
-  border: 0px solid red;
   margin-top: 200px;
   margin-bottom: 200px;
+  color: white;
+  /* font-size: 50px; */
+  border-radius: 4px;
+  cursor: pointer;
 }
-.btn-product{
-  background-color:red;
-  border: 0px solid red;
+
+.btn-product {
+  background-color: #a7815e;
+  border: 0px solid;
+  color: white;
+  font-size: 30px;
 }
