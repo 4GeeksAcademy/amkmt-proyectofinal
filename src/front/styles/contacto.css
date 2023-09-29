@@ -2,23 +2,33 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .contacto-container {
-  padding: 5rem;
+  padding: 1rem;
   margin: 0.75rem;
   background: #ffffff;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   height: auto;
   width: 50%;
   border-radius: 0.75rem;
-  margin-top: 15%;
+  margin-top: 6%;
   margin-bottom: 28%;
 }
 
 .contacto-container p {
   width: 100%;
   text-align: center;
+  font-size: 1.5rem;
+
+}
+
+
+.contacto-info h1 {
+  justify-content: center;
+  text-align: center;  
+
 }
 
 .contacto-info-container {
@@ -35,6 +45,10 @@
   padding: 20px;
   justify-content: center;
   align-items: center;
+}
+
+.contacto-detalles ul{
+  font-size: 1.5rem;
 }
 
 .contacto-mapa {

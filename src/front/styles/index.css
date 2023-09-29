@@ -3,12 +3,12 @@
 }
 
 .colornavbar {
-    background-color: #a7815e;
+    background-color: #2f1e27db;
 }
 
 .nav-item {
     font-size: 20px;
-    font-family: 'Dancing Script', cursive; 
+    font-family: 'Nunito Sans', sans-serif;
 
 }
 
@@ -47,3 +47,4 @@
     font-family: 'Nunito Sans', sans-serif;
 
 }
+
