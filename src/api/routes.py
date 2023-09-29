@@ -158,7 +158,7 @@ def updateProduct(id):
         return jsonify({"error": "Producto no encontrado"}), 404
 
     # Obtener los datos enviados en la solicitud JSON
-    data = request.get_json()
+    data = request.form
 
     # Actualizar los campos del producto si se proporcionan en la solicitud
     if "name" in data:
