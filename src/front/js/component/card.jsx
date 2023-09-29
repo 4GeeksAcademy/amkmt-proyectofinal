@@ -9,7 +9,8 @@ const Card = ({ product }) => {
       <div className="card-body">
         <h5 className="card-title">{product?.name}</h5>
         <h5 className="card-title">{product?.price}</h5>
-        <a href="#" className="btn btn-danger">{product?.description}</a>
+        <h5 className="card-tittleD">{product?.description}</h5>
+        <button href="#" className="button-info"> +Info </button>
       </div>
     </div>
   );
