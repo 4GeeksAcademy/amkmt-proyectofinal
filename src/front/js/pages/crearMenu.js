@@ -90,7 +90,7 @@ const CrearMenu = () => {
                             <div className="input-field" id="nameInput">
                                 <i class="fa-solid fa-tag"></i>
                                 <input
-                                    type="text"
+                                    type="price"
                                     name="price"
                                     placeholder="precio"
                                     onChange={handleChanges}

@@ -8,7 +8,26 @@
 
 }
 
+
+.resena-historica h2{
+    text-align: center;
+}
+
+.vision h2{
+    text-align: center;
+}
+
+.mision h2{
+    text-align: center;
+}
+
+
+.factor-diferenciador h2{
+    text-align: center;
+}
+  
 .resena-historica {
+
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;

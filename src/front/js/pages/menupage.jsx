@@ -51,7 +51,7 @@ const MenuPage = (id, name) => {
                         <Card className="cards">
                             <Card.Body className="cuerpodecard">
                                 <img className="imagenesdeinicio" src={item.image} alt="" />
-                                {/* {<img src="rigo-baby.jpg" alt="" />} */}
+                                 {/* {<img src="rigo-baby.jpg" alt="" />}  */}
                                 <Card.Title className="nombresdecomidas">{item.name}</Card.Title>
                                 <Card.Text className="descripciondecomidas">{item.description}</Card.Text>
                                 <Link to="/menu">
