@@ -35,7 +35,7 @@ export const Login = () => {
 
         // Verifica si el usuario es administrador
         if (responseJson.user && responseJson.user.admin) {
-          navigate("/crearmenu");
+          navigate("/administrador");
         } else {
           navigate("/menu");
         }

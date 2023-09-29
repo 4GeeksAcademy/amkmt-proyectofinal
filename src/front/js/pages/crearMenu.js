@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import Swal from "sweetalert2";
 import "../../styles/prueba.css";
+import Card from "../component/card.jsx";
 
 const estadoInicial = {
 
@@ -57,7 +58,7 @@ const CrearMenu = () => {
                     <form>
                         <div className="    ">
                             <div className="input-field" id="nameInput">
-                                <i class="fa-solid fa-utensils"></i>
+                                <i className="fa-solid fa-utensils"></i>
                                 <input
                                     type="text"
                                     placeholder="Nombre"
@@ -66,7 +67,7 @@ const CrearMenu = () => {
                                     value={producto.name} />
                             </div>
                             <div className="input-field">
-                                <i class="fa-regular fa-file-lines"></i>
+                                <i className="fa-regular fa-file-lines"></i>
                                 <input
                                     type="description"
                                     placeholder="descripcion"
@@ -76,7 +77,7 @@ const CrearMenu = () => {
                             </div>
 
                             <div className="input-field">
-                                <i class="fa-regular fa-image"></i>
+                                <i className="fa-regular fa-image"></i>
                                 <input
                                     type="file"
                                     placeholder="imagen"
@@ -88,7 +89,7 @@ const CrearMenu = () => {
                             </div>
 
                             <div className="input-field" id="nameInput">
-                                <i class="fa-solid fa-tag"></i>
+                                <i className="fa-solid fa-tag"></i>
                                 <input
                                     type="text"
                                     name="price"
@@ -104,6 +105,24 @@ const CrearMenu = () => {
                     </form>
                 </div>
             </div>
+            <div>
+                <div className="list-group">
+                    {
+
+                        store.products?.map((item) => {
+                            return (
+                                <label className="list-group-item" key={item.id} product={item} >
+
+
+{item.name}
+{item.id}
+                                    < button className="col-4" type="button"> Editar</button>
+                                </label>
+                            )
+                        })
+
+                    }</div >
+            </div >
         </>
     )
 }
