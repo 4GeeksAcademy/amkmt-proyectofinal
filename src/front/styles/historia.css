@@ -1,45 +1,50 @@
-.sobre-nosotros{
+.sobre-nosotros {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     text-align: justify;
     padding: 5rem;
-    
+    font-family: 'Nunito Sans', sans-serif;
+
 }
 
-.resena-historica{
+.resena-historica {
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;
     display: flex;
     flex-direction: column;
     text-align: justify;
-    
+    font-family: 'Nunito Sans', sans-serif;
+
 }
 
-.vision{
+.vision {
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;
     display: flex;
     flex-direction: column;
     text-align: justify;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-.mision{
+.mision {
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;
     display: flex;
     flex-direction: column;
     text-align: justify;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-.factor-diferenciador{
+.factor-diferenciador {
     background: #f9f9f9;
     padding: 2rem;
     margin: 2rem;
     display: flex;
     flex-direction: column;
     text-align: justify;
+    font-family: 'Nunito Sans', sans-serif;
 }

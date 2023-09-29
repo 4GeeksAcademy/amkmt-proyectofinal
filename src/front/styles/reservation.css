@@ -8,27 +8,26 @@
     max-width: 600px;
     max-height: 720px;
     /* margin: 0 auto; */
-    margin-top: 6%;
+    margin-top: 10%;
     margin-bottom: 28%;
-    margin-left: 34%;
+    margin-left: 32%;
     padding: 20px;
     background-color: rgba(252, 251, 251, 0.807);
     border-radius: 15px;
     box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
+.reservademesa {
     text-align: center;
     font-family: 'Dancing Script', cursive;
     font-size: 40px;
+    margin-bottom: 10%;
 }
 
 
 label {
     font-family: 'Oswald', sans-serif;
-
     display: block;
-    margin-bottom: 10px;
 }
 
 /* input[type="text"],
@@ -98,18 +97,21 @@ button[type="button"] {
 
 }
 
+/* 
 button[type="button"]:hover {
-    background-color: #926E4C;
-}
+    background-color: #b179b87e;
+} */
 
-.pagar {
+.pagar,
+.reservar {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     /* width: 120px; */
     color: #fff;
     display: inline-block;
     margin: 0 auto;
-    padding: 10px 20px;
+    margin-top: 5%;
+    padding: 10px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
