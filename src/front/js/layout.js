@@ -22,7 +22,7 @@ import Testimonio from "./pages/testimonios.jsx";
 import Navbar2 from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
 import Menu from "./pages/menu";
-
+import EditMenu from "./pages/editarmenu";
 
 
 
@@ -57,7 +57,8 @@ const Layout = () => {
                         <Route element={<Contacto />} path="/contacto" />
                         <Route element={<Administrador />} path="/administrador" />
                         <Route element={<Testimonio />} path="/testimonio" />
-                        <Route element={<Menu />} path="/menu" />
+                        <Route element={<EditMenu />} path="/editar/:id" />
+                        
 
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
