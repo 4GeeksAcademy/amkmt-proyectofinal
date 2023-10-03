@@ -15,12 +15,66 @@ from datetime import datetime
 import json
 import cloudinary.uploader as uploader
 
+import smtplib, ssl
+import os
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from datetime import datetime
+from email.mime.base import MIMEBase
+from email import encoders
+
+smtp_address = os.getenv("SMTP_ADDRESS")
+smtp_port = os.getenv("SMTP_PORT")
+email_address = os.getenv("EMAIL_ADDRESS")
+email_password = os.getenv("EMAIL_PASSWORD")
+
+
+
 # SDK de Mercado Pago
 import mercadopago
 # Agrega credenciales
 sdk = mercadopago.SDK(
     "APP_USR-2815099995655791-092911-c238fdac299eadc66456257445c5457d-1160950667")
 api = Blueprint('api', __name__)
+
+def send_email(asunto, destinatario, body):
+    message = MIMEMultipart("alternative")
+    message["Subject"] = asunto
+    message["From"] = email_address
+    message["To"] = destinatario
+    
+    #Version HTML del body
+    html = ''' 
+    
+    <html>
+    <body>
+    <div>
+    <h1>
+    Hola 
+    </h1>
+     ''' + body + '''   
+    </div>
+    </body>
+    </html>
+    '''
+
+    #crear los elemento MIME
+    html_mime = MIMEText(html, 'html')
+
+    #adjuntamos el código html al mensaje
+    message.attach(html_mime)
+
+    #enviar el correo
+    try:
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL(smtp_address, smtp_port, context=context) as server:
+            server.login(email_address, email_password)
+            server.sendmail(email_address, destinatario, message.as_string())
+        return True
+    
+    except Exception as error:
+        print(str(error))
+        return False
 
 
 def set_password(password, salt):
@@ -394,3 +448,19 @@ def preference():
     preference = preference_response["response"]
     print(preference)
     return preference, 200
+
+
+@api.route("/sendmail", methods=["POST"])
+def endpoint_mail():
+    body = request.get_json()
+    asunto = body["asunto"]
+    destinatario = body["destinatario"]
+    cuerpo = body["contenido"]
+
+    verificar = send_email(asunto, destinatario, cuerpo)
+
+    if verificar==True:
+        return jsonify({"message":"email sent"}), 200
+    else:
+        return jsonify({"message":"error sending mail"}), 400
+

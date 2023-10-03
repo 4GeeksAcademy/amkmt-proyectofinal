@@ -3,7 +3,7 @@ body {
     backdrop-filter: blur(1px);
     margin: 0;
     padding: 0;
-    bs-gutter-x: 1.5rem;
+    /* bs-gutter-x: 1.5rem; */
 }
 
 
