@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			current_user: null,
 			message: null,
 			mercadoPago: {},
+			reservationData: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -151,29 +152,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//  // return false;
 				// }
 			},
-			reservation: async (reservation_date, cantidad_personas) => {
-				try {
-					let data = await axios.post(process.env.BACKEND_URL + "/reservation", {
+			// reservation: async (reservation_date, cantidad_personas) => {
+			// 	try {
+			// 		let data = await axios.post(process.env.BACKEND_URL + "/reservation", {
 
-						"reservation_date": reservation_date,
-						"cantidad_personas": cantidad_personas
-					})
-					console.log(data);
-					//esto es lo que guarda en el localStorage
-					localStorage.setItem("token", data.data.access_token);
+			// 			"reservation_date": reservation_date,
+			// 			"cantidad_personas": cantidad_personas
+			// 		})
+			// 		console.log(data);
+			// 		//esto es lo que guarda en el localStorage
+			// 		localStorage.setItem("token", data.data.access_token);
 
-					return true;
-				} catch (error) {
-					console.log("el errorrrrr es:" + error)
-					if (error.response.status === 404) {
-						alert(error.response.data.msg)
-					}
-					return false;
-				}
+			// 		return true;
+			// 	} catch (error) {
+			// 		console.log("el errorrrrr es:" + error)
+			// 		if (error.response.status === 404) {
+			// 			alert(error.response.data.msg)
+			// 		}
+			// 		return false;
+			// 	}
 
 
-			},
+			// },
 
+reservation: async (reservation_date, cantidad_personas) => {
+    try {
+        let response = await axios.post(process.env.BACKEND_URL + "/reservation", {
+            "reservation_date": reservation_date,
+            "cantidad_personas": cantidad_personas
+        });
+        if (response.status === 200) {
+            // Respuesta exitosa, guarda los datos en el localStorage y en el store
+            localStorage.setItem("token", response.data.access_token);
+            setStore({
+                reservationData: response.data
+            });
+            console.log(response.data);
+            return true;
+        } else {
+            console.log("Código de estado de respuesta inesperado:", response.status);
+            return false;
+        }
+    } catch (error) {
+        console.log("Error:", error);
+        if (error.response && error.response.status === 404) {
+            alert(error.response.data.msg);
+        }
+        return false;
+    }
+},
 			// logout: () => { localStorage.removeItem("token") },
 
 			agregarMenu: async (data) => {
