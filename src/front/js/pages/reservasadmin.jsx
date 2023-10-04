@@ -1,36 +1,44 @@
-import React, { useEffect,useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
-import { Context } from "../store/appContext";
 const ReservasAdmin = () => {
-    const { store, actions } = useContext(Context)
-    console.log(store.current_user)
-  //  console.log(store.current_user.name)
-    //console.log(store.current_user.reservas)
+    const [reservas, setReservas] = useState([]);
     useEffect(() => {
-       actions.getAuth()
+        // Hacer la solicitud GET a la API
+        fetch(`${process.env.BACKEND_URL}/reservas`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error de red: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Actualizar el estado con las reservas obtenidas
+                setReservas(data);
+            })
+            .catch(error => console.error('Error al obtener las reservas:', error.message));
     }, []);
-
     return (
-        <div>
+        <div style={{ backgroundColor: 'white', padding: '20px' }}>
             <h2>Reservas</h2>
-            {/* <div className="list-group">
-                    {store.current_user.map((item) => (
-                        <label className="list-group-item row" key={item.id} >
-                            <div className="row">
-                                <div className="col-lg-1">{item.name}</div>
-                                <div className="col-lg-5">{item.reservas.cantidad_personas}</div>
-                                
-                                <button className="col-lg-2 mb-3" type="button" onClick={() => borrarMenu(item.id)}>
-                                    <i className="fa-solid fa-trash"></i>
-                                </button>
-                            </div>
-                        </label>
-                    ))}
-                </div> */}
-            
+            <ul>
+                {reservas.map(reserva => (
+                    <li key={reserva.id}>
+                        <p>ID: {reserva.id}</p>
+                        <p>Fecha de Reserva: {reserva.reservacion_date}</p>
+                        <p>Nombre del Usuario: {reserva.user_name}</p>
+                        <p>Correo del Usuario: {reserva.user_email}</p>
+                        <p>Cantidad de Personas: {reserva.cantidad_personas}</p>
+                        {/* Puedes agregar más detalles de la reserva aquí */}
+                        <hr />
+                    </li>
+                ))}
+            </ul>
+            <Link className="btn btn-product" variant="primary" to="/administrador">
+                            Volver
+                        </Link>
         </div>
     );
 };
-
 export default ReservasAdmin;
