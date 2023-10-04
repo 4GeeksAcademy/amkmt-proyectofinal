@@ -301,7 +301,7 @@ def hacer_reserva():
 
 @api.route('/reservas', methods=['GET'])
 def get_reservas():
-    reservas = Reservas.query.all()
+    reservas = Reservas.query.join(User).all()  # Unir la tabla de usuarios para obtener datos relacionados
     return jsonify([reserva.serialize() for reserva in reservas])
 
 # Ruta para obtener una reserva por su ID

@@ -16,7 +16,7 @@ const Administrador = () => {
                             Productos
 
                         </Link>
-                        <Link className="btn btn-product" variant="primary" size="lg" to="/">
+                        <Link className="btn btn-product" variant="primary" size="lg" to="/reservasadmin">
                             Reservas
                         </Link>
                         <Link className="btn btn-product" variant="primary" size="lg" to="/">

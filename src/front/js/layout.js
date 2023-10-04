@@ -17,6 +17,7 @@ import Logout from "./pages/logout.jsx";
 import Contacto from "./pages/contacto.jsx"
 import Administrador from "./pages/administrador.jsx"
 import Testimonio from "./pages/testimonios.jsx";
+import ReservasAdmin from "./pages/reservasadmin.jsx";
 
 
 import Navbar2 from "./component/navbar.jsx";
@@ -58,7 +59,7 @@ const Layout = () => {
                         <Route element={<Administrador />} path="/administrador" />
                         <Route element={<Testimonio />} path="/testimonio" />
                         <Route element={<EditMenu />} path="/editar/:id" />
-                        
+                        <Route element={<ReservasAdmin />} path="/reservasadmin" />
 
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>

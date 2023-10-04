@@ -59,18 +59,16 @@ class Reservas(db.Model):
     reservacion_date = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     cantidad_personas = db.Column(db.Integer, nullable=False)
-    # Agrega una relación con el usuario para acceder a su nombre y email
-    # user_reserva = db.relationship("User", back_populates="reserva")
-
+    # Elimina el back_populates
+    user_reserva = db.relationship("User")
     def __repr__(self):
         return f'<Reservas {self.id}>'
-
     def serialize(self):
         return {
             "id": self.id,
-            # Formatea la fecha como una cadena
             "reservacion_date": self.reservacion_date.strftime("%Y-%m-%d %H:%M:%S"),
-            "user_id": self.user_id,
+            "user_name": self.user.name,
+            "user_email": self.user.email,
             "cantidad_personas": self.cantidad_personas,
         }
 
