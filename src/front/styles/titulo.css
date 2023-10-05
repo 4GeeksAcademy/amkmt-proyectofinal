@@ -1,21 +1,29 @@
-.bg-light h5{
+.bg-light h5 {
     text-align: center;
 }
 
-.card-title{
+.card-title {
     text-align: center;
 }
 
-.card-img-top{
+.card-img-top {
     width: auto;
-  height: 50%;
+    height: 50%;
 }
 
-.button-info{
-    align-items: center;
 
-}
 
-.card-tittleD{
+.card-tittleD {
     text-align: justify;
+}
+
+.deleitar {
+    justify-content: center;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 30px;
+    margin-left: 0;
+    width: 100%;
+    background-color: white;
+
+
 }

@@ -34,7 +34,9 @@
 }
 
 .btn-product {
-  background-color: #a7815e;
+  font-family: 'Nunito Sans', sans-serif;
+
+  background-color: #815c70ab;
   border: 0px solid;
   color: white;
   font-size: 30px;

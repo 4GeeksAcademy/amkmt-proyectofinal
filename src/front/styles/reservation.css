@@ -85,14 +85,14 @@ select {
 button[type="button"] {
     font-family: 'Oswald', sans-serif;
     font-size: 21px;
-    background-color: #926E4C;
+    background-color: rgba(156, 116, 139, 0.829);
     /* width: 120px; */
     color: #fff;
     display: inline-block;
     margin: 0 auto;
     padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 
 }
@@ -105,7 +105,7 @@ button[type="button"]:hover {
 .pagar,
 .reservar {
     font-family: 'Oswald', sans-serif;
-    font-size: 20px;
+    font-size: 21px;
     /* width: 120px; */
     color: #fff;
     display: inline-block;
@@ -113,9 +113,9 @@ button[type="button"]:hover {
     margin-top: 5%;
     padding: 10px 10px;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
-    background-color: #a7815e;
+    background-color: #815c70;
 }
 
 /* h6{

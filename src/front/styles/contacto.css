@@ -6,12 +6,14 @@
 }
 
 .contacto-container {
+  border: 3px solid #815c70;
+  font-family: 'Nunito Sans', sans-serif;
   padding: 1rem;
   margin: 0.75rem;
   background: #ffffff;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   height: auto;
-  width: 50%;
+  /* width: 50%; */
   border-radius: 0.75rem;
   margin-top: 6%;
   margin-bottom: 28%;
@@ -27,7 +29,7 @@
 
 .contacto-info h1 {
   justify-content: center;
-  text-align: center;  
+  text-align: center;
 
 }
 
@@ -47,7 +49,7 @@
   align-items: center;
 }
 
-.contacto-detalles ul{
+.contacto-detalles ul {
   font-size: 1.5rem;
 }
 
@@ -58,8 +60,9 @@
 }
 
 .contacto-redes-sociales {
-  flex-direction: row;
-  font-size: 1.5rem;
+
+  align-items: start;
+  font-size: 2.0rem;
 }
 
 .contacto-redes-sociales a {

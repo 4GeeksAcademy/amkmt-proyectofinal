@@ -173,7 +173,8 @@ form p a {
 }
 
 #Login {
+    border-radius: 2px;
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
-    background-color: #a7815e;
+    background-color: #815c70;
 }

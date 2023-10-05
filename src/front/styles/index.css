@@ -43,8 +43,12 @@
     background-color: white;
 }
 
-.titulodereserva {
+/* .titulodereserva {
+    font-family: 'Dancing Script', cursive;
+} */
+
+.card-tittleD {
+    text-align: center;
     font-family: 'Nunito Sans', sans-serif;
 
 }
-
